@@ -1,9 +1,11 @@
-package com.test.trejo.jesus.librariesflyers;
+package com.test.trejo.jesus.librariesflyers.TopDraggable;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class TopDraggable extends AppCompatActivity {
+import com.test.trejo.jesus.librariesflyers.R;
+
+public class TopDraggableActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -11,3 +13,4 @@ public class TopDraggable extends AppCompatActivity {
         setContentView(R.layout.activity_top_draggable);
     }
 }
+

@@ -1,4 +1,4 @@
-package com.test.trejo.jesus.librariesflyers;
+package com.test.trejo.jesus.librariesflyers.HorizontalRecycler;
 
 /**
  * Created by jesus on 22/08/17.

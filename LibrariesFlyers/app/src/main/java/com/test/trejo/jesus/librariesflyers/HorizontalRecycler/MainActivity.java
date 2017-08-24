@@ -1,4 +1,4 @@
-package com.test.trejo.jesus.librariesflyers;
+package com.test.trejo.jesus.librariesflyers.HorizontalRecycler;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,10 +9,11 @@ import android.view.View;
 import android.widget.Button;
 
 import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
+import com.test.trejo.jesus.librariesflyers.LonelyEffect.LonelyEffectActivity;
+import com.test.trejo.jesus.librariesflyers.R;
+import com.test.trejo.jesus.librariesflyers.TopDraggable.TopDraggableActivity;
 
 import java.util.ArrayList;
-
-import static android.view.View.X;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<RecyclerObject> mdataSet;
 
     private Button draggableButton;
+    private Button lonelyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         draggableButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), TopDraggable.class);
+                Intent intent = new Intent(getBaseContext(), TopDraggableActivity.class);
                 startActivity(intent);
             }
         });
@@ -52,6 +54,16 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layout = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         mRecyclerView.setLayoutManager(layout);
         mRecyclerView.setAdapter(mAdapter);
+
+        lonelyButton = (Button) findViewById(R.id.button2);
+        lonelyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), LonelyEffectActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 

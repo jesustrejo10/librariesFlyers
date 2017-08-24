@@ -1,4 +1,4 @@
-package com.test.trejo.jesus.librariesflyers;
+package com.test.trejo.jesus.librariesflyers.HorizontalRecycler;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

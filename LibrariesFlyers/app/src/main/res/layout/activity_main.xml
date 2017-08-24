@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:paddingStart="5dp"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.test.trejo.jesus.librariesflyers.MainActivity"
+    tools:context="com.test.trejo.jesus.librariesflyers.HorizontalRecycler.MainActivity"
     android:paddingLeft="5dp"
     android:orientation="vertical">
 
@@ -19,12 +19,6 @@
         android:clipToPadding="false"/>
 
 
-    <com.andexert.library.RippleView
-        android:id="@+id/more"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        rv_centered="true">
 
         <Button
             android:layout_width="fill_parent"
@@ -36,8 +30,23 @@
             android:background="#2196F3"
             android:textColor="#FFFFFF"
             style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_margin="25dp"
             />
 
-    </com.andexert.library.RippleView>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Lonely Effect"
+            android:id="@+id/button2"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:background="#2196F3"
+            android:textColor="#FFFFFF"
+            android:layout_margin="25dp"
+
+            style="@style/Widget.AppCompat.Button.Colored"
+            />
+
 
 </LinearLayout>
