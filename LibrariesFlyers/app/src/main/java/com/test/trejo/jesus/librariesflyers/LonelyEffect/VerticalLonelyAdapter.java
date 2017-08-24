@@ -37,6 +37,13 @@ public class VerticalLonelyAdapter  extends RecyclerView.Adapter<HorizontalViewH
     @Override
     public void onBindViewHolder(HorizontalViewHolder holder, int position) {
 
+        holder.getmTextView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("holamundo");
+            }
+        });
+
     }
 
 
