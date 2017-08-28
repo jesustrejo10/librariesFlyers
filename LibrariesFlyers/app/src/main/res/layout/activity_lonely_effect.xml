@@ -35,7 +35,7 @@
             </LinearLayout>
 
 
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -43,16 +43,34 @@
                 android:background="#00ffffff"
                 >
 
-                <TextView
-                    android:layout_width="wrap_content"
+
+
+                <fragment
+                    android:id="@+id/map"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    class ="com.google.android.gms.maps.MapFragment"
+                    />
+
+                <Button
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center|top"
-                    android:layout_gravity="center_horizontal"
-                    android:text="The Awesome Sliding down Panel"
-                    android:textSize="16sp"/>
+                    android:text="Back to list."
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:layout_gravity="bottom"
+                    android:visibility="gone"
+                    android:id="@+id/button"/>
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_gravity="bottom"
+                    android:src="@color/gray_background"
+                    android:id="@+id/map_preview"
+                    android:scaleType="centerCrop"/>
 
-            </LinearLayout>
+            </FrameLayout>
 
         </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
