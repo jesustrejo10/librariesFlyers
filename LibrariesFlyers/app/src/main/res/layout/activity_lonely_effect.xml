@@ -19,6 +19,7 @@
             android:gravity="top"
             sothree:umanoPanelHeight="160dp"
             sothree:umanoShadowHeight="4dp"
+
             >
 
             <LinearLayout

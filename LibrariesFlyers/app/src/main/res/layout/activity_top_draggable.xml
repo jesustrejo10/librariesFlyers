@@ -19,6 +19,8 @@
         android:gravity="bottom"
         sothree:umanoPanelHeight="25dp"
         sothree:umanoShadowHeight="2dp"
+        sothree:umanoOverlay="true"
+        android:background="@color/transparent"
         >
 
         <TextView
@@ -30,11 +32,11 @@
             android:background="@color/gray_background"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
-            android:background="#00ffffff"
+            android:background="#ffffff"
             >
             
             <TextView

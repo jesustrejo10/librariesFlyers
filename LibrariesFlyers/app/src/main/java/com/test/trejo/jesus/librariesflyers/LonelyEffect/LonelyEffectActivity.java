@@ -3,6 +3,7 @@ package com.test.trejo.jesus.librariesflyers.LonelyEffect;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -91,12 +92,12 @@ public class LonelyEffectActivity extends AppCompatActivity implements OnMapRead
                 }
                 if (newState.name().equalsIgnoreCase("EXPANDED") || newState.name().equalsIgnoreCase("DRAGGING")) {
                     mapPreview.setVisibility(View.GONE);
-                    panel.setActivated(false);
+                    //panel.setActivated(false);
                     //mapPreview.setLayoutParams(new FrameLayout.LayoutParams(0, 0));
 
                 }else{
                     mapPreview.setVisibility(View.VISIBLE);
-                    panel.setActivated(true);
+                    //panel.setActivated(true);
                 }
 
                 if (newState.name().equalsIgnoreCase("EXPANDED")) {
@@ -112,8 +113,9 @@ public class LonelyEffectActivity extends AppCompatActivity implements OnMapRead
         mRecyclerView = (RecyclerView) findViewById(R.id.list);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-
+        panel.setScrollableView(mRecyclerView);
         mRecyclerView.setAdapter(mAdapter);
+
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -127,8 +129,16 @@ public class LonelyEffectActivity extends AppCompatActivity implements OnMapRead
                     }
 
                 } else {
-                    if (status != 1)
-                        panel.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+
+                //    if ((status != 1) || ( !panel.getPanelState().name().equalsIgnoreCase("HIDDEN")) )
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Do something after 1000ms
+                            panel.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+                        }
+                    }, 100);
                 }
 
             }
@@ -194,4 +204,6 @@ public class LonelyEffectActivity extends AppCompatActivity implements OnMapRead
     }
 
 
+
 }
+
