@@ -32,7 +32,7 @@ public class LonelyEffectActivity extends AppCompatActivity {
     int firstVisibleItemIndex ;
     boolean loading = false;
     int previousTotal = 0;
-    int status = 1;
+    int status = 0;
     //0 mean collapsed
     //1 mean hidden
     @Override
@@ -53,7 +53,23 @@ public class LonelyEffectActivity extends AppCompatActivity {
         mAdapter = new VerticalLonelyAdapter(mDataSet);
 
         panel = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
+        panel.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
+            @Override
+            public void onPanelSlide(View panel, float slideOffset) {
 
+            }
+
+            @Override
+            public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
+                System.out.println("estatus.");
+                if (newState.name().equalsIgnoreCase("HIDDEN")){
+                    status = 1;
+                }
+                if ( newState.name().equalsIgnoreCase("COLLAPSED")){
+                    status =0;
+                }
+            }
+        });
 
         final int someWaitInterval = 20;
 
@@ -82,33 +98,15 @@ public class LonelyEffectActivity extends AppCompatActivity {
                 int pastVisibleItems = mLayoutManager.findFirstVisibleItemPosition();
 
                 if(pastVisibleItems == 0){
+
                     if (status != 0) {
-                        Runnable r = new Runnable() {
-
-                            @Override
-                            public void run() {
-                                try {
-                                    status = 0;
-                                    panel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);                                } catch (Exception e2) {
-                                    new Handler().postDelayed(this, someWaitInterval);
-                                }
-                            }};
-                        new Handler().postDelayed(r, someWaitInterval);
-
+                        panel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                     }
-                }else{
-                    Runnable r = new Runnable() {
 
-                        @Override
-                        public void run() {
-                            try {
-                                status = 0;
-                                panel.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);                                } catch (Exception e2) {
-                                new Handler().postDelayed(this, someWaitInterval);
-                            }
-                        }};
-                    new Handler().postDelayed(r, someWaitInterval);
-                    //if (pastVisibleItems + visibleItemCount >= totalItemCount) {
+                }else{
+                    if (status != 1)
+                        panel.setPanelState(SlidingUpPanelLayout.PanelState.HIDDEN);
+                      //if (pastVisibleItems + visibleItemCount >= totalItemCount) {
                     //}
                 }
 

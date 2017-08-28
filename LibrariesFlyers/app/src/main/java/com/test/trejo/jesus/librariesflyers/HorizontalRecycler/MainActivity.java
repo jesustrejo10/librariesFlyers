@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button draggableButton;
     private Button lonelyButton;
+    private Button homeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +66,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = new Intent(getBaseContext(), MainViewActivity.class);
-        startActivity(intent);
+        homeButton = (Button) findViewById(R.id.button3);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), MainViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
     }
 
