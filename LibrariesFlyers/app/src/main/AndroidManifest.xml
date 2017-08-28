@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".TopDraggable.TopDraggableActivity" />
-        <activity android:name=".LonelyEffect.LonelyEffectActivity"></activity>
+        <activity android:name=".LonelyEffect.LonelyEffectActivity" />
+        <activity android:name=".MainViewActivity"></activity>
     </application>
 
 </manifest>

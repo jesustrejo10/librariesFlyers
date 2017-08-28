@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
 import com.test.trejo.jesus.librariesflyers.LonelyEffect.LonelyEffectActivity;
+import com.test.trejo.jesus.librariesflyers.MainViewActivity;
 import com.test.trejo.jesus.librariesflyers.R;
 import com.test.trejo.jesus.librariesflyers.TopDraggable.TopDraggableActivity;
 
@@ -64,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Intent intent = new Intent(getBaseContext(), MainViewActivity.class);
+        startActivity(intent);
 
     }
 

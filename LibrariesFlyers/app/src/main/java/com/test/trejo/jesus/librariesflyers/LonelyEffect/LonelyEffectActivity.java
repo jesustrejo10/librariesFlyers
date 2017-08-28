@@ -76,7 +76,6 @@ public class LonelyEffectActivity extends AppCompatActivity {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
 
-
                 //WORK FOR BOTTOM
                 int visibleItemCount = mLayoutManager.getChildCount();
                 int totalItemCount = mLayoutManager.getItemCount();
@@ -113,6 +112,7 @@ public class LonelyEffectActivity extends AppCompatActivity {
                     //}
                 }
 
+
 /*
                 visibleItemCount = mRecyclerView.getChildCount();
                 totalItemCount = mLayoutManager.getItemCount();
@@ -139,6 +139,4 @@ public class LonelyEffectActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }

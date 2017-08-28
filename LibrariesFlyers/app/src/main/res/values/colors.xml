@@ -6,4 +6,7 @@
     <color name="black">#000000</color>
     <color name="red_hot_offer">#fd6145</color>
     <color name="gray_background">#d8d8d8</color>
+    <color name="flyers_primary">#2b6ec1</color>
+    <color name="white">#ffffff</color>
+
 </resources>
