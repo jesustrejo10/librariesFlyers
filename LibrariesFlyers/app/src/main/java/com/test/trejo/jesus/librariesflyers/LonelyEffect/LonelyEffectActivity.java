@@ -2,6 +2,7 @@ package com.test.trejo.jesus.librariesflyers.LonelyEffect;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
@@ -16,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -127,7 +129,7 @@ public class LonelyEffectActivity extends AppCompatActivity implements OnMapRead
                     if (status != 0) {
                         panel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
                     }
-
+                    
                 } else {
 
                 //    if ((status != 1) || ( !panel.getPanelState().name().equalsIgnoreCase("HIDDEN")) )
@@ -204,6 +206,15 @@ public class LonelyEffectActivity extends AppCompatActivity implements OnMapRead
     }
 
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+        }    }
 
 }
 

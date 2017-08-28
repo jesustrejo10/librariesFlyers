@@ -9,5 +9,6 @@
     <color name="flyers_primary">#2b6ec1</color>
     <color name="white">#ffffff</color>
     <color name="transparent">#00ffffff</color>
+    <color name="light_blue">#66afe9</color>
 
 </resources>
