@@ -13,19 +13,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom"
-        sothree:umanoPanelHeight="25dp"
+        sothree:umanoPanelHeight="5dp"
         sothree:umanoShadowHeight="0dp"
         sothree:umanoOverlay="true"
         android:background="@color/transparent"
         >
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="Main Content"
-            android:textSize="16sp"
-            android:background="@color/white"/>
+            android:orientation="vertical"
+            android:id="@+id/main_layout">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:minHeight="?attr/actionBarSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:titleTextColor="@color/white">
+
+            </android.support.v7.widget.Toolbar>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Main Content"
+                android:textSize="16sp"
+                android:background="@color/white"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

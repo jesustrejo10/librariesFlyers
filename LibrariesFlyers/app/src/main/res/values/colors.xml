@@ -10,5 +10,5 @@
     <color name="white">#ffffff</color>
     <color name="transparent">#00ffffff</color>
     <color name="light_blue">#66afe9</color>
-
+    <color name="toolbar_color">#2b6ec1</color>
 </resources>
