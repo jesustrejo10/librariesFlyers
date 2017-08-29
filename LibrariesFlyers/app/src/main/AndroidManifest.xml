@@ -23,7 +23,7 @@
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".LonelyEffect.ToolbarEffectActivity">
-            
+
         </activity>
 
         <activity android:name=".LonelyEffect.LonelyEffectActivity"

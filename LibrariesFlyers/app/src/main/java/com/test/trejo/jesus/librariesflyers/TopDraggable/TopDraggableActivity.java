@@ -3,6 +3,8 @@ package com.test.trejo.jesus.librariesflyers.TopDraggable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,12 +13,20 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.RecyclerObject;
+import com.test.trejo.jesus.librariesflyers.LonelyEffect.VerticalLonelyAdapter;
 import com.test.trejo.jesus.librariesflyers.R;
+
+import java.util.ArrayList;
 
 public class TopDraggableActivity extends AppCompatActivity {
 
     SlidingUpPanelLayout mPanel;
     LinearLayout mMainLayout;
+    RecyclerView mRecyclerView;
+    ArrayList<RecyclerObject> mDataSet;
+    OuterFilterAdapter mAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +50,10 @@ public class TopDraggableActivity extends AppCompatActivity {
                 mPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
             }
         });
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        manageRecyclerView();
+
     }
 
     @Override
@@ -67,5 +81,25 @@ public class TopDraggableActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    private void manageRecyclerView(){
+
+        RecyclerObject test = new RecyclerObject();
+        mDataSet = new ArrayList<>();
+        mDataSet.add(test);
+        mDataSet.add(test);
+        mDataSet.add(test);
+        mDataSet.add(test);
+        mDataSet.add(test);
+        mDataSet.add(test);
+        mDataSet.add(test);
+        mAdapter = new OuterFilterAdapter(mDataSet,getApplicationContext());
+
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+
+    }
+
 }
 
