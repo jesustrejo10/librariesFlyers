@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
 import com.test.trejo.jesus.librariesflyers.LonelyEffect.LonelyEffectActivity;
+
+import com.test.trejo.jesus.librariesflyers.LonelyEffect.ToolbarEffectActivity;
 import com.test.trejo.jesus.librariesflyers.MainViewActivity;
 import com.test.trejo.jesus.librariesflyers.R;
 import com.test.trejo.jesus.librariesflyers.TopDraggable.TopDraggableActivity;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button draggableButton;
     private Button lonelyButton;
+    private Button toolbarButton;
     private Button homeButton;
 
     @Override
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerViewPager mRecyclerView = (RecyclerViewPager) findViewById(R.id.list);
         // setLayoutManager like normal RecyclerView, you do not need to change any thing.
-        LinearLayoutManager layout = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        LinearLayoutManager layout = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(layout);
         mRecyclerView.setAdapter(mAdapter);
 
@@ -66,18 +69,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        homeButton = (Button) findViewById(R.id.button3);
-        homeButton.setOnClickListener(new View.OnClickListener() {
+        toolbarButton = (Button) findViewById(R.id.button3);
+        toolbarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), MainViewActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent(getBaseContext(), ToolbarEffectActivity.class);
+                homeButton = (Button) findViewById(R.id.button3);
+                homeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getBaseContext(), MainViewActivity.class);
+
+                        startActivity(intent);
+                    }
+                });
             }
         });
-
-
-
     }
-
 }
 
