@@ -20,51 +20,37 @@
 
 
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Sliding up"
-            android:id="@+id/button"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:background="#2196F3"
-            android:textColor="#FFFFFF"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_margin="25dp"
-            />
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Sliding up"
+        android:id="@+id/button"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="#2196F3"
+        android:textColor="#FFFFFF"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_margin="25dp"
+        />
 
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Lonely Effect"
-            android:id="@+id/button2"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:background="#2196F3"
-            android:textColor="#FFFFFF"
-            android:layout_margin="25dp"
-            style="@style/Widget.AppCompat.Button.Colored"
-            />
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Home"
-            android:id="@+id/button3"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:background="#2196F3"
-            android:textColor="#FFFFFF"
-            android:layout_margin="25dp"
-
-            style="@style/Widget.AppCompat.Button.Colored"
-            />
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Toolbar Effect"
+        android:text="Lonely Effect"
+        android:id="@+id/button2"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="#2196F3"
+        android:textColor="#FFFFFF"
+        android:layout_margin="25dp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Home"
         android:id="@+id/button3"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
@@ -72,6 +58,19 @@
         android:textColor="#FFFFFF"
         android:layout_margin="25dp"
 
+        style="@style/Widget.AppCompat.Button.Colored"
+        />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Toolbar Effect"
+        android:id="@+id/button4"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="#2196F3"
+        android:textColor="#FFFFFF"
+        android:layout_margin="25dp"
         style="@style/Widget.AppCompat.Button.Colored" />
 
 

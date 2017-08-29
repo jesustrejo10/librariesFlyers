@@ -43,19 +43,10 @@ public class MainActivity extends AppCompatActivity {
         mdataSet.add(test);
         mdataSet.add(test);
 
-        draggableButton = (Button) findViewById(R.id.button);
 
-        draggableButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), TopDraggableActivity.class);
-                startActivity(intent);
-            }
-        });
         mAdapter = new HorizontalAdapter(mdataSet);
 
         RecyclerViewPager mRecyclerView = (RecyclerViewPager) findViewById(R.id.list);
-        // setLayoutManager like normal RecyclerView, you do not need to change any thing.
         LinearLayoutManager layout = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(layout);
         mRecyclerView.setAdapter(mAdapter);
@@ -69,20 +60,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        toolbarButton = (Button) findViewById(R.id.button3);
+
+        homeButton = (Button) findViewById(R.id.button3);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), MainViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        toolbarButton = (Button) findViewById(R.id.button4);
         toolbarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getBaseContext(), ToolbarEffectActivity.class);
-                homeButton = (Button) findViewById(R.id.button3);
-                homeButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(getBaseContext(), MainViewActivity.class);
+                startActivity(intent);
+            }
+        });
 
-                        startActivity(intent);
-                    }
-                });
+        draggableButton = (Button) findViewById(R.id.button);
+        draggableButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), TopDraggableActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -15,16 +15,21 @@
         <activity android:name=".HorizontalRecycler.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".TopDraggable.TopDraggableActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".LonelyEffect.ToolbarEffectActivity"></activity>
+
+        <activity android:name=".LonelyEffect.ToolbarEffectActivity">
+            
+        </activity>
+
         <activity android:name=".LonelyEffect.LonelyEffectActivity"
             android:configChanges="orientation|keyboardHidden"
         />
+
         <activity android:name=".MainViewActivity"></activity>
 
         <meta-data
