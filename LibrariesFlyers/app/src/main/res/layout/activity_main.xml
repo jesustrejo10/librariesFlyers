@@ -48,5 +48,18 @@
             style="@style/Widget.AppCompat.Button.Colored"
             />
 
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Toolbar Effect"
+        android:id="@+id/button3"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="#2196F3"
+        android:textColor="#FFFFFF"
+        android:layout_margin="25dp"
+
+        style="@style/Widget.AppCompat.Button.Colored" />
+
 
 </LinearLayout>

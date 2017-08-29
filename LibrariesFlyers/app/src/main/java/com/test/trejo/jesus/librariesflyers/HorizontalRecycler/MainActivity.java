@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
 import com.test.trejo.jesus.librariesflyers.LonelyEffect.LonelyEffectActivity;
+import com.test.trejo.jesus.librariesflyers.LonelyEffect.ToolbarEffectActivity;
 import com.test.trejo.jesus.librariesflyers.R;
 import com.test.trejo.jesus.librariesflyers.TopDraggable.TopDraggableActivity;
 
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button draggableButton;
     private Button lonelyButton;
+    private Button toolbarButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getBaseContext(), LonelyEffectActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        toolbarButton = (Button) findViewById(R.id.button3);
+        toolbarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), ToolbarEffectActivity.class);
                 startActivity(intent);
             }
         });
