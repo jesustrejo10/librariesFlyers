@@ -90,9 +90,6 @@ public class TopDraggableActivity extends AppCompatActivity {
         mDataSet.add(test);
         mDataSet.add(test);
         mDataSet.add(test);
-        mDataSet.add(test);
-        mDataSet.add(test);
-        mDataSet.add(test);
         mAdapter = new OuterFilterAdapter(mDataSet,getApplicationContext());
 
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -100,6 +97,7 @@ public class TopDraggableActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
     }
-
+    
 }
+
 

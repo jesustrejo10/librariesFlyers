@@ -31,6 +31,7 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
     @Override
     public OuterFilterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
+
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.outer_filter_item, parent, false);
 
@@ -41,35 +42,26 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
         vh.getmRecyclerView().setLayoutManager(mLayoutManager);
         vh.mRecyclerView.setAdapter(mInnerFilterAdapter);
 
-        vh.getmFullLayout().setOnClickListener(new View.OnClickListener() {
+        return vh;
+    }
+
+    @Override
+    public void onBindViewHolder(final OuterFilterViewHolder holder, int position) {
+
+        holder.getmFullLayout().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //here i need to show and hide the sub list.
                 if (listStatus){
-                    vh.getmRecyclerView().setVisibility(View.GONE);
+                    holder.getmRecyclerView().setVisibility(View.GONE);
                     listStatus = false;
                 }
                 else{
-                    vh.getmRecyclerView().setVisibility(View.VISIBLE);
+                    holder.getmRecyclerView().setVisibility(View.VISIBLE);
                     listStatus = true;
                 }
             }
         });
-
-        return vh;
-    }
-
-
-    @Override
-    public void onBindViewHolder(OuterFilterViewHolder holder, int position) {
-
-        holder.getmTextView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("holamundo");
-            }
-        });
-
     }
 
 
@@ -77,5 +69,6 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
     public int getItemCount() {
         return mDataSet.size();
     }
+
 
 }

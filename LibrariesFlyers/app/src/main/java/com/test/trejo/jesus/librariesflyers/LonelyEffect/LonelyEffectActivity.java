@@ -184,7 +184,7 @@ public class LonelyEffectActivity extends AppCompatActivity implements OnMapRead
             }
         });
 
-
+/*
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -196,7 +196,8 @@ public class LonelyEffectActivity extends AppCompatActivity implements OnMapRead
             System.out.println("holamundo");
             return;
         }
-        googleMap.setMyLocationEnabled(true);
+  */
+        //googleMap.setMyLocationEnabled(true);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13));
 
         googleMap.addMarker(new MarkerOptions()
