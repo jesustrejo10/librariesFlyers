@@ -4,39 +4,36 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HorizontalRecycler.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".TopDraggable.TopDraggableActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".LonelyEffect.ToolbarEffectActivity">
-
-        </activity>
-
-        <activity android:name=".LonelyEffect.LonelyEffectActivity"
-            android:configChanges="orientation|keyboardHidden"
-        />
-
-        <activity android:name=".HorizontalRecycler.MainViewActivity"></activity>
+        <activity
+            android:name=".TopDraggable.TopDraggableActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".LonelyEffect.ToolbarEffectActivity" />
+        <activity
+            android:name=".LonelyEffect.LonelyEffectActivity"
+            android:configChanges="orientation|keyboardHidden" />
+        <activity android:name=".HorizontalRecycler.MainViewActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-
+        <activity
+            android:name=".TabDraggable.TabActivityActionBar"
+            android:label="@string/title_activity_tab_action_bar"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

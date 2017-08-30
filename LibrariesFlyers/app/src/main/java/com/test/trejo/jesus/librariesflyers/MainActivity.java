@@ -1,10 +1,8 @@
-package com.test.trejo.jesus.librariesflyers.HorizontalRecycler;
+package com.test.trejo.jesus.librariesflyers;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,14 +11,12 @@ import android.widget.TextView;
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarFinalValueListener;
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
-import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
+import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.MainViewActivity;
 import com.test.trejo.jesus.librariesflyers.LonelyEffect.LonelyEffectActivity;
 
 import com.test.trejo.jesus.librariesflyers.LonelyEffect.ToolbarEffectActivity;
-import com.test.trejo.jesus.librariesflyers.R;
+import com.test.trejo.jesus.librariesflyers.TabDraggable.TabActivityActionBar;
 import com.test.trejo.jesus.librariesflyers.TopDraggable.TopDraggableActivity;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private Button lonelyButton;
     private Button toolbarButton;
     private Button homeButton;
+    private Button tabButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +66,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getBaseContext(), TopDraggableActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        tabButton = (Button) findViewById(R.id.tab_activity);
+        tabButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getBaseContext(), TabActivityActionBar.class);
                 startActivity(intent);
             }
         });
