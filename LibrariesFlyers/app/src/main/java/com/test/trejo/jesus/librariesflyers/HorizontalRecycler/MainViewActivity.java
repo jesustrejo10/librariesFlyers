@@ -1,4 +1,4 @@
-package com.test.trejo.jesus.librariesflyers;
+package com.test.trejo.jesus.librariesflyers.HorizontalRecycler;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
 import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.HorizontalAdapter;
 import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.RecyclerObject;
+import com.test.trejo.jesus.librariesflyers.R;
 
 import java.util.ArrayList;
 

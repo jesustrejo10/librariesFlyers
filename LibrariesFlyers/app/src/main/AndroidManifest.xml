@@ -30,7 +30,7 @@
             android:configChanges="orientation|keyboardHidden"
         />
 
-        <activity android:name=".MainViewActivity"></activity>
+        <activity android:name=".HorizontalRecycler.MainViewActivity"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

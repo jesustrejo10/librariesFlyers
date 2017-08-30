@@ -4,7 +4,7 @@
     android:id="@+id/activity_main_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.test.trejo.jesus.librariesflyers.MainViewActivity">
+    tools:context="com.test.trejo.jesus.librariesflyers.HorizontalRecycler.MainViewActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

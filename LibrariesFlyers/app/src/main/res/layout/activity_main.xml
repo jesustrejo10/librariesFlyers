@@ -11,12 +11,75 @@
     android:paddingLeft="5dp"
     android:orientation="vertical">
 
-    <com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager
-        android:id="@+id/list"
+    <com.edmodo.rangebar.RangeBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+        android:id="@+id/rangeSeekbar3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingRight="25dp"
-        android:clipToPadding="false"/>
+        app:corner_radius="10"
+        app:min_value="50"
+        app:max_value="100"
+        app:gap="20"
+        app:bar_color="#8990C4"
+        app:bar_highlight_color="#2434AD"
+        app:left_thumb_color="#1A246D"
+        app:right_thumb_color="#1A246D"
+        app:left_thumb_color_pressed="#030B47"
+        app:right_thumb_color_pressed="#030B47"
+        app:data_type="_integer"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/gray_layout"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/minimo"
+                android:gravity="left"
+                android:layout_weight="0.5"
+                android:textColor="@color/black"
+                android:textSize="10sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/maximo"
+                android:gravity="right"
+                android:layout_weight="0.5"
+                android:textColor="@color/black"
+                android:textSize="10sp"/>
+
+        </LinearLayout>
+
+        <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+            android:id="@+id/rangeSeekbar1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bar_color="@color/gray_line"
+            app:bar_highlight_color="@color/light_blue"
+            app:left_thumb_color="@color/white"
+            app:right_thumb_color="@color/white"
+            app:left_thumb_color_pressed="@color/gray_background"
+            app:right_thumb_color_pressed="@color/gray_background"/>
+
+    </LinearLayout>
+
+
 
 
 
