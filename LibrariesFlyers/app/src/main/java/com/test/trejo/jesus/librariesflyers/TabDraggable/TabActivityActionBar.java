@@ -34,6 +34,8 @@ public class TabActivityActionBar extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Trackers");
+
         mSectionsPagerAdapter = new TabCoordinatorAdapter(getSupportFragmentManager());
 
         mViewPager = (ViewPager) findViewById(R.id.container);

@@ -17,6 +17,12 @@
 
     </style>
 
+    <style name="TabTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorAccent">@color/toolbar_color</item>
+
+    </style>
+
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <!-- This would set the toolbar's background color -->
         <item name="android:background">@color/colorPrimary</item>

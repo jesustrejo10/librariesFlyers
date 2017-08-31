@@ -15,16 +15,16 @@ import com.test.trejo.jesus.librariesflyers.R;
 public class LeftFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
-
+    private static String ARG_SECTION_TITTLE = "section_title";
 
     public LeftFragment() {
         // Required empty public constructor
     }
 
-    public static LeftFragment newInstance(int sectionNumber) {
+    public static LeftFragment newInstance(String sectionTittle) {
         LeftFragment fragment = new LeftFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+        args.putString(ARG_SECTION_TITTLE, sectionTittle);
         fragment.setArguments(args);
         return fragment;
     }

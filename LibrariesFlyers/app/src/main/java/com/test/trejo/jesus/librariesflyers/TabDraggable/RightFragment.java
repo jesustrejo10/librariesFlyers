@@ -19,6 +19,7 @@ public class RightFragment extends Fragment {
      * fragment.
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
+    private static String ARG_SECTION_TITTLE = "section_title";
 
     public RightFragment() {
     }
@@ -27,10 +28,10 @@ public class RightFragment extends Fragment {
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static RightFragment newInstance(int sectionNumber) {
+    public static RightFragment newInstance(String sectionTittle) {
         RightFragment fragment = new RightFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+        args.putString(ARG_SECTION_TITTLE, sectionTittle);
         fragment.setArguments(args);
         return fragment;
     }
@@ -39,8 +40,6 @@ public class RightFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_right, container, false);
-        TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-        textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
         return rootView;
     }
 }

@@ -16,21 +16,19 @@ public class TabCoordinatorAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
         switch (position){
 
             case 0:
-                return LeftFragment.newInstance(position + 1);
+                return LeftFragment.newInstance("Active");
 
             case 1:
-                return RightFragment.newInstance(position + 1);
+                return RightFragment.newInstance("Past");
 
             default:
-                return LeftFragment.newInstance(position + 1);
+                return LeftFragment.newInstance("Active");
         }
     }
-    
+
     @Override
     public int getCount() {
         // Show 3 total pages.
@@ -41,9 +39,9 @@ public class TabCoordinatorAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "SECTION 1";
+                return "Active";
             case 1:
-                return "SECTION 2";
+                return "Past";
         }
         return null;
     }
