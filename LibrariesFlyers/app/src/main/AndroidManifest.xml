@@ -20,7 +20,7 @@
         <activity
             android:name=".TopDraggable.TopDraggableActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LonelyEffect.ToolbarEffectActivity" />
+        <activity android:name=".ToolbarEffect.ToolbarEffectActivity" />
         <activity
             android:name=".LonelyEffect.LonelyEffectActivity"
             android:configChanges="orientation|keyboardHidden" />

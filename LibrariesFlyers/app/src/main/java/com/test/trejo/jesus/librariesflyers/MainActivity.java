@@ -14,7 +14,7 @@ import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.MainViewActivity;
 import com.test.trejo.jesus.librariesflyers.LonelyEffect.LonelyEffectActivity;
 
-import com.test.trejo.jesus.librariesflyers.LonelyEffect.ToolbarEffectActivity;
+import com.test.trejo.jesus.librariesflyers.ToolbarEffect.ToolbarEffectActivity;
 import com.test.trejo.jesus.librariesflyers.TabDraggable.TabActivityActionBar;
 import com.test.trejo.jesus.librariesflyers.TopDraggable.TopDraggableActivity;
 
@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         manageRangeBar();
+        Intent intent = new Intent(getBaseContext(), ToolbarEffectActivity.class);
+        startActivity(intent);
     }
 
     private void manageRangeBar() {
