@@ -163,8 +163,6 @@ public class LonelyEffectActivity extends AppCompatActivity implements OnMapRead
         LatLng sydney2 = new LatLng(-33.867, 150.206);
         map = googleMap;
 
-
-
         googleMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
             @Override
             public void onMapLoaded() {
