@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         manageRangeBar();
-        Intent intent = new Intent(getBaseContext(), ToolbarEffectActivity.class);
+        Intent intent = new Intent(getBaseContext(), MainViewActivity.class);
         startActivity(intent);
     }
 

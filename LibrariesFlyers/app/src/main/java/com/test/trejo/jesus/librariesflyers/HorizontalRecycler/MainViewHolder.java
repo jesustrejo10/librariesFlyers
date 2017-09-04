@@ -1,10 +1,12 @@
 package com.test.trejo.jesus.librariesflyers.HorizontalRecycler;
 
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
 import com.synnapps.carouselview.CarouselView;
 import com.test.trejo.jesus.librariesflyers.R;
 
@@ -13,21 +15,51 @@ import com.test.trejo.jesus.librariesflyers.R;
  */
 
 public class MainViewHolder extends RecyclerView.ViewHolder {
-    // each data item is just a string in this case
+
     private TextView mPrincipalTextView;
     private CarouselView carouselView;
     private ImageView activityImageView;
     private ImageView carsRentalImageView;
-    private ImageView TranlationImageView;
-    private RecyclerView offerRecyclerView;
+    private ImageView movingImageView;
+    private RecyclerViewPager offerRecyclerView;
 
     public MainViewHolder(View v) {
         super(v);
-
+        mPrincipalTextView = (TextView) v.findViewById(R.id.travel_tittle);
+        carouselView = (CarouselView) v.findViewById(R.id.carouselView);
+        activityImageView = (ImageView) v.findViewById(R.id.activities_iv);
+        carsRentalImageView = (ImageView) v.findViewById(R.id.carsrental_iv);
+        movingImageView = (ImageView) v.findViewById(R.id.move_iv);
+        offerRecyclerView = (RecyclerViewPager) v.findViewById(R.id.list);
 
     }
 
     public TextView getmTextView() {
         return mPrincipalTextView;
     }
+
+    public TextView getmPrincipalTextView() {
+        return mPrincipalTextView;
+    }
+
+    public CarouselView getCarouselView() {
+        return carouselView;
+    }
+
+    public ImageView getActivityImageView() {
+        return activityImageView;
+    }
+
+    public ImageView getCarsRentalImageView() {
+        return carsRentalImageView;
+    }
+
+    public ImageView getMovingImageView() {
+        return movingImageView;
+    }
+
+    public RecyclerViewPager getOfferRecyclerView() {
+        return offerRecyclerView;
+    }
 }
+

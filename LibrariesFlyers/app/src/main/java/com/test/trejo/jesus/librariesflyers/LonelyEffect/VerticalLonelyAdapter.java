@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.HorizontalViewHolder;
-import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.RecyclerObject;
+import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.Models.RecyclerObject;
 import com.test.trejo.jesus.librariesflyers.R;
 
 import java.util.ArrayList;
