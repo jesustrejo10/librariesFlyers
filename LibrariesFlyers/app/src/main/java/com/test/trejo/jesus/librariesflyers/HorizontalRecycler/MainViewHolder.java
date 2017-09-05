@@ -22,6 +22,10 @@ public class MainViewHolder extends RecyclerView.ViewHolder {
     private ImageView carsRentalImageView;
     private ImageView movingImageView;
     private RecyclerViewPager offerRecyclerView;
+    private TextView mHotelName;
+    private TextView mHotelPrice;
+    private ImageView mHotelRating;
+    private TextView extraData;
 
     public MainViewHolder(View v) {
         super(v);
