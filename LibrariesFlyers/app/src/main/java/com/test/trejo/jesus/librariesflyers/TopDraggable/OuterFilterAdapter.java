@@ -23,6 +23,7 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
     private Context mContext;
 
     private boolean listStatus = false;
+
     public OuterFilterAdapter(ArrayList<RecyclerObject> mDataset, Context context) {
         this.mDataSet = mDataset;
         this.mContext = context;
@@ -32,8 +33,7 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
     public OuterFilterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
 
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.outer_filter_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.outer_filter_item, parent, false);
 
         final OuterFilterViewHolder vh = new OuterFilterViewHolder(v);
 
@@ -52,11 +52,10 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
             @Override
             public void onClick(View view) {
                 //here i need to show and hide the sub list.
-                if (listStatus){
+                if (listStatus) {
                     holder.getmRecyclerView().setVisibility(View.GONE);
                     listStatus = false;
-                }
-                else{
+                } else {
                     holder.getmRecyclerView().setVisibility(View.VISIBLE);
                     listStatus = true;
                 }

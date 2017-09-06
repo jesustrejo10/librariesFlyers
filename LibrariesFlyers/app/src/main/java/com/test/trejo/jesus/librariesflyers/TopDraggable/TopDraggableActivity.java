@@ -1,9 +1,8 @@
 package com.test.trejo.jesus.librariesflyers.TopDraggable;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -18,88 +17,76 @@ import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarFinalValueListener;
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
+import com.test.trejo.jesus.librariesflyers.BaseActivity;
 import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.Models.RecyclerObject;
 import com.test.trejo.jesus.librariesflyers.R;
+import com.test.trejo.jesus.librariesflyers.TopDraggable.presenter.TopDraggablePresenter;
 
 import java.util.ArrayList;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
-public class TopDraggableActivity extends AppCompatActivity {
+public class TopDraggableActivity extends BaseActivity implements TopDraggableContract.View {
 
+    public final static int TIME_PANEL = 100;
+
+    @Bind(R.id.toolbar)
+    Toolbar mToolbar;
+
+    @Bind(R.id.sliding_layout)
     SlidingUpPanelLayout mPanel;
+
+    @Bind(R.id.main_layout)
     LinearLayout mMainLayout;
+
+    @Bind(R.id.recycler_view)
     RecyclerView mRecyclerView;
-    ArrayList<RecyclerObject> mDataSet;
-    OuterFilterAdapter mAdapter;
+
+    @Bind(R.id.general_layout)
     LinearLayout mBarLayout;
-    LinearLayout mPricesLayout;
-    LinearLayout mCategoryLayout;
-    boolean statusPrices = false;
-    boolean statusCategory = false;
+
+    @Bind(R.id.rangeSeekbar1)
+    CrystalRangeSeekbar rangeSeekbar;
+
+    @Bind(R.id.minimo)
+    TextView tvMin;
+
+    @Bind(R.id.maximo)
+    TextView tvMax;
+
+    private OuterFilterAdapter mAdapter;
+
+    private TopDraggableContract.Presenter mPresenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_top_draggable);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Hoteles Disponibles");
-
-        mPanel = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
-        mMainLayout = (LinearLayout) findViewById(R.id.main_layout);
-        mMainLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-            }
-        });
-        mPanel.setFadeOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-            }
-        });
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        manageRecyclerView();
-        manageRangeBar();
-        manageLayouts();
+    public int getLayout() {
+        return R.layout.activity_top_draggable;
     }
 
-    private void manageLayouts() {
-        mCategoryLayout = (LinearLayout) findViewById(R.id.layout_categoria);
-        mPricesLayout = (LinearLayout) findViewById(R.id.precios_layout);
+    @Override
+    public void onCreateView(Bundle savedInstanceState) {
+        setToolbar(mToolbar);
+        setTitle(R.string.hotels_available);
 
-        mCategoryLayout.setOnLongClickListener(new View.OnLongClickListener() {
+        mPanel.setFadeOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View view) {
-                if (!statusCategory) {
-                    mCategoryLayout.setBackgroundColor(Color.parseColor("#d8d8d8"));
-                    statusCategory = true;
-                } else {
-                    mCategoryLayout.setBackgroundColor(Color.parseColor("#ffffff"));
-                    statusCategory = false;
-                }
-                return false;
+            public void onClick(View v) {
+                setPanelState();
             }
         });
 
-        mPricesLayout.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                if (!statusPrices) {
-                    mPricesLayout.setBackgroundColor(Color.parseColor("#66afe9"));
-                    statusPrices = true;
-                } else {
-                    mPricesLayout.setBackgroundColor(Color.parseColor("#ffffff"));
-                    statusPrices = false;
-                }
-                return false;
-            }
-        });
+        mPresenter = new TopDraggablePresenter(this);
 
+//        this.manageRecyclerView();
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.loadRecycler();
     }
 
     @Override
@@ -120,41 +107,46 @@ public class TopDraggableActivity extends AppCompatActivity {
                         //Do something after 1000ms
                         mPanel.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
                     }
-                }, 100);
+                }, TIME_PANEL);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private void manageRecyclerView() {
 
-        RecyclerObject test = new RecyclerObject();
-        mDataSet = new ArrayList<>();
-        mDataSet.add(test);
-        mDataSet.add(test);
-        mDataSet.add(test);
-        mDataSet.add(test);
-        mAdapter = new OuterFilterAdapter(mDataSet, getApplicationContext());
+    @OnClick(R.id.main_layout)
+    public void onClickLayoutMain() {
+        setPanelState();
+    }
 
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+    @OnClick(R.id.general_layout)
+    public void onClickGeneralLayout() {
 
     }
 
-    private void manageRangeBar() {
-        mBarLayout = (LinearLayout) findViewById(R.id.general_layout);
-        mBarLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    private void setPanelState() {
+        if (mPanel != null) {
+            mPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+        }
+        throw new NullPointerException("SlidingUpPanelLayout tiene que se diferente de nulo");
+    }
 
-            }
-        });
-        final CrystalRangeSeekbar rangeSeekbar = (CrystalRangeSeekbar) findViewById(R.id.rangeSeekbar1);
+    @Override
+    public void setPresenter(@NonNull TopDraggableContract.Presenter presenter) {
+        mPresenter = presenter;
+    }
 
-        final TextView tvMin = (TextView) findViewById(R.id.minimo);
-        final TextView tvMax = (TextView) findViewById(R.id.maximo);
+    @Override
+    public void setLoadRecycler(@NonNull ArrayList<RecyclerObject> mDataSet) {
+        mAdapter = new OuterFilterAdapter(mDataSet, getApplicationContext());
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+
+    public void manageRangeBar() {
 
         rangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
             @Override
@@ -170,6 +162,10 @@ public class TopDraggableActivity extends AppCompatActivity {
                 Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
             }
         });
+    }
+
+    public void manageLayouts() {
+
     }
 
 }

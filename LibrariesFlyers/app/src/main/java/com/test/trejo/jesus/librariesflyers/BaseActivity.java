@@ -1,9 +1,9 @@
 package com.test.trejo.jesus.librariesflyers;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import butterknife.ButterKnife;
 
@@ -24,6 +24,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         onCreateView(savedInstanceState);
     }
 
+    public void setToolbar(@NonNull Toolbar toolBar) {
+        setSupportActionBar(toolBar);
+        mToolbar = toolBar;
+        haveToolbar = true;
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -32,14 +38,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
-    }
-
-    public void setToolbar(Toolbar toolBar) {
-        if (toolBar != null) {
-            setSupportActionBar(toolBar);
-            mToolbar = toolBar;
-            haveToolbar = true;
-        }
     }
 
     @Override
@@ -56,21 +54,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public void showToolbar() {
-        if ((getSupportActionBar() != null) && haveToolbar) {
-            setToolbar(mToolbar);
-            mToolbar.setVisibility(View.VISIBLE);
-        }
-    }
-
-    public void hideToolbar() {
-        if ((getSupportActionBar() != null) && haveToolbar) {
-            mToolbar.setVisibility(View.GONE);
-        }
-    }
-
+    /**
+     * @return Vista que retorna desde una vista hija
+     */
     abstract public int getLayout();
 
+    /**
+     * @param savedInstanceState @{@link Bundle} de una actividad
+     */
     abstract public void onCreateView(Bundle savedInstanceState);
 
 }

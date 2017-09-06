@@ -18,5 +18,6 @@
     <string name="price">- Price</string>
     <string name="category">- Category</string>
     <string name="distance">- Distance</string>
+    <string name="hotels_available">Hotels Available</string>
 
 </resources>
