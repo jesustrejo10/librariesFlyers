@@ -1,37 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_top_draggable"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.test.trejo.jesus.librariesflyers.TopDraggable.TopDraggableActivity">
 
 
-    <com.sothree.slidinguppanel.SlidingUpPanelLayout
-        xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:sothree="http://schemas.android.com/apk/res-auto"
         android:id="@+id/sliding_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom"
-        sothree:umanoPanelHeight="5dp"
-        sothree:umanoShadowHeight="0dp"
-        sothree:umanoOverlay="true"
         android:background="@color/transparent"
-        >
+        android:gravity="bottom"
+        android:visibility="visible"
+        sothree:umanoOverlay="true"
+        sothree:umanoPanelHeight="0dp"
+        sothree:umanoShadowHeight="0dp">
 
         <LinearLayout
+            android:id="@+id/main_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:id="@+id/main_layout">
+            android:orientation="vertical">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:minHeight="?attr/actionBarSize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
                 android:titleTextColor="@color/white">
 
             </android.support.v7.widget.Toolbar>
@@ -39,113 +38,113 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/white"
                 android:gravity="center"
                 android:text="Main Content"
-                android:textSize="16sp"
-                android:background="@color/white"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_gravity="center_horizontal"
             android:background="#00ffffff"
+            android:orientation="vertical"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            >
+            android:paddingRight="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:background="@drawable/shape_round_top_corners"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CANCELAR"
-                    android:paddingLeft="15dp"
+                    android:layout_weight="0.7"
                     android:gravity="left"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
+                    android:paddingLeft="15dp"
+                    android:text="CANCELAR"
                     android:textColor="@color/white"
-                    android:layout_weight="0.7"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="APLICAR"
+                    android:layout_weight="0.3"
                     android:gravity="end"
-                    android:textStyle="bold"
                     android:paddingRight="15dp"
-                    android:textSize="16sp"
+                    android:text="APLICAR"
                     android:textColor="@color/white"
-                    android:layout_weight="0.3"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="FILTRAR"
+                android:background="@color/gray_background"
                 android:gravity="start"
+                android:paddingBottom="5dp"
                 android:paddingLeft="20dp"
                 android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:textSize="16sp"
-                android:background="@color/gray_background"
-                android:textColor="@color/black"/>
+                android:text="FILTRAR"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/recycler_view">
+                android:layout_height="wrap_content">
 
             </android.support.v7.widget.RecyclerView>
 
             <LinearLayout
+                android:id="@+id/general_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/general_layout">
+                android:orientation="vertical">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/detail_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="- Precio"
+                        android:layout_gravity="center_vertical"
                         android:layout_weight="0.9"
-                        android:paddingStart="20dp"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="5dp"
                         android:paddingBottom="5dp"
-                        android:textColor="@color/black"
-                        android:id="@+id/detail_name"
-                        android:layout_gravity="center_vertical"/>
+                        android:paddingLeft="20dp"
+                        android:paddingStart="20dp"
+                        android:paddingTop="5dp"
+                        android:text="- Precio"
+                        android:textColor="@color/black" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
                         android:layout_weight="0.1"
-                        android:paddingTop="5dp"
                         android:paddingBottom="5dp"
-                        android:layout_gravity="center_horizontal|center_vertical">
+                        android:paddingTop="5dp">
 
                         <ImageView
-                            android:layout_marginLeft="15dp"
+                            android:id="@+id/colapse_icon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/contract_list"
-                            android:id="@+id/colapse_icon"/>
+                            android:layout_marginLeft="15dp"
+                            android:src="@drawable/contract_list" />
 
                     </LinearLayout>
 
@@ -154,17 +153,16 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"/>
+                    android:background="@android:color/darker_gray" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:background="@color/gray_layout"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
+                    android:orientation="vertical"
                     android:paddingBottom="15dp"
-                    >
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -172,22 +170,22 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/minimo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/minimo"
-                            android:gravity="left"
                             android:layout_weight="0.5"
+                            android:gravity="left"
                             android:textColor="@color/black"
-                            android:textSize="10sp"/>
+                            android:textSize="10sp" />
 
                         <TextView
+                            android:id="@+id/maximo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/maximo"
-                            android:gravity="right"
                             android:layout_weight="0.5"
+                            android:gravity="right"
                             android:textColor="@color/black"
-                            android:textSize="10sp"/>
+                            android:textSize="10sp" />
 
                     </LinearLayout>
 
@@ -198,49 +196,49 @@
                         app:bar_color="@android:color/darker_gray"
                         app:bar_highlight_color="@color/light_blue"
                         app:left_thumb_color="@color/white"
-                        app:right_thumb_color="@color/white"
                         app:left_thumb_color_pressed="@color/gray_background"
-                        app:right_thumb_color_pressed="@color/gray_background"/>
+                        app:right_thumb_color="@color/white"
+                        app:right_thumb_color_pressed="@color/gray_background" />
 
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"/>
+                    android:background="@android:color/darker_gray" />
 
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ORDENAR POR"
+                android:background="@color/gray_background"
                 android:gravity="start"
+                android:paddingBottom="5dp"
                 android:paddingLeft="20dp"
                 android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:textSize="16sp"
-                android:background="@color/gray_background"
-                android:textColor="@color/black"/>
+                android:text="ORDENAR POR"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
             <LinearLayout
+                android:id="@+id/precios_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:background="@color/white"
-                android:id="@+id/precios_layout">
+                android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/precios"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="- Precios"
-                    android:paddingStart="20dp"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="5dp"
+                    android:layout_gravity="center_vertical"
                     android:paddingBottom="5dp"
-                    android:textColor="@color/black"
-                    android:id="@+id/precios"
-                    android:layout_gravity="center_vertical"/>
+                    android:paddingLeft="20dp"
+                    android:paddingStart="20dp"
+                    android:paddingTop="5dp"
+                    android:text="- Precios"
+                    android:textColor="@color/black" />
 
 
             </LinearLayout>
@@ -248,26 +246,26 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/darker_gray"/>
+                android:background="@android:color/darker_gray" />
 
             <LinearLayout
+                android:id="@+id/layout_categoria"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:background="@color/white"
-                android:id="@+id/layout_categoria">
+                android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/categoria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="- Categoria"
-                    android:paddingStart="20dp"
-                    android:paddingLeft="20dp"
-                    android:paddingTop="5dp"
+                    android:layout_gravity="center_vertical"
                     android:paddingBottom="5dp"
-                    android:textColor="@color/black"
-                    android:id="@+id/categoria"
-                    android:layout_gravity="center_vertical"/>
+                    android:paddingLeft="20dp"
+                    android:paddingStart="20dp"
+                    android:paddingTop="5dp"
+                    android:text="- Categoria"
+                    android:textColor="@color/black" />
 
 
             </LinearLayout>
