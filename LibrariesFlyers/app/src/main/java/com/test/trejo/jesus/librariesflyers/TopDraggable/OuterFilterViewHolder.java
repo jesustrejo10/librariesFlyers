@@ -15,6 +15,7 @@ import com.test.trejo.jesus.librariesflyers.R;
  */
 
 public class OuterFilterViewHolder extends RecyclerView.ViewHolder {
+
     // each data item is just a string in this case
     public TextView mTextView;
     public ImageView mImageView;

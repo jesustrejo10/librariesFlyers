@@ -1,5 +1,6 @@
 package com.test.trejo.jesus.librariesflyers.TopDraggable;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 
 public class TopDraggableActivity extends BaseActivity implements TopDraggableContract.View {
 
@@ -55,9 +57,18 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
     @Bind(R.id.maximo)
     TextView tvMax;
 
+    @Bind(R.id.layout_categoria)
+    LinearLayout mCategoryLayout;
+
+    @Bind(R.id.precios_layout)
+    LinearLayout mPricesLayout;
+
     private OuterFilterAdapter mAdapter;
 
     private TopDraggableContract.Presenter mPresenter;
+
+    private boolean statusPrices = Boolean.FALSE;
+    private boolean statusCategory = Boolean.FALSE;
 
     @Override
     public int getLayout() {
@@ -69,6 +80,8 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         setToolbar(mToolbar);
         setTitle(getResources().getString(R.string.hotels_available));
 
+        mPresenter = new TopDraggablePresenter(this);//Instanciar e inyectar vista
+
         mPanel.setFadeOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,12 +89,7 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
             }
         });
 
-        mPresenter = new TopDraggablePresenter(this);
-
-//        this.manageRecyclerView();
-
     }
-
 
     @Override
     protected void onResume() {
@@ -145,13 +153,31 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         });
     }
 
-    @Override
-    public void setLayouts() {
-
+    @OnLongClick(R.id.layout_categoria) // Para evitar el setOnLongClickListener
+    public boolean clickLayoutCategory() {
+        if (!statusCategory) {
+            mCategoryLayout.setBackgroundColor(Color.parseColor("#d8d8d8"));
+            statusCategory = true;
+        } else {
+            mCategoryLayout.setBackgroundColor(Color.parseColor("#ffffff"));
+            statusCategory = false;
+        }
+        return false;
     }
 
+    @OnLongClick(R.id.precios_layout)
+    public boolean clickLayoutPrice() {
+        if (!statusPrices) {
+            mPricesLayout.setBackgroundColor(Color.parseColor("#66afe9"));
+            statusPrices = true;
+        } else {
+            mPricesLayout.setBackgroundColor(Color.parseColor("#ffffff"));
+            statusPrices = false;
+        }
+        return false;
+    }
 
-    @OnClick(R.id.main_layout)
+    @OnClick(R.id.main_layout) // Para evitar el setOnClickListener
     public void onClickLayoutMain() {
         setPanelState();
     }

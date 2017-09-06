@@ -32,7 +32,6 @@ public class TopDraggablePresenter implements TopDraggableContract.Presenter {
     public void start() {
         mView.setLoadRecycler(this.loadRecycler());
         mView.setRangeBar();
-        mView.setLayouts();
     }
 
     /**

@@ -19,8 +19,6 @@ public interface TopDraggableContract {
         void setLoadRecycler(@NonNull ArrayList<RecyclerObject> mDataSet);
 
         void setRangeBar();
-
-        void setLayouts();
     }
 
     interface Presenter extends BasePresenter {
