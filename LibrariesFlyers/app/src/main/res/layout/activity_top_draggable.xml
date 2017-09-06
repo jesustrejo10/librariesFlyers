@@ -16,37 +16,10 @@
         sothree:umanoPanelHeight="0dp"
         sothree:umanoShadowHeight="0dp">
 
-        <LinearLayout
-            android:id="@+id/main_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
-                android:minHeight="?attr/actionBarSize"
-                android:titleTextColor="@color/white">
-
-            </android.support.v7.widget.Toolbar>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:gravity="center"
-                android:text="Main Content"
-                android:textSize="16sp" />
-
-        </LinearLayout>
+        <include layout="@layout/content_top_draggable" />
 
         <include layout="@layout/scrollable_filter_list" />
 
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
 </RelativeLayout>
-
-
-

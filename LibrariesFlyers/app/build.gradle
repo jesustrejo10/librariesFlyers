@@ -41,4 +41,8 @@ dependencies {
     compile 'com.synnapps:carouselview:0.1.4'
 
     testCompile 'junit:junit:4.12'
+
+
+    compile 'com.jakewharton:butterknife:7.0.1'
+
 }

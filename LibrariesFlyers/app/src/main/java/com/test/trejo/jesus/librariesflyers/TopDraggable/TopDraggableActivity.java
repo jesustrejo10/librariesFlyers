@@ -23,6 +23,8 @@ import com.test.trejo.jesus.librariesflyers.R;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
+
 public class TopDraggableActivity extends AppCompatActivity {
 
     SlidingUpPanelLayout mPanel;
