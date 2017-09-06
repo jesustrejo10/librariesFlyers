@@ -53,7 +53,8 @@
         android:paddingBottom="5dp"
         android:paddingLeft="20dp"
         android:paddingTop="5dp"
-        android:text="FILTRAR"
+        android:text="@string/filter"
+        android:textAllCaps="true"
         android:textColor="@color/black"
         android:textSize="16sp" />
 
@@ -69,7 +70,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -87,7 +87,7 @@
                 android:paddingLeft="20dp"
                 android:paddingStart="20dp"
                 android:paddingTop="5dp"
-                android:text="- Precio"
+                android:text="@string/price"
                 android:textColor="@color/black" />
 
             <LinearLayout
@@ -176,7 +176,8 @@
         android:paddingBottom="5dp"
         android:paddingLeft="20dp"
         android:paddingTop="5dp"
-        android:text="ORDENAR POR"
+        android:text="@string/sort_by"
+        android:textAllCaps="true"
         android:textColor="@color/black"
         android:textSize="16sp" />
 
@@ -196,7 +197,7 @@
             android:paddingLeft="20dp"
             android:paddingStart="20dp"
             android:paddingTop="5dp"
-            android:text="- Precios"
+            android:text="@string/price"
             android:textColor="@color/black" />
 
 
@@ -223,7 +224,7 @@
             android:paddingLeft="20dp"
             android:paddingStart="20dp"
             android:paddingTop="5dp"
-            android:text="- Categoria"
+            android:text="@string/category"
             android:textColor="@color/black" />
 
 
@@ -250,9 +251,8 @@
             android:paddingLeft="20dp"
             android:paddingStart="20dp"
             android:paddingTop="5dp"
-            android:text="- Categoria"
+            android:text="@string/distance"
             android:textColor="@color/black" />
-
 
     </LinearLayout>
 </LinearLayout>

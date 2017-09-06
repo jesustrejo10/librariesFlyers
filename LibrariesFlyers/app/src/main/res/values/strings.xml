@@ -12,6 +12,11 @@
 
     <!-- Top Draggable-->
     <string name="cancel">Cancel</string>
-    <string name="apply">Aplicar</string>
+    <string name="apply">Apply</string>
+    <string name="filter">Filter</string>
+    <string name="sort_by">Sort By</string>
+    <string name="price">- Price</string>
+    <string name="category">- Category</string>
+    <string name="distance">- Distance</string>
 
 </resources>
