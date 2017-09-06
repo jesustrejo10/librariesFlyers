@@ -1,9 +1,9 @@
 package com.test.trejo.jesus.librariesflyers.TopDraggable;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -45,7 +45,7 @@ public class TopDraggableActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Hoteles Disponibles");
 
-        mPanel= (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
+        mPanel = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
         mMainLayout = (LinearLayout) findViewById(R.id.main_layout);
         mMainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,11 +73,10 @@ public class TopDraggableActivity extends AppCompatActivity {
         mCategoryLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                if ( !statusCategory){
+                if (!statusCategory) {
                     mCategoryLayout.setBackgroundColor(Color.parseColor("#d8d8d8"));
                     statusCategory = true;
-                }
-                else {
+                } else {
                     mCategoryLayout.setBackgroundColor(Color.parseColor("#ffffff"));
                     statusCategory = false;
                 }
@@ -88,11 +87,10 @@ public class TopDraggableActivity extends AppCompatActivity {
         mPricesLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                if ( !statusPrices){
+                if (!statusPrices) {
                     mPricesLayout.setBackgroundColor(Color.parseColor("#66afe9"));
                     statusPrices = true;
-                }
-                else {
+                } else {
                     mPricesLayout.setBackgroundColor(Color.parseColor("#ffffff"));
                     statusPrices = false;
                 }
@@ -127,7 +125,7 @@ public class TopDraggableActivity extends AppCompatActivity {
         }
     }
 
-    private void manageRecyclerView(){
+    private void manageRecyclerView() {
 
         RecyclerObject test = new RecyclerObject();
         mDataSet = new ArrayList<>();
@@ -135,7 +133,7 @@ public class TopDraggableActivity extends AppCompatActivity {
         mDataSet.add(test);
         mDataSet.add(test);
         mDataSet.add(test);
-        mAdapter = new OuterFilterAdapter(mDataSet,getApplicationContext());
+        mAdapter = new OuterFilterAdapter(mDataSet, getApplicationContext());
 
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -144,7 +142,7 @@ public class TopDraggableActivity extends AppCompatActivity {
     }
 
     private void manageRangeBar() {
-        mBarLayout = ( LinearLayout) findViewById(R.id.general_layout);
+        mBarLayout = (LinearLayout) findViewById(R.id.general_layout);
         mBarLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,8 +157,8 @@ public class TopDraggableActivity extends AppCompatActivity {
         rangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
             @Override
             public void valueChanged(Number minValue, Number maxValue) {
-                tvMin.setText("Desde $"+String.valueOf(minValue));
-                tvMax.setText("Hasta $"+String.valueOf(maxValue));
+                tvMin.setText("Desde $" + String.valueOf(minValue));
+                tvMax.setText("Hasta $" + String.valueOf(maxValue));
             }
         });
 
