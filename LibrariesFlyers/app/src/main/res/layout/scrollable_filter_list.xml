@@ -9,7 +9,9 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp">
 
+    <!-- Cabecera de botones cancelar o aplicar -->
     <LinearLayout
+        android:id="@+id/layout_btn_cancel_apply"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_round_top_corners"
@@ -23,7 +25,8 @@
             android:layout_weight="0.7"
             android:gravity="left"
             android:paddingLeft="15dp"
-            android:text="CANCELAR"
+            android:text="@string/cancel"
+            android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -34,7 +37,8 @@
             android:layout_weight="0.3"
             android:gravity="end"
             android:paddingRight="15dp"
-            android:text="APLICAR"
+            android:text="@string/apply"
+            android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
