@@ -5,11 +5,20 @@ package com.test.trejo.jesus.librariesflyers.HorizontalRecycler.Models;
  */
 
 public class RecyclerObject {
+
     private String urlImage;
     private String description;
     private String detailMessage;
     private int id;
     private int order;
+
+    public RecyclerObject() {
+    }
+
+    public RecyclerObject(String description, int id) {
+        this.description = description;
+        this.id = id;
+    }
 
     public RecyclerObject(String urlImage, String description, String detailMessage, int id, int order) {
         this.urlImage = urlImage;
@@ -19,6 +28,11 @@ public class RecyclerObject {
         this.order = order;
     }
 
-    public RecyclerObject(){}
+    public String getDescription() {
+        return description;
+    }
 
+    public int getId() {
+        return id;
+    }
 }

@@ -16,11 +16,11 @@ import butterknife.ButterKnife;
  */
 
 public class InnerFilterViewHolder extends RecyclerView.ViewHolder {
-    // each data item is just a string in this case
 
-    LinearLayout mContainerCheck;
+    @Bind(R.id.filter_checkBox)
+    LinearLayout mContainerChecBox;
 
-
+    @Bind(R.id.filter_seekbar)
     LinearLayout mContainerSeekbar;
 
     @Bind(R.id.detail_name)

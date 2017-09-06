@@ -39,11 +39,11 @@ public class TopDraggablePresenter implements TopDraggableContract.Presenter {
      */
     private ArrayList<RecyclerObject> loadRecycler() {
         ArrayList<RecyclerObject> mDataSet = new ArrayList<>();
-        RecyclerObject test = new RecyclerObject();
-        mDataSet.add(test);
-        mDataSet.add(test);
-        mDataSet.add(test);
-        mDataSet.add(test);
+        mDataSet.add(new RecyclerObject("- Estrellas", 1));
+        mDataSet.add(new RecyclerObject("- Precio", 2));
+        mDataSet.add(new RecyclerObject("- Servicios", 3));
+        mDataSet.add(new RecyclerObject("- Regimen", 4));
+        mDataSet.add(new RecyclerObject("- Cadena hotelera", 5));
         return mDataSet;
     }
 }

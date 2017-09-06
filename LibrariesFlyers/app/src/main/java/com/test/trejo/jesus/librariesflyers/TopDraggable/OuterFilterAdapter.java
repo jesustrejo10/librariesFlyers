@@ -1,11 +1,11 @@
 package com.test.trejo.jesus.librariesflyers.TopDraggable;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.Models.RecyclerObject;
 import com.test.trejo.jesus.librariesflyers.R;
@@ -31,42 +31,45 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
 
     @Override
     public OuterFilterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // create a new view
-
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.outer_filter_item, parent, false);
-
-        final OuterFilterViewHolder vh = new OuterFilterViewHolder(v);
-
-        mInnerFilterAdapter = new InnerFilterAdapter(mDataSet);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(mContext);
-        vh.getmRecyclerView().setLayoutManager(mLayoutManager);
-        vh.mRecyclerView.setAdapter(mInnerFilterAdapter);
-
-        return vh;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.outer_filter_item, parent, false);
+        return new OuterFilterViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final OuterFilterViewHolder holder, int position) {
-
+    public void onBindViewHolder(final OuterFilterViewHolder holder, final int position) {
+        holder.getmTextView().setText(mDataSet.get(position).getDescription());
         holder.getmFullLayout().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //here i need to show and hide the sub list.
+
+                if (mDataSet.get(position).getId() == 1) {
+                    showStatusVisivility(holder.mContainerChecBox, View.VISIBLE);
+                    showStatusVisivility(holder.mContainerSeekbar, View.GONE);
+                } else {
+                    showStatusVisivility(holder.mContainerChecBox, View.GONE);
+                    showStatusVisivility(holder.mContainerSeekbar, View.VISIBLE);
+                }
+
                 if (listStatus) {
-                    holder.getmRecyclerView().setVisibility(View.GONE);
+                    holder.click.setVisibility(View.GONE);
                     listStatus = false;
                 } else {
-                    holder.getmRecyclerView().setVisibility(View.VISIBLE);
+                    holder.click.setVisibility(View.VISIBLE);
                     listStatus = true;
                 }
             }
         });
-    }
 
+    }
 
     @Override
     public int getItemCount() {
         return mDataSet.size();
+    }
+
+    private void showStatusVisivility(LinearLayout linearLayoutm, int status) {
+        linearLayoutm.setVisibility(status);
     }
 
 
