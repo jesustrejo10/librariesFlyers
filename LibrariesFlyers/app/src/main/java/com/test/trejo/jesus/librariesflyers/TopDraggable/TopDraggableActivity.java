@@ -67,7 +67,7 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
     @Override
     public void onCreateView(Bundle savedInstanceState) {
         setToolbar(mToolbar);
-        setTitle(R.string.hotels_available);
+        setTitle(getResources().getString(R.string.hotels_available));
 
         mPanel.setFadeOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +86,7 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
     @Override
     protected void onResume() {
         super.onResume();
-        mPresenter.loadRecycler();
+        mPresenter.start();
     }
 
     @Override
@@ -114,6 +114,42 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         }
     }
 
+    @Override
+    public void setPresenter(@NonNull TopDraggableContract.Presenter presenter) {
+        mPresenter = presenter;
+    }
+
+    @Override
+    public void setLoadRecycler(@NonNull ArrayList<RecyclerObject> mDataSet) {
+        mAdapter = new OuterFilterAdapter(mDataSet, getApplicationContext());
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void setRangeBar() {
+        rangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
+            @Override
+            public void valueChanged(Number minValue, Number maxValue) {
+                tvMin.setText(String.format("%s%s", getResources().getString(R.string.from), String.valueOf(minValue)));
+                tvMax.setText(String.format("%s%s", getResources().getString(R.string.to), String.valueOf(maxValue)));
+            }
+        });
+
+        rangeSeekbar.setOnRangeSeekbarFinalValueListener(new OnRangeSeekbarFinalValueListener() {
+            @Override
+            public void finalValue(Number minValue, Number maxValue) {
+                Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
+            }
+        });
+    }
+
+    @Override
+    public void setLayouts() {
+
+    }
+
 
     @OnClick(R.id.main_layout)
     public void onClickLayoutMain() {
@@ -131,41 +167,4 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         }
         throw new NullPointerException("SlidingUpPanelLayout tiene que se diferente de nulo");
     }
-
-    @Override
-    public void setPresenter(@NonNull TopDraggableContract.Presenter presenter) {
-        mPresenter = presenter;
-    }
-
-    @Override
-    public void setLoadRecycler(@NonNull ArrayList<RecyclerObject> mDataSet) {
-        mAdapter = new OuterFilterAdapter(mDataSet, getApplicationContext());
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
-
-    public void manageRangeBar() {
-
-        rangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
-            @Override
-            public void valueChanged(Number minValue, Number maxValue) {
-                tvMin.setText("Desde $" + String.valueOf(minValue));
-                tvMax.setText("Hasta $" + String.valueOf(maxValue));
-            }
-        });
-
-        rangeSeekbar.setOnRangeSeekbarFinalValueListener(new OnRangeSeekbarFinalValueListener() {
-            @Override
-            public void finalValue(Number minValue, Number maxValue) {
-                Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
-            }
-        });
-    }
-
-    public void manageLayouts() {
-
-    }
-
 }

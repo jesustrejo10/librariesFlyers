@@ -30,16 +30,21 @@ public class TopDraggablePresenter implements TopDraggableContract.Presenter {
 
     @Override
     public void start() {
-
+        mView.setLoadRecycler(this.loadRecycler());
+        mView.setRangeBar();
+        mView.setLayouts();
     }
 
-    @Override
-    public void loadRecycler() {
+    /**
+     * @return Datos simulados
+     */
+    private ArrayList<RecyclerObject> loadRecycler() {
         ArrayList<RecyclerObject> mDataSet = new ArrayList<>();
         RecyclerObject test = new RecyclerObject();
         mDataSet.add(test);
         mDataSet.add(test);
         mDataSet.add(test);
         mDataSet.add(test);
+        return mDataSet;
     }
 }

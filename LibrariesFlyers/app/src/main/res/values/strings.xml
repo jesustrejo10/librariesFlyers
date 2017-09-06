@@ -20,4 +20,7 @@
     <string name="distance">- Distance</string>
     <string name="hotels_available">Hotels Available</string>
 
+    <string name="from">From $</string>
+    <string name="to">To $</string>
+
 </resources>

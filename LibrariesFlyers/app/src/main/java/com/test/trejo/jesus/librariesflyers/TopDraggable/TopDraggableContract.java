@@ -16,14 +16,14 @@ public interface TopDraggableContract {
 
     interface View extends BaseView<Presenter> {
 
-
         void setLoadRecycler(@NonNull ArrayList<RecyclerObject> mDataSet);
 
+        void setRangeBar();
+
+        void setLayouts();
     }
 
     interface Presenter extends BasePresenter {
-
-        void loadRecycler();
 
     }
 
