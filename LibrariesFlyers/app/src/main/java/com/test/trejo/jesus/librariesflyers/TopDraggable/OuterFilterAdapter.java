@@ -23,6 +23,7 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
     private Context mContext;
     private boolean listStatusStar = Boolean.FALSE;
     private boolean listStatusPrice = Boolean.FALSE;
+    private boolean listStatusService = Boolean.FALSE;
     private ArrayList<RecyclerObject> recyclerObjects;
 
     public OuterFilterAdapter(ArrayList<RecyclerObject> recyclerObjects, Context context) {
@@ -53,6 +54,11 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
                         statusMainContainerPrice(holder);
                         holder.getContainerFilterPrice().setVisibility(View.VISIBLE);
                         setRangePrice(holder);
+                        break;
+                    case 3:
+                        Log.d("CLICK", "3");
+                        statusMainContainerService(holder);
+                        holder.getContainerFilterServices().setVisibility(View.VISIBLE);
                         break;
 
                 }
@@ -85,6 +91,18 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
             holder.getExpandIcon().animate().rotation(360).start();
         } else {
             listStatusPrice = Boolean.TRUE;
+            holder.getContainerFilter().setVisibility(View.VISIBLE);
+            holder.getExpandIcon().animate().rotation(180).start();
+        }
+    }
+
+    private void statusMainContainerService(OuterFilterViewHolder holder) {
+        if (listStatusService) {
+            listStatusService = Boolean.FALSE;
+            holder.getContainerFilter().setVisibility(View.GONE);
+            holder.getExpandIcon().animate().rotation(360).start();
+        } else {
+            listStatusService = Boolean.TRUE;
             holder.getContainerFilter().setVisibility(View.VISIBLE);
             holder.getExpandIcon().animate().rotation(180).start();
         }

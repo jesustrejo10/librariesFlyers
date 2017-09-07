@@ -55,6 +55,8 @@
 
         <include layout="@layout/content_price_filter" />
 
+        <include layout="@layout/content_service_filter" />
+
     </LinearLayout>
 
     <View

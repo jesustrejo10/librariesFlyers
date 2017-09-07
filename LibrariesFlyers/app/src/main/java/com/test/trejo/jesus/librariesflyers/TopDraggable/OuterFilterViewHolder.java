@@ -50,6 +50,13 @@ public class OuterFilterViewHolder extends RecyclerView.ViewHolder {
     TextView PriceMax;
     //################################################
 
+    //################################################ Filtros de Servicios
+    @Bind(R.id.filter_service)
+    LinearLayout ContainerFilterServices;
+
+    //################################################
+
+
     public OuterFilterViewHolder(View view) {
         super(view);
         ButterKnife.bind(this, view);
@@ -89,5 +96,9 @@ public class OuterFilterViewHolder extends RecyclerView.ViewHolder {
 
     public TextView getPriceMax() {
         return PriceMax;
+    }
+
+    public LinearLayout getContainerFilterServices() {
+        return ContainerFilterServices;
     }
 }
