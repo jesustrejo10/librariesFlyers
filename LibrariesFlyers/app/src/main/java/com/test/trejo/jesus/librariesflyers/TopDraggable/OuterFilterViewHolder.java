@@ -56,6 +56,12 @@ public class OuterFilterViewHolder extends RecyclerView.ViewHolder {
 
     //################################################
 
+    //################################################ Filtros de Regime
+    @Bind(R.id.filter_regime)
+    LinearLayout ContainerFilterRegime;
+
+    //################################################
+
 
     public OuterFilterViewHolder(View view) {
         super(view);
@@ -100,5 +106,9 @@ public class OuterFilterViewHolder extends RecyclerView.ViewHolder {
 
     public LinearLayout getContainerFilterServices() {
         return ContainerFilterServices;
+    }
+
+    public LinearLayout getContainerFilterRegime() {
+        return ContainerFilterRegime;
     }
 }

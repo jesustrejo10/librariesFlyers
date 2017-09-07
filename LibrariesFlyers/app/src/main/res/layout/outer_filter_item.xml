@@ -57,6 +57,8 @@
 
         <include layout="@layout/content_service_filter" />
 
+        <include layout="@layout/content_regime_filter" />
+
     </LinearLayout>
 
     <View

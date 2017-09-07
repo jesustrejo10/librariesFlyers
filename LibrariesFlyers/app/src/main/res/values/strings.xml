@@ -38,4 +38,11 @@
     <string name="spa_fitness">SPA &amp; Fitness</string>
     <string name="wi_fi">WiFI</string>
 
+    <!-- Filter Regime-->
+    <string name="only_lodging">Only lodging</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="half_pension">Half pension</string>
+    <string name="full_board">Full board</string>
+    <string name="all_inclusive">All inclusive</string>
+
 </resources>

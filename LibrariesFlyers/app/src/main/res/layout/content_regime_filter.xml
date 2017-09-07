@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/filter_service"
+    android:id="@+id/filter_regime"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#EFEFEF"
     android:orientation="vertical"
     android:visibility="gone">
 
-    <!-- Service @string air_conditioning-->
+    <!-- Service @string only_lodging-->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -36,10 +36,9 @@
                 android:layout_weight="0.8">
 
                 <TextView
-                    android:id="@+id/detail_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/air_conditioning"
+                    android:text="@string/only_lodging"
                     android:textColor="#030303" />
 
             </LinearLayout>
@@ -53,7 +52,7 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
-                    android:id="@+id/checkbox_air_conditioning"
+                    android:id="@+id/checkbox_only_lodging"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/checkBoxStyle" />
@@ -70,7 +69,7 @@
 
     </LinearLayout><!-- Service @string air_conditioning-->
 
-    <!-- Service @string airport_shufle-->
+    <!-- Service @string breakfast-->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -99,10 +98,9 @@
                 android:layout_weight="0.8">
 
                 <TextView
-                    android:id="@+id/detail_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/airport_shufle"
+                    android:text="@string/breakfast"
                     android:textColor="#030303" />
 
             </LinearLayout>
@@ -116,7 +114,7 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
-                    android:id="@+id/checkbox_airport_shufle"
+                    android:id="@+id/checkbox_breakfast"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/checkBoxStyle" />
@@ -131,9 +129,9 @@
             android:background="#E1E1E1" />
 
 
-    </LinearLayout><!-- Service @string airport_shufle-->
+    </LinearLayout><!-- Service @string breakfast-->
 
-    <!-- Service @string indoor_pool-->
+    <!-- Service @string half_pension-->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -162,10 +160,9 @@
                 android:layout_weight="0.8">
 
                 <TextView
-                    android:id="@+id/detail_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/indoor_pool"
+                    android:text="@string/half_pension"
                     android:textColor="#030303" />
 
             </LinearLayout>
@@ -179,7 +176,7 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
-                    android:id="@+id/checkbox_indoor_pool"
+                    android:id="@+id/checkbox_half_pension"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/checkBoxStyle" />
@@ -194,9 +191,9 @@
             android:background="#E1E1E1" />
 
 
-    </LinearLayout><!-- Service @string indoor_pool-->
+    </LinearLayout><!-- Service @string half_pension-->
 
-    <!-- Service @string pets_welcome-->
+    <!-- Service @string full_board-->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -225,10 +222,9 @@
                 android:layout_weight="0.8">
 
                 <TextView
-                    android:id="@+id/detail_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pets_welcome"
+                    android:text="@string/full_board"
                     android:textColor="#030303" />
 
             </LinearLayout>
@@ -242,7 +238,7 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
-                    android:id="@+id/checkbox_pets_welcome"
+                    android:id="@+id/checkbox_full_board"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/checkBoxStyle" />
@@ -257,9 +253,9 @@
             android:background="#E1E1E1" />
 
 
-    </LinearLayout><!-- Service @spa_fitness-->
+    </LinearLayout><!-- Service @full_board-->
 
-    <!-- Service @string spa_fitness-->
+    <!-- Service @string all_inclusive-->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -288,10 +284,9 @@
                 android:layout_weight="0.8">
 
                 <TextView
-                    android:id="@+id/detail_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/spa_fitness"
+                    android:text="@string/all_inclusive"
                     android:textColor="#030303" />
 
             </LinearLayout>
@@ -305,7 +300,7 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
-                    android:id="@+id/checkbox_spa_fitness"
+                    android:id="@+id/checkbox_all_inclusive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/checkBoxStyle" />
@@ -320,70 +315,6 @@
             android:background="#E1E1E1" />
 
 
-    </LinearLayout><!-- Service @string spa_fitness-->
-
-    <!-- Service @string wi_fi-->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E1E1E1" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.8"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            android:paddingLeft="20dp"
-            android:paddingTop="5dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="0.8">
-
-                <TextView
-                    android:id="@+id/detail_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/wi_fi"
-                    android:textColor="#030303" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="0.2"
-                android:gravity="right"
-                android:paddingRight="5dp">
-
-                <CheckBox
-                    android:id="@+id/checkbox_wi_fi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/checkBoxStyle" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
-
-
-    </LinearLayout><!-- Service @string wi_fi-->
-
+    </LinearLayout><!-- Service @string all_inclusive-->
 
 </LinearLayout>
