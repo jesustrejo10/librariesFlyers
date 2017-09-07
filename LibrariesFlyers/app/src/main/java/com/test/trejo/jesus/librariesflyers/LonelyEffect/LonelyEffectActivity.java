@@ -26,17 +26,12 @@ import java.util.ArrayList;
 
 public class LonelyEffectActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    private ArrayList<RecyclerObject> mDataSet;
-    private VerticalLonelyAdapter mAdapter;
     SlidingUpPanelLayout panel;
     LinearLayoutManager mLayoutManager;
     RecyclerView mRecyclerView;
     int status = 0;
 
-    private Button backTolist;
-    static final LatLng HAMBURG = new LatLng(53.558, 9.927);
-    static final LatLng KIEL = new LatLng(53.551, 9.993);
-    private GoogleMap map;
+    private Button backToList;
     private ImageView mapPreview;
 
     @Override
@@ -44,14 +39,12 @@ public class LonelyEffectActivity extends AppCompatActivity implements OnMapRead
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lonely_effect);
 
-        MapFragment mapFragment = (MapFragment) getFragmentManager()
-                .findFragmentById(R.id.map);
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
 
         mapFragment.getMapAsync(this);
 
-
         RecyclerObject test = new RecyclerObject();
-        mDataSet = new ArrayList<>();
+        ArrayList<RecyclerObject> mDataSet = new ArrayList<>();
         mDataSet.add(test);
         mDataSet.add(test);
         mDataSet.add(test);
@@ -59,16 +52,16 @@ public class LonelyEffectActivity extends AppCompatActivity implements OnMapRead
         mDataSet.add(test);
         mDataSet.add(test);
         mDataSet.add(test);
-        mAdapter = new VerticalLonelyAdapter(mDataSet);
+        VerticalLonelyAdapter mAdapter = new VerticalLonelyAdapter(mDataSet);
         mapPreview = (ImageView) findViewById(R.id.map_preview);
 
         mapPreview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 panel.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
-
             }
         });
+
         panel = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
         panel.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
             @Override
@@ -87,20 +80,14 @@ public class LonelyEffectActivity extends AppCompatActivity implements OnMapRead
                 }
                 if (newState.name().equalsIgnoreCase("EXPANDED") || newState.name().equalsIgnoreCase("DRAGGING")) {
                     mapPreview.setVisibility(View.GONE);
-                    //panel.setActivated(false);
-                    //mapPreview.setLayoutParams(new FrameLayout.LayoutParams(0, 0));
-
                 }else{
                     mapPreview.setVisibility(View.VISIBLE);
-                    //panel.setActivated(true);
                 }
 
                 if (newState.name().equalsIgnoreCase("EXPANDED")) {
-                    backTolist.setVisibility(View.VISIBLE);
-                    //mapPreview.setLayoutParams(new FrameLayout.LayoutParams(0, 0));
-
+                    backToList.setVisibility(View.VISIBLE);
                 }else{
-                    backTolist.setVisibility(View.GONE);
+                    backToList.setVisibility(View.GONE);
                 }
             }
         });
@@ -125,7 +112,6 @@ public class LonelyEffectActivity extends AppCompatActivity implements OnMapRead
                     
                 } else {
 
-                //    if ((status != 1) || ( !panel.getPanelState().name().equalsIgnoreCase("HIDDEN")) )
                     final Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
@@ -139,8 +125,8 @@ public class LonelyEffectActivity extends AppCompatActivity implements OnMapRead
             }
         });
 
-        backTolist = (Button) findViewById(R.id.button);
-        backTolist.setOnClickListener(new View.OnClickListener() {
+        backToList = (Button) findViewById(R.id.button);
+        backToList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 panel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
@@ -153,8 +139,6 @@ public class LonelyEffectActivity extends AppCompatActivity implements OnMapRead
     @Override
     public void onMapReady(final GoogleMap googleMap) {
         LatLng sydney = new LatLng(-33.867, 151.206);
-        LatLng sydney2 = new LatLng(-33.867, 150.206);
-        map = googleMap;
 
         googleMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
             @Override
@@ -163,32 +147,12 @@ public class LonelyEffectActivity extends AppCompatActivity implements OnMapRead
                 googleMap.snapshot(new GoogleMap.SnapshotReadyCallback() {
                     @Override
                     public void onSnapshotReady(Bitmap bitmap) {
-                        //mapPreview.setLayoutParams(new FrameLayout.LayoutParams(
-                          //      ViewGroup.LayoutParams.MATCH_PARENT,
-                            //    160));
                         mapPreview.setImageBitmap(bitmap);
-
-                        // If map won't be used afterwards, remove it's views
-//              ((FrameLayout)findViewById(R.id.map)).removeAllViews();
                     }
                 });
             }
         });
 
-/*
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            System.out.println("holamundo");
-            return;
-        }
-  */
-        //googleMap.setMyLocationEnabled(true);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 13));
 
         googleMap.addMarker(new MarkerOptions()
