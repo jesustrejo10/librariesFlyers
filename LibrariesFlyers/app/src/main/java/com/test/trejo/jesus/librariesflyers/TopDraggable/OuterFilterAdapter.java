@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarFinalValueListener;
@@ -18,7 +20,7 @@ import java.util.ArrayList;
  * Created by jesus on 29/08/17.
  */
 
-public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHolder> {
+public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHolder> implements CompoundButton.OnCheckedChangeListener {
 
     private Context mContext;
     private boolean listStatusStar = Boolean.FALSE;
@@ -43,6 +45,26 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
     public void onBindViewHolder(final OuterFilterViewHolder holder, final int position) {
         final RecyclerObject object = recyclerObjects.get(position);
         holder.getDetailName().setText(object.getDescription());
+
+        holder.getOneStar().setOnCheckedChangeListener(this);
+        holder.getTwoStar().setOnCheckedChangeListener(this);
+        holder.getTheeeStar().setOnCheckedChangeListener(this);
+        holder.getFourStar().setOnCheckedChangeListener(this);
+        holder.getFiveStar().setOnCheckedChangeListener(this);
+
+        holder.getAriConditioning().setOnCheckedChangeListener(this);
+        holder.getAirportShufle().setOnCheckedChangeListener(this);
+        holder.getIndoorPool().setOnCheckedChangeListener(this);
+        holder.getPets().setOnCheckedChangeListener(this);
+        holder.getPAFitness().setOnCheckedChangeListener(this);
+        holder.getWiFI().setOnCheckedChangeListener(this);
+
+        holder.getOnlyLodging().setOnCheckedChangeListener(this);
+        holder.getBreakFast().setOnCheckedChangeListener(this);
+        holder.getHalfPension().setOnCheckedChangeListener(this);
+        holder.getFullBoard().setOnCheckedChangeListener(this);
+        holder.getAllInclusive().setOnCheckedChangeListener(this);
+
         holder.getContainerFullLayout().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,18 +74,15 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
                         holder.getContainerFilterStar().setVisibility(View.VISIBLE);
                         break;
                     case 2:
-                        Log.d("CLICK", "2");
                         statusMainContainerPrice(holder);
                         holder.getContainerFilterPrice().setVisibility(View.VISIBLE);
                         setRangePrice(holder);
                         break;
                     case 3:
-                        Log.d("CLICK", "3");
                         statusMainContainerService(holder);
                         holder.getContainerFilterServices().setVisibility(View.VISIBLE);
                         break;
                     case 4:
-                        Log.d("CLICK", "4");
                         statusMainContainerRegime(holder);
                         holder.getContainerFilterRegime().setVisibility(View.VISIBLE);
                         break;
@@ -148,4 +167,122 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
         });
     }
 
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        switch (buttonView.getId()) {
+
+//            Estrellas
+            case R.id.checkbox_one_star:
+                if (isChecked) {
+                    Toast.makeText(mContext, "Si 1 estrella", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mContext, "No 1 estrella", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.checkbox_two_star:
+                if (isChecked) {
+                    Toast.makeText(mContext, "Si 2 estrella", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mContext, "No 2 estrella", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.checkbox_three_star:
+                if (isChecked) {
+                    Toast.makeText(mContext, "Si 3 estrella", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mContext, "No 3 estrella", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.checkbox_four_star:
+                if (isChecked) {
+                    Toast.makeText(mContext, "Si 4 estrella", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mContext, "No 4 estrella", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.checkbox_five_star:
+                if (isChecked) {
+                    Toast.makeText(mContext, "Si 5 estrella", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mContext, "No 5 estrella", Toast.LENGTH_SHORT).show();
+                }
+                break;
+
+//            Servicios
+            case R.id.checkbox_air_conditioning:
+                if (isChecked) {
+                    Toast.makeText(mContext, "checkbox_air_conditioning", Toast.LENGTH_SHORT).show();
+                } else {
+
+                }
+                break;
+            case R.id.checkbox_airport_shufle:
+                if (isChecked) {
+                    Toast.makeText(mContext, "checkbox_airport_shufle", Toast.LENGTH_SHORT).show();
+                } else {
+
+                }
+                break;
+            case R.id.checkbox_indoor_pool:
+                if (isChecked) {
+                    Toast.makeText(mContext, "checkbox_indoor_pool", Toast.LENGTH_SHORT).show();
+                } else {
+
+                }
+                break;
+            case R.id.checkbox_pets_welcome:
+                if (isChecked) {
+                    Toast.makeText(mContext, "checkbox_pets_welcome", Toast.LENGTH_SHORT).show();
+                } else {
+
+                }
+                break;
+            case R.id.checkbox_spa_fitness:
+                if (isChecked) {
+                    Toast.makeText(mContext, "checkbox_spa_fitness", Toast.LENGTH_SHORT).show();
+                } else {
+
+                }
+                break;
+            case R.id.checkbox_wi_fi:
+                if (isChecked) {
+                    Toast.makeText(mContext, "checkbox_wi_fi", Toast.LENGTH_SHORT).show();
+                } else {
+
+                }
+                break;
+
+//            Regimen
+            case R.id.checkbox_only_lodging:
+                if (isChecked) {
+                    Toast.makeText(mContext, "checkbox_only_lodging", Toast.LENGTH_SHORT).show();
+                } else {
+
+                }
+            case R.id.checkbox_breakfast:
+                if (isChecked) {
+                    Toast.makeText(mContext, "checkbox_breakfast", Toast.LENGTH_SHORT).show();
+                } else {
+
+                }
+            case R.id.checkbox_half_pension:
+                if (isChecked) {
+                    Toast.makeText(mContext, "checkbox_half_pension", Toast.LENGTH_SHORT).show();
+                } else {
+
+                }
+            case R.id.checkbox_full_board:
+                if (isChecked) {
+                    Toast.makeText(mContext, "checkbox_full_board", Toast.LENGTH_SHORT).show();
+                } else {
+
+                }
+            case R.id.checkbox_all_inclusive:
+                if (isChecked) {
+                    Toast.makeText(mContext, "checkbox_all_inclusive", Toast.LENGTH_SHORT).show();
+                } else {
+
+                }
+        }
+    }
 }
