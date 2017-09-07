@@ -26,24 +26,20 @@ public class VerticalLonelyAdapter  extends RecyclerView.Adapter<HorizontalViewH
     @Override
     public HorizontalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.horizontal_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.horizontal_item, parent, false);
         // set the view's size, margins, paddings and layout parameters
-        HorizontalViewHolder vh = new HorizontalViewHolder(v);
-        return vh;
+        return new HorizontalViewHolder(v);
     }
 
 
     @Override
     public void onBindViewHolder(HorizontalViewHolder holder, int position) {
-
         holder.getmTextView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 System.out.println("holamundo");
             }
         });
-
     }
 
 
