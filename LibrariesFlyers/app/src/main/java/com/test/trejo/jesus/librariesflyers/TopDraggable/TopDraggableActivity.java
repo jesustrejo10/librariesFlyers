@@ -1,5 +1,6 @@
 package com.test.trejo.jesus.librariesflyers.TopDraggable;
 
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,16 +8,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
-import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarFinalValueListener;
-import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.test.trejo.jesus.librariesflyers.BaseActivity;
 import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.Models.RecyclerObject;
@@ -44,18 +42,6 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
 
     @Bind(R.id.recycler_view)
     RecyclerView mRecyclerView;
-
-    @Bind(R.id.general_layout)
-    LinearLayout mBarLayout;
-
-    @Bind(R.id.rangeSeekbar1)
-    CrystalRangeSeekbar rangeSeekbar;
-
-    @Bind(R.id.minimo)
-    TextView tvMin;
-
-    @Bind(R.id.maximo)
-    TextView tvMax;
 
     @Bind(R.id.layout_categoria)
     LinearLayout mCategoryLayout;
@@ -89,6 +75,26 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
             }
         });
 
+//        mPanel.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
+//            @Override
+//            public void onPanelSlide(View panel, float slideOffset) {
+//                if (panel.getPaddingBottom() != 0) {
+//                    panel.setPadding(panel.getPaddingLeft(), panel.getPaddingTop(), panel.getPaddingRight(), 0);
+//                }
+//            }
+//
+//            @Override
+//            public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
+//                int paddingPx = (int) getPixels(TypedValue.COMPLEX_UNIT_DIP, 50);
+//                panel.setPadding(panel.getPaddingLeft(), panel.getPaddingTop(), panel.getPaddingRight(), 100);
+//            }
+//        });
+
+    }
+
+    public static float getPixels(int unit, float size) {
+        DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
+        return TypedValue.applyDimension(unit, size, metrics);
     }
 
     @Override
@@ -137,20 +143,7 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
 
     @Override
     public void setRangeBar() {
-        rangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
-            @Override
-            public void valueChanged(Number minValue, Number maxValue) {
-                tvMin.setText(String.format("%s%s", getResources().getString(R.string.from), String.valueOf(minValue)));
-                tvMax.setText(String.format("%s%s", getResources().getString(R.string.to), String.valueOf(maxValue)));
-            }
-        });
 
-        rangeSeekbar.setOnRangeSeekbarFinalValueListener(new OnRangeSeekbarFinalValueListener() {
-            @Override
-            public void finalValue(Number minValue, Number maxValue) {
-                Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
-            }
-        });
     }
 
     @OnLongClick(R.id.layout_categoria) // Para evitar el setOnLongClickListener
@@ -180,11 +173,6 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
     @OnClick(R.id.main_layout) // Para evitar el setOnClickListener
     public void onClickLayoutMain() {
         setPanelState();
-    }
-
-    @OnClick(R.id.general_layout)
-    public void onClickGeneralLayout() {
-
     }
 
     private void setPanelState() {

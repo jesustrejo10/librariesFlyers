@@ -44,7 +44,7 @@
         </LinearLayout>
 
         <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
-            android:id="@+id/rangeSeekbar1"
+            android:id="@+id/range_seekbar_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:bar_color="@android:color/darker_gray"

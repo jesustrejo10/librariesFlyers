@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarFinalValueListener;
@@ -21,14 +20,13 @@ import java.util.ArrayList;
 
 public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHolder> {
 
-    private ArrayList<RecyclerObject> mDataSet;
-    private InnerFilterAdapter mInnerFilterAdapter;
     private Context mContext;
+    private boolean listStatusStar = Boolean.FALSE;
+    private boolean listStatusPrice = Boolean.FALSE;
+    private ArrayList<RecyclerObject> recyclerObjects;
 
-    private boolean listStatus = false;
-
-    public OuterFilterAdapter(ArrayList<RecyclerObject> mDataset, Context context) {
-        this.mDataSet = mDataset;
+    public OuterFilterAdapter(ArrayList<RecyclerObject> recyclerObjects, Context context) {
+        this.recyclerObjects = recyclerObjects;
         this.mContext = context;
     }
 
@@ -40,40 +38,23 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
 
     @Override
     public void onBindViewHolder(final OuterFilterViewHolder holder, final int position) {
-        holder.getmTextView().setText(mDataSet.get(position).getDescription());
-        holder.getmFullLayout().setOnClickListener(new View.OnClickListener() {
+        final RecyclerObject object = recyclerObjects.get(position);
+        holder.getDetailName().setText(object.getDescription());
+        holder.getContainerFullLayout().setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if (mDataSet.get(position).getId() == 1) {
-                    showStatusVisivility(holder.mContainerFilterStar, View.VISIBLE);
-                } else {
+            public void onClick(View v) {
+                switch (object.getId()) {
+                    case 1:
+                        statusMainContainerStar(holder);
+                        holder.getContainerFilterStar().setVisibility(View.VISIBLE);
+                        break;
+                    case 2:
+                        Log.d("CLICK", "2");
+                        statusMainContainerPrice(holder);
+                        holder.getContainerFilterPrice().setVisibility(View.VISIBLE);
+                        setRangePrice(holder);
+                        break;
 
-                    showStatusVisivility(holder.mContainerFilterPrice, View.VISIBLE);
-
-                    holder.rangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
-                        @Override
-                        public void valueChanged(Number minValue, Number maxValue) {
-                            holder.tvMin.setText(String.format("%s%s", mContext.getResources().getString(R.string.from), String.valueOf(minValue)));
-                            holder.tvMax.setText(String.format("%s%s", mContext.getResources().getString(R.string.to), String.valueOf(maxValue)));
-                        }
-                    });
-
-                    holder.rangeSeekbar.setOnRangeSeekbarFinalValueListener(new OnRangeSeekbarFinalValueListener() {
-                        @Override
-                        public void finalValue(Number minValue, Number maxValue) {
-                            Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
-                        }
-                    });
-                }
-
-                if (listStatus) {
-                    holder.getmImageView().animate().rotation(360).start();
-                    holder.click.setVisibility(View.GONE);
-                    listStatus = false;
-                } else {
-                    holder.getmImageView().animate().rotation(180).start();
-                    holder.click.setVisibility(View.VISIBLE);
-                    listStatus = true;
                 }
             }
         });
@@ -82,11 +63,52 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
 
     @Override
     public int getItemCount() {
-        return mDataSet.size();
+        return recyclerObjects.size();
     }
 
-    private void showStatusVisivility(LinearLayout linearLayoutm, int status) {
-        linearLayoutm.setVisibility(status);
+    private void statusMainContainerStar(OuterFilterViewHolder holder) {
+        if (listStatusStar) {
+            listStatusStar = Boolean.FALSE;
+            holder.getContainerFilter().setVisibility(View.GONE);
+            holder.getExpandIcon().animate().rotation(360).start();
+        } else {
+            listStatusStar = Boolean.TRUE;
+            holder.getContainerFilter().setVisibility(View.VISIBLE);
+            holder.getExpandIcon().animate().rotation(180).start();
+        }
+    }
+
+    private void statusMainContainerPrice(OuterFilterViewHolder holder) {
+        if (listStatusPrice) {
+            listStatusPrice = Boolean.FALSE;
+            holder.getContainerFilter().setVisibility(View.GONE);
+            holder.getExpandIcon().animate().rotation(360).start();
+        } else {
+            listStatusPrice = Boolean.TRUE;
+            holder.getContainerFilter().setVisibility(View.VISIBLE);
+            holder.getExpandIcon().animate().rotation(180).start();
+        }
+    }
+
+    /**
+     * Obtener el rango del filtro de los precios
+     *
+     * @param holder @{@link OuterFilterViewHolder}
+     */
+    private void setRangePrice(final OuterFilterViewHolder holder) {
+        holder.getRangeSeekbarPrice().setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
+            @Override
+            public void valueChanged(Number minValue, Number maxValue) {
+                holder.getPriceMax().setText(String.format("%s%s", mContext.getResources().getString(R.string.to), String.valueOf(maxValue)));
+                holder.getPriceMin().setText(String.format("%s%s", mContext.getResources().getString(R.string.from), String.valueOf(minValue)));
+            }
+        });
+        holder.getRangeSeekbarPrice().setOnRangeSeekbarFinalValueListener(new OnRangeSeekbarFinalValueListener() {
+            @Override
+            public void finalValue(Number minValue, Number maxValue) {
+                Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
+            }
+        });
     }
 
 }

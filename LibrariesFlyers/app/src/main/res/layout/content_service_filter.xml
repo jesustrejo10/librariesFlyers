@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/filter_star"
+    android:id="@+id/filter_service"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#EFEFEF"
     android:orientation="vertical"
-    android:visibility="gone">
+    android:visibility="visible">
 
-    <!-- 1 start-->
+    <!-- Service @string air_conditioning-->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -39,26 +39,8 @@
                     android:id="@+id/detail_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/one_star"
+                    android:text="@string/air_conditioning"
                     android:textColor="#030303" />
-
-                <android.support.v4.widget.Space
-                    android:layout_width="6.6dp"
-                    android:layout_height="match_parent" />
-
-                <com.test.trejo.jesus.librariesflyers.widget.AppCompatRatingBarCustom
-                    android:id="@+id/ratingBar"
-                    style="@style/Widget.AppCompat.RatingBar.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:isIndicator="true"
-                    android:numStars="1"
-                    android:paddingTop="1dp"
-                    android:rating="1"
-                    android:stepSize="0.1" />
 
             </LinearLayout>
 
@@ -71,7 +53,7 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
-                    android:id="@+id/checkbox_one_star"
+                    android:id="@+id/checkbox_air_conditioning"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/checkBoxStyle" />
@@ -86,9 +68,9 @@
             android:background="#E1E1E1" />
 
 
-    </LinearLayout><!-- 1 start-->
+    </LinearLayout><!-- Service @string air_conditioning-->
 
-    <!-- 2 start-->
+    <!-- Service @string airport_shufle-->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -117,27 +99,11 @@
                 android:layout_weight="0.8">
 
                 <TextView
+                    android:id="@+id/detail_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/two_stars"
+                    android:text="@string/airport_shufle"
                     android:textColor="#030303" />
-
-                <android.support.v4.widget.Space
-                    android:layout_width="6.6dp"
-                    android:layout_height="match_parent" />
-
-                <com.test.trejo.jesus.librariesflyers.widget.AppCompatRatingBarCustom
-                    style="@style/Widget.AppCompat.RatingBar.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:isIndicator="true"
-                    android:numStars="2"
-                    android:paddingTop="1dp"
-                    android:rating="2"
-                    android:stepSize="0.1" />
 
             </LinearLayout>
 
@@ -150,7 +116,7 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
-                    android:id="@+id/checkbox_two_star"
+                    android:id="@+id/checkbox_airport_shufle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/checkBoxStyle" />
@@ -165,9 +131,9 @@
             android:background="#E1E1E1" />
 
 
-    </LinearLayout><!-- 2 start-->
+    </LinearLayout><!-- Service @string airport_shufle-->
 
-    <!-- 3 start-->
+    <!-- Service @string indoor_pool-->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -196,27 +162,11 @@
                 android:layout_weight="0.8">
 
                 <TextView
+                    android:id="@+id/detail_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/three_stars"
+                    android:text="@string/indoor_pool"
                     android:textColor="#030303" />
-
-                <android.support.v4.widget.Space
-                    android:layout_width="6.6dp"
-                    android:layout_height="match_parent" />
-
-                <com.test.trejo.jesus.librariesflyers.widget.AppCompatRatingBarCustom
-                    style="@style/Widget.AppCompat.RatingBar.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:isIndicator="true"
-                    android:numStars="3"
-                    android:paddingTop="1dp"
-                    android:rating="3"
-                    android:stepSize="0.1" />
 
             </LinearLayout>
 
@@ -229,7 +179,7 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
-                    android:id="@+id/checkbox_three_star"
+                    android:id="@+id/checkbox_indoor_pool"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/checkBoxStyle" />
@@ -244,9 +194,9 @@
             android:background="#E1E1E1" />
 
 
-    </LinearLayout><!-- 3 start-->
+    </LinearLayout><!-- Service @string indoor_pool-->
 
-    <!-- 4 start-->
+    <!-- Service @string pets_welcome-->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -275,27 +225,11 @@
                 android:layout_weight="0.8">
 
                 <TextView
+                    android:id="@+id/detail_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/four_stars"
+                    android:text="@string/pets_welcome"
                     android:textColor="#030303" />
-
-                <android.support.v4.widget.Space
-                    android:layout_width="6.6dp"
-                    android:layout_height="match_parent" />
-
-                <com.test.trejo.jesus.librariesflyers.widget.AppCompatRatingBarCustom
-                    style="@style/Widget.AppCompat.RatingBar.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:isIndicator="true"
-                    android:numStars="4"
-                    android:paddingTop="1dp"
-                    android:rating="4"
-                    android:stepSize="0.1" />
 
             </LinearLayout>
 
@@ -308,7 +242,7 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
-                    android:id="@+id/checkbox_four_star"
+                    android:id="@+id/checkbox_pets_welcome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/checkBoxStyle" />
@@ -323,85 +257,6 @@
             android:background="#E1E1E1" />
 
 
-    </LinearLayout><!-- 4 start-->
-
-    <!-- 5 start-->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E1E1E1" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.8"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            android:paddingLeft="20dp"
-            android:paddingTop="5dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="0.8">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/five_stars"
-                    android:textColor="#030303" />
-
-                <android.support.v4.widget.Space
-                    android:layout_width="6.6dp"
-                    android:layout_height="match_parent" />
-
-                <com.test.trejo.jesus.librariesflyers.widget.AppCompatRatingBarCustom
-                    style="@style/Widget.AppCompat.RatingBar.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:isIndicator="true"
-                    android:numStars="5"
-                    android:paddingTop="1dp"
-                    android:rating="5"
-                    android:stepSize="0.1" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="0.2"
-                android:gravity="right"
-                android:paddingRight="5dp">
-
-                <CheckBox
-                    android:id="@+id/checkbox_five_star"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/checkBoxStyle" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
-
-
-    </LinearLayout><!-- 5 start-->
+    </LinearLayout><!-- Service @string pets_welcome-->
 
 </LinearLayout>

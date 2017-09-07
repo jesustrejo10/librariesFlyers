@@ -23,4 +23,19 @@
     <string name="from">From $</string>
     <string name="to">To $</string>
 
+    <!-- Filter Star-->
+    <string name="one_star">1 star</string>
+    <string name="two_stars">2 star</string>
+    <string name="three_stars">3 star</string>
+    <string name="four_stars">4 star</string>
+    <string name="five_stars">5 start</string>
+
+    <!-- Filter Service-->
+    <string name="air_conditioning">Air Conditioning</string>
+    <string name="airport_shufle">Airport Shufle</string>
+    <string name="indoor_pool">Indoor Pool</string>
+    <string name="pets_welcome">Pets Welcome</string>
+    <string name="spa_fitness">SPA &amp; Fitness</string>
+    <string name="wi_fi">WiFI</string>
+
 </resources>

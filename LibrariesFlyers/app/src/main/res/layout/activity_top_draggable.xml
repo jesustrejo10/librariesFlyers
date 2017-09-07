@@ -14,11 +14,14 @@
         android:gravity="bottom"
         sothree:umanoOverlay="true"
         sothree:umanoPanelHeight="0dp"
+        sothree:umanoScrollableView="@id/scroll_view"
         sothree:umanoShadowHeight="0dp">
 
         <include layout="@layout/content_top_draggable" />
 
-        <include layout="@layout/scrollable_filter_list" />
+        <include
+            android:id="@+id/scroll_view"
+            layout="@layout/scrollable_filter_list" />
 
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 

@@ -4,13 +4,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 import com.test.trejo.jesus.librariesflyers.R;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Created by jesus on 29/08/17.
@@ -18,50 +18,76 @@ import butterknife.Bind;
 
 public class OuterFilterViewHolder extends RecyclerView.ViewHolder {
 
-    // each data item is just a string in this case
-    public TextView mTextView;
-    public ImageView mImageView;
-    public RecyclerView mRecyclerView;
-    private LinearLayout mFullLayout;
-    public LinearLayout click;
-    LinearLayout mContainerFilterStar;
-    LinearLayout mContainerFilterPrice;
+    @Bind(R.id.full_layout)
+    LinearLayout ContainerFullLayout;
 
-    RatingBar ratingBar;
+    @Bind(R.id.detail_name)
+    TextView DetailName;
 
-    CrystalRangeSeekbar rangeSeekbar;
-    TextView tvMin;
-    TextView tvMax;
+    @Bind(R.id.expand_icon)
+    ImageView ExpandIcon;
 
-    public OuterFilterViewHolder(View v) {
-        super(v);
-        mTextView = (TextView) v.findViewById(R.id.detail_name);
-        mImageView = (ImageView) v.findViewById(R.id.expand_icon);
-        mRecyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
-        mFullLayout = (LinearLayout) v.findViewById(R.id.full_layout);
-        click = (LinearLayout) v.findViewById(R.id.click);
-        mContainerFilterStar = (LinearLayout) v.findViewById(R.id.filter_star);
-        mContainerFilterPrice = (LinearLayout) v.findViewById(R.id.filter_price);
-        ratingBar = (RatingBar) v.findViewById(R.id.ratingBar);
+    @Bind(R.id.container_filter)
+    LinearLayout ContainerFilter;
 
-        rangeSeekbar = (CrystalRangeSeekbar) v.findViewById(R.id.rangeSeekbar1);
-        tvMin = (TextView) v.findViewById(R.id.minimo);
-        tvMax = (TextView) v.findViewById(R.id.maximo);
+    //################################################ Filtros de Estrellas
+    @Bind(R.id.filter_star)
+    LinearLayout ContainerFilterStar;
+
+    //################################################
+
+    //################################################ Filtros de Precios
+    @Bind(R.id.filter_price)
+    LinearLayout ContainerFilterPrice;
+
+    @Bind(R.id.range_seekbar_price)
+    CrystalRangeSeekbar RangeSeekbarPrice;
+
+    @Bind(R.id.minimo)
+    TextView PriceMin;
+
+    @Bind(R.id.maximo)
+    TextView PriceMax;
+    //################################################
+
+    public OuterFilterViewHolder(View view) {
+        super(view);
+        ButterKnife.bind(this, view);
     }
 
-    public TextView getmTextView() {
-        return mTextView;
+    public LinearLayout getContainerFullLayout() {
+        return ContainerFullLayout;
     }
 
-    public ImageView getmImageView() {
-        return mImageView;
+    public TextView getDetailName() {
+        return DetailName;
     }
 
-    public RecyclerView getmRecyclerView() {
-        return mRecyclerView;
+    public ImageView getExpandIcon() {
+        return ExpandIcon;
     }
 
-    public LinearLayout getmFullLayout() {
-        return mFullLayout;
+    public LinearLayout getContainerFilter() {
+        return ContainerFilter;
+    }
+
+    public LinearLayout getContainerFilterStar() {
+        return ContainerFilterStar;
+    }
+
+    public LinearLayout getContainerFilterPrice() {
+        return ContainerFilterPrice;
+    }
+
+    public CrystalRangeSeekbar getRangeSeekbarPrice() {
+        return RangeSeekbarPrice;
+    }
+
+    public TextView getPriceMin() {
+        return PriceMin;
+    }
+
+    public TextView getPriceMax() {
+        return PriceMax;
     }
 }
