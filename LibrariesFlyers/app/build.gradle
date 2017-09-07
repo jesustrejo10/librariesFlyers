@@ -40,5 +40,7 @@ dependencies {
     compile 'com.android.support:support-v4:26.0.1'
     compile 'com.synnapps:carouselview:0.1.4'
 
+    compile 'com.alexvasilkov:gesture-views:2.3.2'
+
     testCompile 'junit:junit:4.12'
 }
