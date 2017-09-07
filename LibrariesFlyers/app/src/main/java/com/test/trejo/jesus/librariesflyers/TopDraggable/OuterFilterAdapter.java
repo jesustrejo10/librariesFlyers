@@ -12,6 +12,7 @@ import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarFinalValueListener;
 import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.Models.RecyclerObject;
 import com.test.trejo.jesus.librariesflyers.R;
+import com.test.trejo.jesus.librariesflyers.widget.ApplyStyleRatingBar;
 
 import java.util.ArrayList;
 
@@ -41,6 +42,7 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
     @Override
     public void onBindViewHolder(final OuterFilterViewHolder holder, final int position) {
         holder.getmTextView().setText(mDataSet.get(position).getDescription());
+//        ApplyStyleRatingBar.setRatingBarStarsColor(holder.ratingBar, mContext);
         holder.getmFullLayout().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
@@ -25,6 +26,9 @@ public class OuterFilterViewHolder extends RecyclerView.ViewHolder {
     public LinearLayout click;
     LinearLayout mContainerFilterStar;
     LinearLayout mContainerFilterPrice;
+
+    RatingBar ratingBar;
+
     CrystalRangeSeekbar rangeSeekbar;
     TextView tvMin;
     TextView tvMax;
@@ -38,6 +42,7 @@ public class OuterFilterViewHolder extends RecyclerView.ViewHolder {
         click = (LinearLayout) v.findViewById(R.id.click);
         mContainerFilterStar = (LinearLayout) v.findViewById(R.id.filter_star);
         mContainerFilterPrice = (LinearLayout) v.findViewById(R.id.filter_price);
+        ratingBar = (RatingBar) v.findViewById(R.id.ratingBar);
 
         rangeSeekbar = (CrystalRangeSeekbar) v.findViewById(R.id.rangeSeekbar1);
         tvMin = (TextView) v.findViewById(R.id.minimo);

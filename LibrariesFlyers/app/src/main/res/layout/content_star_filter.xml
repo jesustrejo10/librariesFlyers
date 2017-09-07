@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:background="#EFEFEF"
     android:orientation="vertical"
-    android:visibility="gone">
+    android:visibility="visible">
 
     <View
         android:layout_width="match_parent"
@@ -26,7 +26,6 @@
             android:orientation="horizontal"
             android:paddingBottom="5dp"
             android:paddingLeft="20dp"
-            android:paddingStart="20dp"
             android:paddingTop="5dp">
 
             <LinearLayout
@@ -39,7 +38,6 @@
                     android:id="@+id/detail_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:text="1 estrella"
                     android:textColor="#030303" />
 
@@ -47,98 +45,29 @@
                     android:layout_width="6.6dp"
                     android:layout_height="match_parent" />
 
-                <RatingBar
+                <com.test.trejo.jesus.librariesflyers.widget.AppCompatRatingBarCustom
                     android:id="@+id/ratingBar"
-                    style="?android:attr/ratingBarStyleSmall"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:clickable="true"
                     android:gravity="center"
+                    android:isIndicator="true"
                     android:numStars="1"
-                    android:progressTint="#FDC60A"
-                    android:rating="1" />
+                    android:paddingTop="1dp"
+                    android:progressBackgroundTint="@android:color/background_dark"
+                    android:progressTint="@color/yellow"
+                    android:rating="1"
+                    android:secondaryProgressTint="#54f4ff"
+                    android:stepSize="0.1" />
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_weight="0.2"
-                android:gravity="right"
-                android:paddingRight="5dp">
-
-                <CheckBox
-                    android:id="@+id/checkbox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/checkBoxStyle" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
-
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E1E1E1" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.8"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            android:paddingLeft="20dp"
-            android:paddingStart="20dp"
-            android:paddingTop="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="0.8">
-
-                <TextView
-                    android:id="@+id/detail_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2 estrellas"
-                    android:textColor="#030303" />
-
-                <android.support.v4.widget.Space
-                    android:layout_width="6.6dp"
-                    android:layout_height="match_parent" />
-
-                <RatingBar
-                    android:id="@+id/ratingBar"
-                    style="?android:attr/ratingBarStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:numStars="2"
-                    android:progressTint="#FDC60A"
-                    android:rating="2" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_weight="0.2"
                 android:gravity="right"
                 android:paddingRight="5dp">
@@ -161,80 +90,5 @@
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E1E1E1" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.8"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            android:paddingLeft="20dp"
-            android:paddingStart="20dp"
-            android:paddingTop="5dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="0.8">
-
-                <TextView
-                    android:id="@+id/detail_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3 estrellas"
-                    android:textColor="#030303" />
-
-                <android.support.v4.widget.Space
-                    android:layout_width="6.6dp"
-                    android:layout_height="match_parent" />
-
-                <RatingBar
-                    android:id="@+id/ratingBar"
-                    style="?android:attr/ratingBarStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:numStars="3"
-                    android:progressTint="#FDC60A"
-                    android:rating="3" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_weight="0.2"
-                android:gravity="right"
-                android:paddingRight="5dp">
-
-                <CheckBox
-                    android:id="@+id/checkbox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/checkBoxStyle" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
-
-
-    </LinearLayout>
 
 </LinearLayout>
