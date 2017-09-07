@@ -6,7 +6,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 import com.test.trejo.jesus.librariesflyers.R;
+
+import butterknife.Bind;
 
 /**
  * Created by jesus on 29/08/17.
@@ -20,8 +23,11 @@ public class OuterFilterViewHolder extends RecyclerView.ViewHolder {
     public RecyclerView mRecyclerView;
     private LinearLayout mFullLayout;
     public LinearLayout click;
-    LinearLayout mContainerChecBox;
-    LinearLayout mContainerSeekbar;
+    LinearLayout mContainerFilterStar;
+    LinearLayout mContainerFilterPrice;
+    CrystalRangeSeekbar rangeSeekbar;
+    TextView tvMin;
+    TextView tvMax;
 
     public OuterFilterViewHolder(View v) {
         super(v);
@@ -30,8 +36,12 @@ public class OuterFilterViewHolder extends RecyclerView.ViewHolder {
         mRecyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
         mFullLayout = (LinearLayout) v.findViewById(R.id.full_layout);
         click = (LinearLayout) v.findViewById(R.id.click);
-        mContainerChecBox = (LinearLayout) v.findViewById(R.id.filter_checkBox);
-        mContainerSeekbar = (LinearLayout) v.findViewById(R.id.filter_seekbar);
+        mContainerFilterStar = (LinearLayout) v.findViewById(R.id.filter_star);
+        mContainerFilterPrice = (LinearLayout) v.findViewById(R.id.filter_price);
+
+        rangeSeekbar = (CrystalRangeSeekbar) v.findViewById(R.id.rangeSeekbar1);
+        tvMin = (TextView) v.findViewById(R.id.minimo);
+        tvMax = (TextView) v.findViewById(R.id.maximo);
     }
 
     public TextView getmTextView() {

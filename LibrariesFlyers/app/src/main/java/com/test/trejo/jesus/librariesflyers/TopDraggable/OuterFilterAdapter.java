@@ -2,11 +2,14 @@ package com.test.trejo.jesus.librariesflyers.TopDraggable;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
+import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarFinalValueListener;
 import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.Models.RecyclerObject;
 import com.test.trejo.jesus.librariesflyers.R;
 
@@ -41,20 +44,34 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
         holder.getmFullLayout().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //here i need to show and hide the sub list.
-
                 if (mDataSet.get(position).getId() == 1) {
-                    showStatusVisivility(holder.mContainerChecBox, View.VISIBLE);
-                    showStatusVisivility(holder.mContainerSeekbar, View.GONE);
+                    showStatusVisivility(holder.mContainerFilterStar, View.VISIBLE);
                 } else {
-                    showStatusVisivility(holder.mContainerChecBox, View.GONE);
-                    showStatusVisivility(holder.mContainerSeekbar, View.VISIBLE);
+
+                    showStatusVisivility(holder.mContainerFilterPrice, View.VISIBLE);
+
+                    holder.rangeSeekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
+                        @Override
+                        public void valueChanged(Number minValue, Number maxValue) {
+                            holder.tvMin.setText(String.format("%s%s", mContext.getResources().getString(R.string.from), String.valueOf(minValue)));
+                            holder.tvMax.setText(String.format("%s%s", mContext.getResources().getString(R.string.to), String.valueOf(maxValue)));
+                        }
+                    });
+
+                    holder.rangeSeekbar.setOnRangeSeekbarFinalValueListener(new OnRangeSeekbarFinalValueListener() {
+                        @Override
+                        public void finalValue(Number minValue, Number maxValue) {
+                            Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
+                        }
+                    });
                 }
 
                 if (listStatus) {
+                    holder.getmImageView().animate().rotation(360).start();
                     holder.click.setVisibility(View.GONE);
                     listStatus = false;
                 } else {
+                    holder.getmImageView().animate().rotation(180).start();
                     holder.click.setVisibility(View.VISIBLE);
                     listStatus = true;
                 }
@@ -71,6 +88,5 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
     private void showStatusVisivility(LinearLayout linearLayoutm, int status) {
         linearLayoutm.setVisibility(status);
     }
-
 
 }

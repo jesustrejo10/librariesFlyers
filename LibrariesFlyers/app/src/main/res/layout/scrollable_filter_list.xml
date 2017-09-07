@@ -200,7 +200,6 @@
             android:text="@string/price"
             android:textColor="@color/black" />
 
-
     </LinearLayout>
 
     <View
@@ -226,7 +225,6 @@
             android:paddingTop="5dp"
             android:text="@string/category"
             android:textColor="@color/black" />
-
 
     </LinearLayout>
 
@@ -255,4 +253,5 @@
             android:textColor="@color/black" />
 
     </LinearLayout>
+
 </LinearLayout>

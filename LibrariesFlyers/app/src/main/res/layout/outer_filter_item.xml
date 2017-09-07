@@ -51,14 +51,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include layout="@layout/inner_filter_item" />
+        <include layout="@layout/content_star_filter" />
+
+        <include layout="@layout/content_price_filter" />
 
     </LinearLayout>
 
-    <!--<View-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:background="@android:color/darker_gray" />-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="#E4E4E4" />
 
 
 </LinearLayout>
