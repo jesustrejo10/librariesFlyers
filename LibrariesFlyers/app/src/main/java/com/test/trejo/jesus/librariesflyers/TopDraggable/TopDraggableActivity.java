@@ -191,10 +191,7 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
      * Cerrar filtro
      */
     private void setPanelState() {
-        if (mPanel != null) {
-            mPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-        }
-        throw new NullPointerException("SlidingUpPanelLayout tiene que se diferente de nulo");
+        if (mPanel != null) mPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
     }
 
     /**

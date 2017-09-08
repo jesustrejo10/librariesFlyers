@@ -2,7 +2,9 @@ package com.test.trejo.jesus.librariesflyers.TopDraggable.presenter;
 
 import android.support.annotation.NonNull;
 
+import com.test.trejo.jesus.librariesflyers.App;
 import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.Models.RecyclerObject;
+import com.test.trejo.jesus.librariesflyers.R;
 import com.test.trejo.jesus.librariesflyers.TopDraggable.TopDraggableContract;
 
 import java.util.ArrayList;
@@ -38,11 +40,11 @@ public class TopDraggablePresenter implements TopDraggableContract.Presenter {
      */
     private ArrayList<RecyclerObject> loadRecycler() {
         ArrayList<RecyclerObject> mDataSet = new ArrayList<>();
-        mDataSet.add(new RecyclerObject("- Estrellas", 1));
-        mDataSet.add(new RecyclerObject("- Precio", 2));
-        mDataSet.add(new RecyclerObject("- Servicios", 3));
-        mDataSet.add(new RecyclerObject("- Regimen", 4));
-        mDataSet.add(new RecyclerObject("- Cadena hotelera", 5));
+        mDataSet.add(new RecyclerObject(App.getContext().getResources().getString(R.string.stars), 1));
+        mDataSet.add(new RecyclerObject(App.getContext().getResources().getString(R.string.prices), 2));
+        mDataSet.add(new RecyclerObject(App.getContext().getResources().getString(R.string.services), 3));
+        mDataSet.add(new RecyclerObject(App.getContext().getResources().getString(R.string.regimen), 4));
+        mDataSet.add(new RecyclerObject(App.getContext().getResources().getString(R.string.hotel_shain), 5));
         return mDataSet;
     }
 }

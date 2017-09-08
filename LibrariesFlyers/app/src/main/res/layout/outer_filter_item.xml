@@ -21,7 +21,6 @@
             android:paddingLeft="20dp"
             android:paddingStart="20dp"
             android:paddingTop="5dp"
-            android:text="- Cadena hotelera"
             android:textColor="#030303" />
 
         <LinearLayout
@@ -39,6 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:contentDescription="@string/clear"
                 android:src="@drawable/expand_list" />
 
         </LinearLayout>
