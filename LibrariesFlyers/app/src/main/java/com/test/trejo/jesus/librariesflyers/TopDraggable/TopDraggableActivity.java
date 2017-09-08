@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -52,6 +53,9 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
     @Bind(R.id.precios_layout)
     LinearLayout mPricesLayout;
 
+    @Bind(R.id.scroll_view)
+    NestedScrollView mScrollView;
+
     private OuterFilterAdapter mAdapter;
 
     private TopDraggableContract.Presenter mPresenter;
@@ -70,7 +74,8 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         setTitle(getResources().getString(R.string.hotels_available));
 
         mPresenter = new TopDraggablePresenter(this);
-
+        mPanel.setDragView(mScrollView);
+        mPanel.setTouchEnabled(false);
         mPanel.setFadeOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
