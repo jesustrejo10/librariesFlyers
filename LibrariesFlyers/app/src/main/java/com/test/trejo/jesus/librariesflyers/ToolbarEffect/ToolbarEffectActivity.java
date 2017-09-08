@@ -112,21 +112,28 @@ public class ToolbarEffectActivity extends AppCompatActivity implements OnMapRea
         animator.addPositionUpdateListener(new ViewPositionAnimator.PositionUpdateListener() {
             @Override
             public void onPositionUpdate(float position, boolean isLeaving) {
-                if (position == 0f && isLeaving)
-                    mapPreviewFull.setVisibility(View.INVISIBLE);
-                else if (position == 1) {
+                final boolean animationFinishedInInitialView = (position == 0f) && isLeaving;
+                final boolean animationFinishedInFinalView = (position == 1f) && !isLeaving;
+
+                if (animationFinishedInInitialView)
+                    mapPreviewFull.setVisibility(View.GONE);
+                else if (animationFinishedInFinalView) {
                     mapFullLayout.setVisibility(View.VISIBLE);
                     coordinator.setVisibility(View.GONE);
+                    mapPreviewFull.setVisibility(View.GONE);
                 } else if (isLeaving) {
                     mapFullLayout.setVisibility(View.GONE);
                     coordinator.setVisibility(View.VISIBLE);
+                    mapPreviewFull.setVisibility(View.VISIBLE);
                 } else {
                     mapPreviewFull.setVisibility(View.VISIBLE);
                 }
             }
         });
 
-        closeMapButton.setOnClickListener(new View.OnClickListener() {
+        closeMapButton.setOnClickListener(new View.OnClickListener()
+
+        {
             @Override
             public void onClick(View view) {
                 animator.exit(true);
