@@ -27,8 +27,6 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
 
-import static java.lang.Boolean.FALSE;
-
 public class TopDraggableActivity extends BaseActivity implements TopDraggableContract.View {
 
     public final static String TAG = TopDraggableActivity.class.getSimpleName();
@@ -60,8 +58,8 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
 
     private TopDraggableContract.Presenter mPresenter;
 
-    private boolean statusPrices = FALSE;
-    private boolean statusCategory = FALSE;
+    private boolean statusPrices = Boolean.FALSE;
+    private boolean statusCategory = Boolean.FALSE;
 
     @Override
     public int getLayout() {
@@ -74,14 +72,7 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         setTitle(getResources().getString(R.string.hotels_available));
 
         mPresenter = new TopDraggablePresenter(this);
-        mPanel.setDragView(mScrollView);
-        mPanel.setTouchEnabled(false);
-        mPanel.setFadeOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setPanelState();
-            }
-        });
+        setupPanel();
 
     }
 
@@ -137,10 +128,10 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
     public boolean clickLayoutCategory() {
         if (!statusCategory) {
             mCategoryLayout.setBackgroundColor(Color.parseColor("#d8d8d8"));
-            statusCategory = true;
+            statusCategory = Boolean.TRUE;
         } else {
             mCategoryLayout.setBackgroundColor(Color.parseColor("#ffffff"));
-            statusCategory = false;
+            statusCategory = Boolean.FALSE;
         }
         return false;
     }
@@ -149,10 +140,10 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
     public boolean clickLayoutPrice() {
         if (!statusPrices) {
             mPricesLayout.setBackgroundColor(Color.parseColor("#66afe9"));
-            statusPrices = true;
+            statusPrices = Boolean.TRUE;
         } else {
             mPricesLayout.setBackgroundColor(Color.parseColor("#ffffff"));
-            statusPrices = false;
+            statusPrices = Boolean.FALSE;
         }
         return false;
     }
@@ -171,11 +162,26 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
     @OnClick(R.id.apply)
     public void onClickApplyFilterOrOrder() {
         closeSlidingPanelFilterOrOder();
-        if (mAdapter.getFilter() != null) {
-            Toast.makeText(getApplicationContext(), "Filtros", Toast.LENGTH_SHORT).show();
+        if (mAdapter != null) {
+            if (mAdapter.getFilter() != null) {
+                Toast.makeText(getApplicationContext(), "Filtros", Toast.LENGTH_SHORT).show();
+            } else {
+                Log.d(TAG, "Filter is null");
+            }
         } else {
-            Log.d(TAG, "Filter is null");
+            Log.d(TAG, "Adapter is null");
         }
+    }
+
+    private void setupPanel() {
+        mPanel.setDragView(mScrollView);
+        mPanel.setTouchEnabled(false);
+        mPanel.setFadeOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setPanelState();
+            }
+        });
     }
 
     /**
