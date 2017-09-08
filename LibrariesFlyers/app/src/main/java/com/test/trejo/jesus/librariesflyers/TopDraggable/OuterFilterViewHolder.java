@@ -1,6 +1,7 @@
 package com.test.trejo.jesus.librariesflyers.TopDraggable;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -110,6 +111,11 @@ public class OuterFilterViewHolder extends RecyclerView.ViewHolder {
     public OuterFilterViewHolder(View view) {
         super(view);
         ButterKnife.bind(this, view);
+    }
+
+    public void clear(){
+        Log.d("OUS", "botrrar staart");
+        OneStar.setChecked(false);
     }
 
     public LinearLayout getContainerFullLayout() {

@@ -31,53 +31,55 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = new Intent(getBaseContext(), TopDraggableActivity.class);
+        startActivity(intent);
 
-        lonelyButton = (Button) findViewById(R.id.button2);
-        lonelyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), LonelyEffectActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-        homeButton = (Button) findViewById(R.id.button3);
-        homeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), MainViewActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-        toolbarButton = (Button) findViewById(R.id.button4);
-        toolbarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), ToolbarEffectActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        draggableButton = (Button) findViewById(R.id.button);
-        draggableButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), TopDraggableActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        tabButton = (Button) findViewById(R.id.tab_activity);
-        tabButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), TabActivityActionBar.class);
-                startActivity(intent);
-            }
-        });
+//        lonelyButton = (Button) findViewById(R.id.button2);
+//        lonelyButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getBaseContext(), LonelyEffectActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//
+//        homeButton = (Button) findViewById(R.id.button3);
+//        homeButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getBaseContext(), MainViewActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//
+//        toolbarButton = (Button) findViewById(R.id.button4);
+//        toolbarButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getBaseContext(), ToolbarEffectActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        draggableButton = (Button) findViewById(R.id.button);
+//        draggableButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getBaseContext(), TopDraggableActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        tabButton = (Button) findViewById(R.id.tab_activity);
+//        tabButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getBaseContext(), TabActivityActionBar.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
         manageRangeBar();

@@ -12,4 +12,6 @@ public interface FilterListener extends CompoundButton.OnCheckedChangeListener {
 
     void clearFilter();
 
+    void clearStatus();
+
 }
