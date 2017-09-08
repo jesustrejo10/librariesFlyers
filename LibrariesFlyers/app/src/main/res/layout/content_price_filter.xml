@@ -51,6 +51,8 @@
             app:bar_highlight_color="@color/light_blue"
             app:left_thumb_color="@color/white"
             app:left_thumb_color_pressed="@color/gray_background"
+            app:max_value="10000"
+            app:min_value="0"
             app:right_thumb_color="@color/white"
             app:right_thumb_color_pressed="@color/gray_background" />
 
