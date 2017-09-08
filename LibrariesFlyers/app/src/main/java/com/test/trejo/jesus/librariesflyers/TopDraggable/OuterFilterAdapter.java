@@ -33,9 +33,7 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
     private Filter filter = null;
 
     private ArrayList<RecyclerObject> recyclerObjects;
-    List<CheckBox> selectedcheckBox = new ArrayList<CheckBox>();
-
-    private OuterFilterViewHolder outerFilterViewHolder;
+    private List<CheckBox> checkBoxListFilter;
 
     public OuterFilterAdapter(ArrayList<RecyclerObject> recyclerObjects, Context context) {
         this.recyclerObjects = recyclerObjects;
@@ -50,48 +48,31 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
 
     @Override
     public void onBindViewHolder(final OuterFilterViewHolder holder, final int position) {
+
         filter = new Filter();
+        checkBoxListFilter = new ArrayList<>();
 
         final RecyclerObject object = recyclerObjects.get(position);
         holder.getDetailName().setText(object.getDescription());
 
-        holder.getOneStar().setOnCheckedChangeListener(this);
-        holder.getTwoStar().setOnCheckedChangeListener(this);
-        holder.getTheeeStar().setOnCheckedChangeListener(this);
-        holder.getFourStar().setOnCheckedChangeListener(this);
-        holder.getFiveStar().setOnCheckedChangeListener(this);
+        checkBoxListFilter.add(holder.getOneStar());
+        checkBoxListFilter.add(holder.getTwoStar());
+        checkBoxListFilter.add(holder.getTheeeStar());
+        checkBoxListFilter.add(holder.getFourStar());
+        checkBoxListFilter.add(holder.getFiveStar());
+        checkBoxListFilter.add(holder.getAriConditioning());
+        checkBoxListFilter.add(holder.getAirportShufle());
+        checkBoxListFilter.add(holder.getIndoorPool());
+        checkBoxListFilter.add(holder.getPets());
+        checkBoxListFilter.add(holder.getPAFitness());
+        checkBoxListFilter.add(holder.getWiFI());
+        checkBoxListFilter.add(holder.getOnlyLodging());
+        checkBoxListFilter.add(holder.getBreakFast());
+        checkBoxListFilter.add(holder.getHalfPension());
+        checkBoxListFilter.add(holder.getFullBoard());
+        checkBoxListFilter.add(holder.getAllInclusive());
 
-        holder.getAriConditioning().setOnCheckedChangeListener(this);
-        holder.getAirportShufle().setOnCheckedChangeListener(this);
-        holder.getIndoorPool().setOnCheckedChangeListener(this);
-        holder.getPets().setOnCheckedChangeListener(this);
-        holder.getPAFitness().setOnCheckedChangeListener(this);
-        holder.getWiFI().setOnCheckedChangeListener(this);
-
-        holder.getOnlyLodging().setOnCheckedChangeListener(this);
-        holder.getBreakFast().setOnCheckedChangeListener(this);
-        holder.getHalfPension().setOnCheckedChangeListener(this);
-        holder.getFullBoard().setOnCheckedChangeListener(this);
-        holder.getAllInclusive().setOnCheckedChangeListener(this);
-
-
-        selectedcheckBox.add(holder.getOneStar());
-        selectedcheckBox.add(holder.getTwoStar());
-        selectedcheckBox.add(holder.getTheeeStar());
-        selectedcheckBox.add(holder.getFourStar());
-        selectedcheckBox.add(holder.getFiveStar());
-        selectedcheckBox.add(holder.getAriConditioning());
-        selectedcheckBox.add(holder.getAirportShufle());
-        selectedcheckBox.add(holder.getIndoorPool());
-        selectedcheckBox.add(holder.getPets());
-        selectedcheckBox.add(holder.getPAFitness());
-        selectedcheckBox.add(holder.getWiFI());
-        selectedcheckBox.add(holder.getOnlyLodging());
-        selectedcheckBox.add(holder.getBreakFast());
-        selectedcheckBox.add(holder.getHalfPension());
-        selectedcheckBox.add(holder.getFullBoard());
-        selectedcheckBox.add(holder.getAllInclusive());
-
+        setChangeListener();
 
         holder.getContainerFullLayout().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -329,14 +310,30 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
         }
     }
 
+    /**
+     * Agregar @setOnCheckedChangeListener a los @{@link CheckBox} del filtros
+     */
+    private void setChangeListener() {
+        for (CheckBox cb : checkBoxListFilter) {
+            cb.setOnCheckedChangeListener(this);
+        }
+    }
+
+    /**
+     * Obtener los valores de los filtros
+     *
+     * @return @{@link Filter}
+     */
     public Filter getFilter() {
         return filter;
     }
 
+    /**
+     * Limpiar @{@link CheckBox}
+     */
     public void clearFiler() {
-        for (CheckBox cb : selectedcheckBox) {
+        for (CheckBox cb : checkBoxListFilter) {
             cb.setChecked(false);
         }
     }
-
 }
