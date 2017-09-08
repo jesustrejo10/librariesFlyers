@@ -31,6 +31,8 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 import com.test.trejo.jesus.librariesflyers.R;
 
 
@@ -39,6 +41,8 @@ import com.test.trejo.jesus.librariesflyers.R;
  */
 
 public class ToolbarEffectActivity extends AppCompatActivity implements OnMapReadyCallback {
+    private int[] sampleImages = {R.drawable.slide1, R.drawable.slide2, R.drawable.slide3, R.drawable.slide4, R.drawable.slide};
+
     private ImageView mapPreview;
     private GestureImageView mapPreviewFull;
     private Toolbar toolbar;
@@ -49,6 +53,7 @@ public class ToolbarEffectActivity extends AppCompatActivity implements OnMapRea
     private LinearLayout toolbarContent;
     private TextView toolbarTitle;
     private AppBarLayout appBarLayout;
+    private CarouselView carouselView;
 
 
     @Override
@@ -73,6 +78,7 @@ public class ToolbarEffectActivity extends AppCompatActivity implements OnMapRea
         coordinator = findViewById(R.id.coordinator);
         mapPreview = findViewById(R.id.map_image);
         mapPreviewFull = findViewById(R.id.map_preview_full);
+        carouselView = findViewById(R.id.carouselView);
 
         final MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
 
@@ -84,6 +90,14 @@ public class ToolbarEffectActivity extends AppCompatActivity implements OnMapRea
     }
 
     private void initViews() {
+        carouselView.setPageCount(sampleImages.length);
+        carouselView.setImageListener(new ImageListener() {
+            @Override
+            public void setImageForPosition(int position, ImageView imageView) {
+                imageView.setImageResource(sampleImages[position]);
+            }
+        });
+
         mapPreviewFull.getController().getSettings()
                 .setPanEnabled(false)
                 .setZoomEnabled(false)
