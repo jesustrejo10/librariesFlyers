@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.Models.RecyclerOb
 import com.test.trejo.jesus.librariesflyers.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jesus on 29/08/17.
@@ -28,7 +30,12 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
     private boolean listStatusService = Boolean.FALSE;
     private boolean listStatusRegime = Boolean.FALSE;
 
+    private int estrella = 0;
+
     private ArrayList<RecyclerObject> recyclerObjects;
+    List<CheckBox> selectedcheckBox = new ArrayList<CheckBox>();
+
+    private OuterFilterViewHolder outerFilterViewHolder;
 
     public OuterFilterAdapter(ArrayList<RecyclerObject> recyclerObjects, Context context) {
         this.recyclerObjects = recyclerObjects;
@@ -43,6 +50,7 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
 
     @Override
     public void onBindViewHolder(final OuterFilterViewHolder holder, final int position) {
+        outerFilterViewHolder = holder;
         final RecyclerObject object = recyclerObjects.get(position);
         holder.getDetailName().setText(object.getDescription());
 
@@ -64,6 +72,25 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
         holder.getHalfPension().setOnCheckedChangeListener(this);
         holder.getFullBoard().setOnCheckedChangeListener(this);
         holder.getAllInclusive().setOnCheckedChangeListener(this);
+
+
+        selectedcheckBox.add(holder.getOneStar());
+        selectedcheckBox.add(holder.getTwoStar());
+        selectedcheckBox.add(holder.getTheeeStar());
+        selectedcheckBox.add(holder.getFourStar());
+        selectedcheckBox.add(holder.getFiveStar());
+        selectedcheckBox.add(holder.getAriConditioning());
+        selectedcheckBox.add(holder.getAirportShufle());
+        selectedcheckBox.add(holder.getIndoorPool());
+        selectedcheckBox.add(holder.getPets());
+        selectedcheckBox.add(holder.getPAFitness());
+        selectedcheckBox.add(holder.getWiFI());
+        selectedcheckBox.add(holder.getOnlyLodging());
+        selectedcheckBox.add(holder.getBreakFast());
+        selectedcheckBox.add(holder.getHalfPension());
+        selectedcheckBox.add(holder.getFullBoard());
+        selectedcheckBox.add(holder.getAllInclusive());
+
 
         holder.getContainerFullLayout().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +117,6 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
                 }
             }
         });
-
     }
 
     @Override
@@ -174,8 +200,10 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
 //            Estrellas
             case R.id.checkbox_one_star:
                 if (isChecked) {
+                    estrella = 1;
                     Toast.makeText(mContext, "Si 1 estrella", Toast.LENGTH_SHORT).show();
                 } else {
+                    estrella = 2;
                     Toast.makeText(mContext, "No 1 estrella", Toast.LENGTH_SHORT).show();
                 }
                 break;
@@ -285,4 +313,15 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
                 }
         }
     }
+
+    public int getEstrella() {
+        return estrella;
+    }
+
+    public void clearFiler() {
+        for (CheckBox cb : selectedcheckBox) {
+            cb.setChecked(false);
+        }
+    }
+
 }

@@ -1,6 +1,5 @@
 package com.test.trejo.jesus.librariesflyers.TopDraggable;
 
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,8 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,7 +64,7 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         setToolbar(mToolbar);
         setTitle(getResources().getString(R.string.hotels_available));
 
-        mPresenter = new TopDraggablePresenter(this);//Instanciar e inyectar vista
+        mPresenter = new TopDraggablePresenter(this);
 
         mPanel.setFadeOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,26 +73,6 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
             }
         });
 
-//        mPanel.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
-//            @Override
-//            public void onPanelSlide(View panel, float slideOffset) {
-//                if (panel.getPaddingBottom() != 0) {
-//                    panel.setPadding(panel.getPaddingLeft(), panel.getPaddingTop(), panel.getPaddingRight(), 0);
-//                }
-//            }
-//
-//            @Override
-//            public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
-//                int paddingPx = (int) getPixels(TypedValue.COMPLEX_UNIT_DIP, 50);
-//                panel.setPadding(panel.getPaddingLeft(), panel.getPaddingTop(), panel.getPaddingRight(), 100);
-//            }
-//        });
-
-    }
-
-    public static float getPixels(int unit, float size) {
-        DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
-        return TypedValue.applyDimension(unit, size, metrics);
     }
 
     @Override
@@ -111,14 +89,12 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_filter:
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        //Do something after 1000ms
                         mPanel.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
                     }
                 }, TIME_PANEL);
@@ -126,6 +102,12 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        closeSlidingPanelFilterOrOder();
+        super.onBackPressed();
     }
 
     @Override
@@ -146,7 +128,7 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
 
     }
 
-    @OnLongClick(R.id.layout_categoria) // Para evitar el setOnLongClickListener
+    @OnLongClick(R.id.layout_categoria)
     public boolean clickLayoutCategory() {
         if (!statusCategory) {
             mCategoryLayout.setBackgroundColor(Color.parseColor("#d8d8d8"));
@@ -170,9 +152,21 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         return false;
     }
 
-    @OnClick(R.id.main_layout) // Para evitar el setOnClickListener
+    @OnClick(R.id.main_layout)
     public void onClickLayoutMain() {
         setPanelState();
+    }
+
+    @OnClick(R.id.cancel)
+    public void onClickCancelFilterOrOrder() {
+        mAdapter.clearFiler();
+        closeSlidingPanelFilterOrOder();
+    }
+
+    @OnClick(R.id.apply)
+    public void onClickApplyFilterOrOrder() {
+        closeSlidingPanelFilterOrOder();
+        Log.d("APP", Integer.toString(mAdapter.getEstrella()));
     }
 
     private void setPanelState() {
@@ -180,5 +174,11 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
             mPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
         }
         throw new NullPointerException("SlidingUpPanelLayout tiene que se diferente de nulo");
+    }
+
+    private void closeSlidingPanelFilterOrOder() {
+        if (mPanel != null && (mPanel.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED || mPanel.getPanelState() == SlidingUpPanelLayout.PanelState.ANCHORED)) {
+            mPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+        }
     }
 }
