@@ -124,29 +124,29 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    @OnLongClick(R.id.layout_category)
-    public boolean clickLayoutCategory() {
-        if (!mStatusCategory) {
-            mCategoryLayout.setBackgroundColor(Color.parseColor("#d8d8d8"));
-            mStatusCategory = Boolean.TRUE;
-        } else {
-            mCategoryLayout.setBackgroundColor(Color.parseColor("#ffffff"));
-            mStatusCategory = Boolean.FALSE;
-        }
-        return false;
-    }
-
-    @OnLongClick(R.id.precios_layout)
-    public boolean clickLayoutPrice() {
-        if (!mStatusPrices) {
-            mPricesLayout.setBackgroundColor(Color.parseColor("#66afe9"));
-            mStatusPrices = Boolean.TRUE;
-        } else {
-            mPricesLayout.setBackgroundColor(Color.parseColor("#ffffff"));
-            mStatusPrices = Boolean.FALSE;
-        }
-        return false;
-    }
+//    @OnLongClick(R.id.layout_category)
+//    public boolean clickLayoutCategory() {
+//        if (!mStatusCategory) {
+//            mCategoryLayout.setBackgroundColor(Color.parseColor("#d8d8d8"));
+//            mStatusCategory = Boolean.TRUE;
+//        } else {
+//            mCategoryLayout.setBackgroundColor(Color.parseColor("#ffffff"));
+//            mStatusCategory = Boolean.FALSE;
+//        }
+//        return false;
+//    }
+//
+//    @OnLongClick(R.id.precios_layout)
+//    public boolean clickLayoutPrice() {
+//        if (!mStatusPrices) {
+//            mPricesLayout.setBackgroundColor(Color.parseColor("#66afe9"));
+//            mStatusPrices = Boolean.TRUE;
+//        } else {
+//            mPricesLayout.setBackgroundColor(Color.parseColor("#ffffff"));
+//            mStatusPrices = Boolean.FALSE;
+//        }
+//        return false;
+//    }
 
     @OnClick(R.id.main_layout)
     public void onClickLayoutMain() {
@@ -157,7 +157,7 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
     public void onClickCancelFilterOrOrder() {
         mAdapter.clearFilter();
         mAdapter.clearStatus();
-//        closeSlidingPanelFilterOrOder();
+        closeSlidingPanelFilterOrOder();
     }
 
     @OnClick(R.id.apply)

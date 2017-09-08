@@ -1,6 +1,7 @@
 package com.test.trejo.jesus.librariesflyers.utils;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
@@ -47,7 +48,7 @@ public class FilterCheckBox {
         return mCheckBoxListFilter;
     }
 
-    public static void setChangeListener(List<CheckBox> mCheckBoxListFilter, CompoundButton.OnCheckedChangeListener listener) {
+    private static void setChangeListener(List<CheckBox> mCheckBoxListFilter, CompoundButton.OnCheckedChangeListener listener) {
         for (CheckBox cb : mCheckBoxListFilter) {
             cb.setOnCheckedChangeListener(listener);
         }
@@ -55,7 +56,8 @@ public class FilterCheckBox {
 
     public static void clearCheckBox(List<CheckBox> mCheckBoxListFilter) {
         for (CheckBox cb : mCheckBoxListFilter) {
-            if (cb.isChecked())cb.setChecked(false);
+            Log.d("BOX", cb.toString());
+            cb.setChecked(false);
         }
     }
 

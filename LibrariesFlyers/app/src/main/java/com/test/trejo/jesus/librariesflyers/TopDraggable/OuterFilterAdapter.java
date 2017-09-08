@@ -1,6 +1,7 @@
 package com.test.trejo.jesus.librariesflyers.TopDraggable;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,7 +37,7 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
 
     private ArrayList<RecyclerObject> mRecyclerObjects;
     private List<CheckBox> mCheckBoxListFilter;
-    private OuterFilterViewHolder viewHolder;
+    final Handler mHandler = new Handler();
 
     public OuterFilterAdapter(ArrayList<RecyclerObject> recyclerObjects, Context context) {
         this.mRecyclerObjects = recyclerObjects;
@@ -51,7 +52,6 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
 
     @Override
     public void onBindViewHolder(final OuterFilterViewHolder holder, final int position) {
-        this.viewHolder = holder;
 
         mFilter = new Filter();
 
@@ -81,7 +81,6 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
                         statusMainContainerRegime(holder);
                         holder.getContainerFilterRegime().setVisibility(View.VISIBLE);
                         break;
-
                 }
             }
         });
@@ -100,19 +99,19 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
     @Override
     public void clearFilter() {
         Log.d(TAG, "clearFilter");
-        FilterCheckBox.clearCheckBox(mCheckBoxListFilter);
-        notifyDataSetChanged();
-        viewHolder.clear();
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                FilterCheckBox.clearCheckBox(mCheckBoxListFilter);
+                notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
     public void clearStatus() {
         Log.d(TAG, "clearStatus");
-        mListStatusStar = Boolean.FALSE;
-        mListStatusPrice = Boolean.FALSE;
-        mListStatusService = Boolean.FALSE;
-        mListStatusRegime = Boolean.FALSE;
-        notifyDataSetChanged();
+
     }
 
     @Override
@@ -234,13 +233,11 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
 
     private void statusMainContainerStar(OuterFilterViewHolder holder) {
         if (mListStatusStar) {
-            System.out.println(TAG + ", TRU" + mListStatusStar);
             mListStatusStar = Boolean.FALSE;
             holder.getContainerFilter().setVisibility(View.GONE);
             holder.getExpandIcon().animate().rotation(360).start();
         } else {
             mListStatusStar = Boolean.TRUE;
-            System.out.println(TAG + ", " + mListStatusStar);
             holder.getContainerFilter().setVisibility(View.VISIBLE);
             holder.getExpandIcon().animate().rotation(180).start();
         }
@@ -302,4 +299,5 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
             }
         });
     }
+
 }
