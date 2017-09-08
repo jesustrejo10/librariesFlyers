@@ -110,14 +110,14 @@
             android:background="@android:color/darker_gray" />
 
         <LinearLayout
-            android:id="@+id/layout_categoria"
+            android:id="@+id/layout_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/categoria"
+                android:id="@+id/category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -136,14 +136,14 @@
             android:background="@android:color/darker_gray" />
 
         <LinearLayout
-            android:id="@+id/layout_categoria"
+            android:id="@+id/layout_distance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/categoria"
+                android:id="@+id/distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

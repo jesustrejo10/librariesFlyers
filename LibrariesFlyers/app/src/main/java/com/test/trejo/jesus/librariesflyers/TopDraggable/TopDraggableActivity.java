@@ -133,11 +133,6 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    @Override
-    public void setRangeBar() {
-
-    }
-
     @OnLongClick(R.id.layout_categoria)
     public boolean clickLayoutCategory() {
         if (!statusCategory) {
@@ -183,6 +178,9 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         }
     }
 
+    /**
+     * Cerrar filtro
+     */
     private void setPanelState() {
         if (mPanel != null) {
             mPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
@@ -190,6 +188,9 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         throw new NullPointerException("SlidingUpPanelLayout tiene que se diferente de nulo");
     }
 
+    /**
+     * Cerrar el panel de filtro
+     */
     private void closeSlidingPanelFilterOrOder() {
         if (mPanel != null && (mPanel.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED || mPanel.getPanelState() == SlidingUpPanelLayout.PanelState.ANCHORED)) {
             mPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
