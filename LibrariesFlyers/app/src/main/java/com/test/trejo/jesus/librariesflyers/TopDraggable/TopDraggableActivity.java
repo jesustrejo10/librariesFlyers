@@ -58,8 +58,8 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
 
     private TopDraggableContract.Presenter mPresenter;
 
-    private boolean statusPrices = Boolean.FALSE;
-    private boolean statusCategory = Boolean.FALSE;
+    private boolean mStatusPrices = Boolean.FALSE;
+    private boolean mStatusCategory = Boolean.FALSE;
 
     @Override
     public int getLayout() {
@@ -126,24 +126,24 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
 
     @OnLongClick(R.id.layout_categoria)
     public boolean clickLayoutCategory() {
-        if (!statusCategory) {
+        if (!mStatusCategory) {
             mCategoryLayout.setBackgroundColor(Color.parseColor("#d8d8d8"));
-            statusCategory = Boolean.TRUE;
+            mStatusCategory = Boolean.TRUE;
         } else {
             mCategoryLayout.setBackgroundColor(Color.parseColor("#ffffff"));
-            statusCategory = Boolean.FALSE;
+            mStatusCategory = Boolean.FALSE;
         }
         return false;
     }
 
     @OnLongClick(R.id.precios_layout)
     public boolean clickLayoutPrice() {
-        if (!statusPrices) {
+        if (!mStatusPrices) {
             mPricesLayout.setBackgroundColor(Color.parseColor("#66afe9"));
-            statusPrices = Boolean.TRUE;
+            mStatusPrices = Boolean.TRUE;
         } else {
             mPricesLayout.setBackgroundColor(Color.parseColor("#ffffff"));
-            statusPrices = Boolean.FALSE;
+            mStatusPrices = Boolean.FALSE;
         }
         return false;
     }
@@ -173,6 +173,9 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         }
     }
 
+    /**
+     * Configuración del @{@link SlidingUpPanelLayout}
+     */
     private void setupPanel() {
         mPanel.setDragView(mScrollView);
         mPanel.setTouchEnabled(false);

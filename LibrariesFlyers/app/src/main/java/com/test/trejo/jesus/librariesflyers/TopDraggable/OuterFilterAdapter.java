@@ -25,18 +25,18 @@ import java.util.List;
 public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHolder> implements CompoundButton.OnCheckedChangeListener {
 
     private Context mContext;
-    private boolean listStatusStar = Boolean.FALSE;
-    private boolean listStatusPrice = Boolean.FALSE;
-    private boolean listStatusService = Boolean.FALSE;
-    private boolean listStatusRegime = Boolean.FALSE;
+    private boolean mListStatusStar = Boolean.FALSE;
+    private boolean mListStatusPrice = Boolean.FALSE;
+    private boolean mListStatusService = Boolean.FALSE;
+    private boolean mListStatusRegime = Boolean.FALSE;
 
-    private Filter filter = null;
+    private Filter mFilter = null;
 
-    private ArrayList<RecyclerObject> recyclerObjects;
-    private List<CheckBox> checkBoxListFilter;
+    private ArrayList<RecyclerObject> mRecyclerObjects;
+    private List<CheckBox> mCheckBoxListFilter;
 
     public OuterFilterAdapter(ArrayList<RecyclerObject> recyclerObjects, Context context) {
-        this.recyclerObjects = recyclerObjects;
+        this.mRecyclerObjects = recyclerObjects;
         this.mContext = context;
     }
 
@@ -49,28 +49,28 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
     @Override
     public void onBindViewHolder(final OuterFilterViewHolder holder, final int position) {
 
-        filter = new Filter();
-        checkBoxListFilter = new ArrayList<>();
+        mFilter = new Filter();
+        mCheckBoxListFilter = new ArrayList<>();
 
-        final RecyclerObject object = recyclerObjects.get(position);
+        final RecyclerObject object = mRecyclerObjects.get(position);
         holder.getDetailName().setText(object.getDescription());
 
-        checkBoxListFilter.add(holder.getOneStar());
-        checkBoxListFilter.add(holder.getTwoStar());
-        checkBoxListFilter.add(holder.getTheeeStar());
-        checkBoxListFilter.add(holder.getFourStar());
-        checkBoxListFilter.add(holder.getFiveStar());
-        checkBoxListFilter.add(holder.getAriConditioning());
-        checkBoxListFilter.add(holder.getAirportShufle());
-        checkBoxListFilter.add(holder.getIndoorPool());
-        checkBoxListFilter.add(holder.getPets());
-        checkBoxListFilter.add(holder.getPAFitness());
-        checkBoxListFilter.add(holder.getWiFI());
-        checkBoxListFilter.add(holder.getOnlyLodging());
-        checkBoxListFilter.add(holder.getBreakFast());
-        checkBoxListFilter.add(holder.getHalfPension());
-        checkBoxListFilter.add(holder.getFullBoard());
-        checkBoxListFilter.add(holder.getAllInclusive());
+        mCheckBoxListFilter.add(holder.getOneStar());
+        mCheckBoxListFilter.add(holder.getTwoStar());
+        mCheckBoxListFilter.add(holder.getTheeeStar());
+        mCheckBoxListFilter.add(holder.getFourStar());
+        mCheckBoxListFilter.add(holder.getFiveStar());
+        mCheckBoxListFilter.add(holder.getAriConditioning());
+        mCheckBoxListFilter.add(holder.getAirportShufle());
+        mCheckBoxListFilter.add(holder.getIndoorPool());
+        mCheckBoxListFilter.add(holder.getPets());
+        mCheckBoxListFilter.add(holder.getPAFitness());
+        mCheckBoxListFilter.add(holder.getWiFI());
+        mCheckBoxListFilter.add(holder.getOnlyLodging());
+        mCheckBoxListFilter.add(holder.getBreakFast());
+        mCheckBoxListFilter.add(holder.getHalfPension());
+        mCheckBoxListFilter.add(holder.getFullBoard());
+        mCheckBoxListFilter.add(holder.getAllInclusive());
 
         setChangeListener();
 
@@ -103,76 +103,7 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
 
     @Override
     public int getItemCount() {
-        return recyclerObjects.size();
-    }
-
-    private void statusMainContainerStar(OuterFilterViewHolder holder) {
-        if (listStatusStar) {
-            listStatusStar = Boolean.FALSE;
-            holder.getContainerFilter().setVisibility(View.GONE);
-            holder.getExpandIcon().animate().rotation(360).start();
-        } else {
-            listStatusStar = Boolean.TRUE;
-            holder.getContainerFilter().setVisibility(View.VISIBLE);
-            holder.getExpandIcon().animate().rotation(180).start();
-        }
-    }
-
-    private void statusMainContainerPrice(OuterFilterViewHolder holder) {
-        if (listStatusPrice) {
-            listStatusPrice = Boolean.FALSE;
-            holder.getContainerFilter().setVisibility(View.GONE);
-            holder.getExpandIcon().animate().rotation(360).start();
-        } else {
-            listStatusPrice = Boolean.TRUE;
-            holder.getContainerFilter().setVisibility(View.VISIBLE);
-            holder.getExpandIcon().animate().rotation(180).start();
-        }
-    }
-
-    private void statusMainContainerService(OuterFilterViewHolder holder) {
-        if (listStatusService) {
-            listStatusService = Boolean.FALSE;
-            holder.getContainerFilter().setVisibility(View.GONE);
-            holder.getExpandIcon().animate().rotation(360).start();
-        } else {
-            listStatusService = Boolean.TRUE;
-            holder.getContainerFilter().setVisibility(View.VISIBLE);
-            holder.getExpandIcon().animate().rotation(180).start();
-        }
-    }
-
-    private void statusMainContainerRegime(OuterFilterViewHolder holder) {
-        if (listStatusRegime) {
-            listStatusRegime = Boolean.FALSE;
-            holder.getContainerFilter().setVisibility(View.GONE);
-            holder.getExpandIcon().animate().rotation(360).start();
-        } else {
-            listStatusRegime = Boolean.TRUE;
-            holder.getContainerFilter().setVisibility(View.VISIBLE);
-            holder.getExpandIcon().animate().rotation(180).start();
-        }
-    }
-
-    /**
-     * Obtener el rango del filtro de los precios
-     *
-     * @param holder @{@link OuterFilterViewHolder}
-     */
-    private void setRangePrice(final OuterFilterViewHolder holder) {
-        holder.getRangeSeekbarPrice().setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
-            @Override
-            public void valueChanged(Number minValue, Number maxValue) {
-                holder.getPriceMax().setText(String.format("%s%s", mContext.getResources().getString(R.string.to), String.valueOf(maxValue)));
-                holder.getPriceMin().setText(String.format("%s%s", mContext.getResources().getString(R.string.from), String.valueOf(minValue)));
-            }
-        });
-        holder.getRangeSeekbarPrice().setOnRangeSeekbarFinalValueListener(new OnRangeSeekbarFinalValueListener() {
-            @Override
-            public void finalValue(Number minValue, Number maxValue) {
-                Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
-            }
-        });
+        return mRecyclerObjects.size();
     }
 
     @Override
@@ -182,46 +113,46 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
 //            Estrellas
             case R.id.checkbox_one_star:
                 if (isChecked) {
-                    filter.setOneStar(Boolean.TRUE);
+                    mFilter.setOneStar(Boolean.TRUE);
                     Toast.makeText(mContext, "Si 1 estrella", Toast.LENGTH_SHORT).show();
                 } else {
-                    filter.setOneStar(Boolean.FALSE);
+                    mFilter.setOneStar(Boolean.FALSE);
                     Toast.makeText(mContext, "No 1 estrella", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.checkbox_two_star:
                 if (isChecked) {
-                    filter.setTwoStar(Boolean.TRUE);
+                    mFilter.setTwoStar(Boolean.TRUE);
                     Toast.makeText(mContext, "Si 2 estrella", Toast.LENGTH_SHORT).show();
                 } else {
-                    filter.setTwoStar(Boolean.FALSE);
+                    mFilter.setTwoStar(Boolean.FALSE);
                     Toast.makeText(mContext, "No 2 estrella", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.checkbox_three_star:
                 if (isChecked) {
-                    filter.setTheeeStar(Boolean.TRUE);
+                    mFilter.setTheeeStar(Boolean.TRUE);
                     Toast.makeText(mContext, "Si 3 estrella", Toast.LENGTH_SHORT).show();
                 } else {
-                    filter.setTheeeStar(Boolean.FALSE);
+                    mFilter.setTheeeStar(Boolean.FALSE);
                     Toast.makeText(mContext, "No 3 estrella", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.checkbox_four_star:
                 if (isChecked) {
-                    filter.setFourStar(Boolean.TRUE);
+                    mFilter.setFourStar(Boolean.TRUE);
                     Toast.makeText(mContext, "Si 4 estrella", Toast.LENGTH_SHORT).show();
                 } else {
-                    filter.setFourStar(Boolean.FALSE);
+                    mFilter.setFourStar(Boolean.FALSE);
                     Toast.makeText(mContext, "No 4 estrella", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.checkbox_five_star:
                 if (isChecked) {
-                    filter.setFiveStar(Boolean.TRUE);
+                    mFilter.setFiveStar(Boolean.TRUE);
                     Toast.makeText(mContext, "Si 5 estrella", Toast.LENGTH_SHORT).show();
                 } else {
-                    filter.setFiveStar(Boolean.FALSE);
+                    mFilter.setFiveStar(Boolean.FALSE);
                     Toast.makeText(mContext, "No 5 estrella", Toast.LENGTH_SHORT).show();
                 }
                 break;
@@ -229,50 +160,50 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
 //            Servicios
             case R.id.checkbox_air_conditioning:
                 if (isChecked) {
-                    filter.setAriConditioning(Boolean.TRUE);
+                    mFilter.setAriConditioning(Boolean.TRUE);
                     Toast.makeText(mContext, "checkbox_air_conditioning", Toast.LENGTH_SHORT).show();
                 } else {
-                    filter.setAriConditioning(Boolean.FALSE);
+                    mFilter.setAriConditioning(Boolean.FALSE);
                 }
                 break;
             case R.id.checkbox_airport_shufle:
                 if (isChecked) {
-                    filter.setAirportShufle(Boolean.TRUE);
+                    mFilter.setAirportShufle(Boolean.TRUE);
                     Toast.makeText(mContext, "checkbox_airport_shufle", Toast.LENGTH_SHORT).show();
                 } else {
-                    filter.setAirportShufle(Boolean.FALSE);
+                    mFilter.setAirportShufle(Boolean.FALSE);
                 }
                 break;
             case R.id.checkbox_indoor_pool:
                 if (isChecked) {
-                    filter.setIndoorPool(Boolean.TRUE);
+                    mFilter.setIndoorPool(Boolean.TRUE);
                     Toast.makeText(mContext, "checkbox_indoor_pool", Toast.LENGTH_SHORT).show();
                 } else {
-                    filter.setIndoorPool(Boolean.FALSE);
+                    mFilter.setIndoorPool(Boolean.FALSE);
                 }
                 break;
             case R.id.checkbox_pets_welcome:
                 if (isChecked) {
-                    filter.setPets(Boolean.TRUE);
+                    mFilter.setPets(Boolean.TRUE);
                     Toast.makeText(mContext, "checkbox_pets_welcome", Toast.LENGTH_SHORT).show();
                 } else {
-                    filter.setPets(Boolean.FALSE);
+                    mFilter.setPets(Boolean.FALSE);
                 }
                 break;
             case R.id.checkbox_spa_fitness:
                 if (isChecked) {
-                    filter.setPAFitness(Boolean.TRUE);
+                    mFilter.setPAFitness(Boolean.TRUE);
                     Toast.makeText(mContext, "checkbox_spa_fitness", Toast.LENGTH_SHORT).show();
                 } else {
-                    filter.setPAFitness(Boolean.FALSE);
+                    mFilter.setPAFitness(Boolean.FALSE);
                 }
                 break;
             case R.id.checkbox_wi_fi:
                 if (isChecked) {
-                    filter.setWiFI(Boolean.TRUE);
+                    mFilter.setWiFI(Boolean.TRUE);
                     Toast.makeText(mContext, "checkbox_wi_fi", Toast.LENGTH_SHORT).show();
                 } else {
-                    filter.setWiFI(Boolean.FALSE);
+                    mFilter.setWiFI(Boolean.FALSE);
                 }
                 break;
 
@@ -311,29 +242,101 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
     }
 
     /**
-     * Agregar @setOnCheckedChangeListener a los @{@link CheckBox} del filtros
-     */
-    private void setChangeListener() {
-        for (CheckBox cb : checkBoxListFilter) {
-            cb.setOnCheckedChangeListener(this);
-        }
-    }
-
-    /**
      * Obtener los valores de los filtros
      *
      * @return @{@link Filter}
      */
     public Filter getFilter() {
-        return filter;
+        return mFilter;
     }
 
     /**
      * Limpiar @{@link CheckBox}
      */
     public void clearFiler() {
-        for (CheckBox cb : checkBoxListFilter) {
+        for (CheckBox cb : mCheckBoxListFilter) {
             cb.setChecked(false);
         }
     }
+
+    private void statusMainContainerStar(OuterFilterViewHolder holder) {
+        if (mListStatusStar) {
+            mListStatusStar = Boolean.FALSE;
+            holder.getContainerFilter().setVisibility(View.GONE);
+            holder.getExpandIcon().animate().rotation(360).start();
+        } else {
+            mListStatusStar = Boolean.TRUE;
+            holder.getContainerFilter().setVisibility(View.VISIBLE);
+            holder.getExpandIcon().animate().rotation(180).start();
+        }
+    }
+
+    private void statusMainContainerPrice(OuterFilterViewHolder holder) {
+        if (mListStatusPrice) {
+            mListStatusPrice = Boolean.FALSE;
+            holder.getContainerFilter().setVisibility(View.GONE);
+            holder.getExpandIcon().animate().rotation(360).start();
+        } else {
+            mListStatusPrice = Boolean.TRUE;
+            holder.getContainerFilter().setVisibility(View.VISIBLE);
+            holder.getExpandIcon().animate().rotation(180).start();
+        }
+    }
+
+    private void statusMainContainerService(OuterFilterViewHolder holder) {
+        if (mListStatusService) {
+            mListStatusService = Boolean.FALSE;
+            holder.getContainerFilter().setVisibility(View.GONE);
+            holder.getExpandIcon().animate().rotation(360).start();
+        } else {
+            mListStatusService = Boolean.TRUE;
+            holder.getContainerFilter().setVisibility(View.VISIBLE);
+            holder.getExpandIcon().animate().rotation(180).start();
+        }
+    }
+
+    private void statusMainContainerRegime(OuterFilterViewHolder holder) {
+        if (mListStatusRegime) {
+            mListStatusRegime = Boolean.FALSE;
+            holder.getContainerFilter().setVisibility(View.GONE);
+            holder.getExpandIcon().animate().rotation(360).start();
+        } else {
+            mListStatusRegime = Boolean.TRUE;
+            holder.getContainerFilter().setVisibility(View.VISIBLE);
+            holder.getExpandIcon().animate().rotation(180).start();
+        }
+    }
+
+    /**
+     * Obtener el rango del filtro de los precios
+     *
+     * @param holder @{@link OuterFilterViewHolder}
+     */
+    private void setRangePrice(final OuterFilterViewHolder holder) {
+        holder.getRangeSeekbarPrice().setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
+            @Override
+            public void valueChanged(Number minValue, Number maxValue) {
+                holder.getPriceMax().setText(String.format("%s%s", mContext.getResources().getString(R.string.to), String.valueOf(maxValue)));
+                holder.getPriceMin().setText(String.format("%s%s", mContext.getResources().getString(R.string.from), String.valueOf(minValue)));
+            }
+        });
+        holder.getRangeSeekbarPrice().setOnRangeSeekbarFinalValueListener(new OnRangeSeekbarFinalValueListener() {
+            @Override
+            public void finalValue(Number minValue, Number maxValue) {
+                Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
+            }
+        });
+    }
+
+
+    /**
+     * Agregar @setOnCheckedChangeListener a los @{@link CheckBox} del filtros
+     */
+    private void setChangeListener() {
+        for (CheckBox cb : mCheckBoxListFilter) {
+            cb.setOnCheckedChangeListener(this);
+        }
+    }
+
+
 }
