@@ -23,9 +23,6 @@ public class TopDraggablePresenter implements TopDraggableContract.Presenter {
      * @param mView View inyectada
      */
     public TopDraggablePresenter(@NonNull TopDraggableContract.View mView) {
-        if (mView == null) {
-            throw new NullPointerException("Vista no puede ser nula");
-        }
         this.mView = mView;
         this.mView.setPresenter(this); // Inyectar presenter desde si mismo
     }

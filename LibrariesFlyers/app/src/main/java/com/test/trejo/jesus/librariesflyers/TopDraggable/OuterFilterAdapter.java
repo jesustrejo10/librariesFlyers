@@ -14,6 +14,7 @@ import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarFinalValueListener;
 import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.Models.RecyclerObject;
 import com.test.trejo.jesus.librariesflyers.R;
+import com.test.trejo.jesus.librariesflyers.utils.FilterCheckBox;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.List;
  * Created by jesus on 29/08/17.
  */
 
-public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHolder> implements CompoundButton.OnCheckedChangeListener {
+public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHolder> implements FilterListener {
 
     private Context mContext;
     private boolean mListStatusStar = Boolean.FALSE;
@@ -50,29 +51,12 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
     public void onBindViewHolder(final OuterFilterViewHolder holder, final int position) {
 
         mFilter = new Filter();
-        mCheckBoxListFilter = new ArrayList<>();
 
         final RecyclerObject object = mRecyclerObjects.get(position);
         holder.getDetailName().setText(object.getDescription());
 
-        mCheckBoxListFilter.add(holder.getOneStar());
-        mCheckBoxListFilter.add(holder.getTwoStar());
-        mCheckBoxListFilter.add(holder.getTheeeStar());
-        mCheckBoxListFilter.add(holder.getFourStar());
-        mCheckBoxListFilter.add(holder.getFiveStar());
-        mCheckBoxListFilter.add(holder.getAriConditioning());
-        mCheckBoxListFilter.add(holder.getAirportShufle());
-        mCheckBoxListFilter.add(holder.getIndoorPool());
-        mCheckBoxListFilter.add(holder.getPets());
-        mCheckBoxListFilter.add(holder.getPAFitness());
-        mCheckBoxListFilter.add(holder.getWiFI());
-        mCheckBoxListFilter.add(holder.getOnlyLodging());
-        mCheckBoxListFilter.add(holder.getBreakFast());
-        mCheckBoxListFilter.add(holder.getHalfPension());
-        mCheckBoxListFilter.add(holder.getFullBoard());
-        mCheckBoxListFilter.add(holder.getAllInclusive());
+        mCheckBoxListFilter = FilterCheckBox.addCheckboxFilterToArray(holder, this);
 
-        setChangeListener();
 
         holder.getContainerFullLayout().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +88,16 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
     @Override
     public int getItemCount() {
         return mRecyclerObjects.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return mFilter;
+    }
+
+    @Override
+    public void clearFilter() {
+        FilterCheckBox.clearCheckBox(mCheckBoxListFilter);
     }
 
     @Override
@@ -241,23 +235,6 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
         }
     }
 
-    /**
-     * Obtener los valores de los filtros
-     *
-     * @return @{@link Filter}
-     */
-    public Filter getFilter() {
-        return mFilter;
-    }
-
-    /**
-     * Limpiar @{@link CheckBox}
-     */
-    public void clearFiler() {
-        for (CheckBox cb : mCheckBoxListFilter) {
-            cb.setChecked(false);
-        }
-    }
 
     private void statusMainContainerStar(OuterFilterViewHolder holder) {
         if (mListStatusStar) {
@@ -326,16 +303,6 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
                 Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
             }
         });
-    }
-
-
-    /**
-     * Agregar @setOnCheckedChangeListener a los @{@link CheckBox} del filtros
-     */
-    private void setChangeListener() {
-        for (CheckBox cb : mCheckBoxListFilter) {
-            cb.setOnCheckedChangeListener(this);
-        }
     }
 
 

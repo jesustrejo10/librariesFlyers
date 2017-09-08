@@ -155,7 +155,7 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
 
     @OnClick(R.id.cancel)
     public void onClickCancelFilterOrOrder() {
-        mAdapter.clearFiler();
+        mAdapter.clearFilter();
         closeSlidingPanelFilterOrOder();
     }
 
