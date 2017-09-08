@@ -45,7 +45,7 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
     @Bind(R.id.recycler_view)
     RecyclerView mRecyclerView;
 
-    @Bind(R.id.layout_categoria)
+    @Bind(R.id.layout_category)
     LinearLayout mCategoryLayout;
 
     @Bind(R.id.precios_layout)
@@ -124,7 +124,7 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    @OnLongClick(R.id.layout_categoria)
+    @OnLongClick(R.id.layout_category)
     public boolean clickLayoutCategory() {
         if (!mStatusCategory) {
             mCategoryLayout.setBackgroundColor(Color.parseColor("#d8d8d8"));
