@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.test.trejo.jesus.librariesflyers.BaseActivity;
@@ -25,7 +26,11 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
 
+import static java.lang.Boolean.FALSE;
+
 public class TopDraggableActivity extends BaseActivity implements TopDraggableContract.View {
+
+    public final static String TAG = TopDraggableActivity.class.getSimpleName();
 
     public final static int TIME_PANEL = 100;
 
@@ -51,8 +56,8 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
 
     private TopDraggableContract.Presenter mPresenter;
 
-    private boolean statusPrices = Boolean.FALSE;
-    private boolean statusCategory = Boolean.FALSE;
+    private boolean statusPrices = FALSE;
+    private boolean statusCategory = FALSE;
 
     @Override
     public int getLayout() {
@@ -166,7 +171,11 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
     @OnClick(R.id.apply)
     public void onClickApplyFilterOrOrder() {
         closeSlidingPanelFilterOrOder();
-        Log.d("APP", Integer.toString(mAdapter.getEstrella()));
+        if (mAdapter.getFilter() != null) {
+            Toast.makeText(getApplicationContext(), "Filtros", Toast.LENGTH_SHORT).show();
+        } else {
+            Log.d(TAG, "Filter is null");
+        }
     }
 
     private void setPanelState() {
@@ -181,4 +190,5 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
             mPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
         }
     }
+
 }

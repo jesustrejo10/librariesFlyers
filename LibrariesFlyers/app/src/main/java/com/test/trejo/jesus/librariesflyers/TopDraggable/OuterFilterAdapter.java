@@ -30,7 +30,7 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
     private boolean listStatusService = Boolean.FALSE;
     private boolean listStatusRegime = Boolean.FALSE;
 
-    private int estrella = 0;
+    private Filter filter = null;
 
     private ArrayList<RecyclerObject> recyclerObjects;
     List<CheckBox> selectedcheckBox = new ArrayList<CheckBox>();
@@ -50,7 +50,8 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
 
     @Override
     public void onBindViewHolder(final OuterFilterViewHolder holder, final int position) {
-        outerFilterViewHolder = holder;
+        filter = new Filter();
+
         final RecyclerObject object = recyclerObjects.get(position);
         holder.getDetailName().setText(object.getDescription());
 
@@ -200,38 +201,46 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
 //            Estrellas
             case R.id.checkbox_one_star:
                 if (isChecked) {
-                    estrella = 1;
+                    filter.setOneStar(Boolean.TRUE);
                     Toast.makeText(mContext, "Si 1 estrella", Toast.LENGTH_SHORT).show();
                 } else {
-                    estrella = 2;
+                    filter.setOneStar(Boolean.FALSE);
                     Toast.makeText(mContext, "No 1 estrella", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.checkbox_two_star:
                 if (isChecked) {
+                    filter.setTwoStar(Boolean.TRUE);
                     Toast.makeText(mContext, "Si 2 estrella", Toast.LENGTH_SHORT).show();
                 } else {
+                    filter.setTwoStar(Boolean.FALSE);
                     Toast.makeText(mContext, "No 2 estrella", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.checkbox_three_star:
                 if (isChecked) {
+                    filter.setTheeeStar(Boolean.TRUE);
                     Toast.makeText(mContext, "Si 3 estrella", Toast.LENGTH_SHORT).show();
                 } else {
+                    filter.setTheeeStar(Boolean.FALSE);
                     Toast.makeText(mContext, "No 3 estrella", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.checkbox_four_star:
                 if (isChecked) {
+                    filter.setFourStar(Boolean.TRUE);
                     Toast.makeText(mContext, "Si 4 estrella", Toast.LENGTH_SHORT).show();
                 } else {
+                    filter.setFourStar(Boolean.FALSE);
                     Toast.makeText(mContext, "No 4 estrella", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.checkbox_five_star:
                 if (isChecked) {
+                    filter.setFiveStar(Boolean.TRUE);
                     Toast.makeText(mContext, "Si 5 estrella", Toast.LENGTH_SHORT).show();
                 } else {
+                    filter.setFiveStar(Boolean.FALSE);
                     Toast.makeText(mContext, "No 5 estrella", Toast.LENGTH_SHORT).show();
                 }
                 break;
@@ -239,44 +248,50 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
 //            Servicios
             case R.id.checkbox_air_conditioning:
                 if (isChecked) {
+                    filter.setAriConditioning(Boolean.TRUE);
                     Toast.makeText(mContext, "checkbox_air_conditioning", Toast.LENGTH_SHORT).show();
                 } else {
-
+                    filter.setAriConditioning(Boolean.FALSE);
                 }
                 break;
             case R.id.checkbox_airport_shufle:
                 if (isChecked) {
+                    filter.setAirportShufle(Boolean.TRUE);
                     Toast.makeText(mContext, "checkbox_airport_shufle", Toast.LENGTH_SHORT).show();
                 } else {
-
+                    filter.setAirportShufle(Boolean.FALSE);
                 }
                 break;
             case R.id.checkbox_indoor_pool:
                 if (isChecked) {
+                    filter.setIndoorPool(Boolean.TRUE);
                     Toast.makeText(mContext, "checkbox_indoor_pool", Toast.LENGTH_SHORT).show();
                 } else {
-
+                    filter.setIndoorPool(Boolean.FALSE);
                 }
                 break;
             case R.id.checkbox_pets_welcome:
                 if (isChecked) {
+                    filter.setPets(Boolean.TRUE);
                     Toast.makeText(mContext, "checkbox_pets_welcome", Toast.LENGTH_SHORT).show();
                 } else {
-
+                    filter.setPets(Boolean.FALSE);
                 }
                 break;
             case R.id.checkbox_spa_fitness:
                 if (isChecked) {
+                    filter.setPAFitness(Boolean.TRUE);
                     Toast.makeText(mContext, "checkbox_spa_fitness", Toast.LENGTH_SHORT).show();
                 } else {
-
+                    filter.setPAFitness(Boolean.FALSE);
                 }
                 break;
             case R.id.checkbox_wi_fi:
                 if (isChecked) {
+                    filter.setWiFI(Boolean.TRUE);
                     Toast.makeText(mContext, "checkbox_wi_fi", Toast.LENGTH_SHORT).show();
                 } else {
-
+                    filter.setWiFI(Boolean.FALSE);
                 }
                 break;
 
@@ -314,8 +329,8 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
         }
     }
 
-    public int getEstrella() {
-        return estrella;
+    public Filter getFilter() {
+        return filter;
     }
 
     public void clearFiler() {
