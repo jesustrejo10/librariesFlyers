@@ -1,24 +1,42 @@
 package com.test.trejo.jesus.librariesflyers.TopDraggable.search;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
+import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
+import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarFinalValueListener;
+import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.test.trejo.jesus.librariesflyers.BaseActivity;
+import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.Models.RecyclerObject;
 import com.test.trejo.jesus.librariesflyers.R;
+import com.test.trejo.jesus.librariesflyers.TopDraggable.Filter;
+import com.test.trejo.jesus.librariesflyers.TopDraggable.TopDraggableContract;
 import com.test.trejo.jesus.librariesflyers.utils.ExpandableOpenClose;
 import com.test.trejo.jesus.librariesflyers.utils.StatesPanel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class SearchHotelActivity extends BaseActivity {
+
+public class SearchHotelActivity extends BaseActivity implements CompoundButton.OnCheckedChangeListener, RadioGroup.OnCheckedChangeListener, TopDraggableContract.View {
 
     public final static String TAG = SearchHotelActivity.class.getSimpleName();
 
@@ -73,6 +91,88 @@ public class SearchHotelActivity extends BaseActivity {
     @Bind(R.id.image_expand_category_order)
     ImageView imageExpandCategoryOrder;
 
+    //################################################ Filtros de Estrellas
+    @Bind(R.id.checkbox_one_star)
+    CheckBox oneStar;
+    @Bind(R.id.checkbox_two_star)
+    CheckBox twoStar;
+    @Bind(R.id.checkbox_three_star)
+    CheckBox theeeStar;
+    @Bind(R.id.checkbox_four_star)
+    CheckBox fourStar;
+    @Bind(R.id.checkbox_five_star)
+    CheckBox fiveStar;
+
+    //################################################ Filtros de Precios
+    @Bind(R.id.range_seekbar_price)
+    CrystalRangeSeekbar rangeSeekbarPrice;
+
+    @Bind(R.id.minimo)
+    TextView priceMin;
+
+    @Bind(R.id.maximo)
+    TextView priceMax;
+
+    //################################################ Filtros de Servicios
+    @Bind(R.id.checkbox_air_conditioning)
+    CheckBox ariConditioning;
+
+    @Bind(R.id.checkbox_airport_shufle)
+    CheckBox airportShufle;
+
+    @Bind(R.id.checkbox_indoor_pool)
+    CheckBox indoorPool;
+
+    @Bind(R.id.checkbox_pets_welcome)
+    CheckBox pets;
+
+    @Bind(R.id.checkbox_spa_fitness)
+    CheckBox paFitness;
+
+    @Bind(R.id.checkbox_wi_fi)
+    CheckBox wiFI;
+
+    //################################################ Filtros de Regime
+    @Bind(R.id.checkbox_only_lodging)
+    CheckBox onlyLodging;
+
+    @Bind(R.id.checkbox_breakfast)
+    CheckBox breakFast;
+
+    @Bind(R.id.checkbox_half_pension)
+    CheckBox halfPension;
+
+    @Bind(R.id.checkbox_full_board)
+    CheckBox fullBoard;
+
+    @Bind(R.id.checkbox_all_inclusive)
+    CheckBox allInclusive;
+
+    @Bind(R.id.checkbox_all_inclusive)
+    RadioButton lowestPrice;
+
+    @Bind(R.id.checkbox_all_inclusive)
+    RadioButton higherPrice;
+
+    @Bind(R.id.radio_button_one_star)
+    RadioButton rbOneStart;
+
+    @Bind(R.id.radio_button_two_star)
+    RadioButton rbTwoStart;
+
+    @Bind(R.id.radio_button_three_star)
+    RadioButton rbThreeStart;
+
+    @Bind(R.id.radio_button_four_star)
+    RadioButton rbFourtart;
+
+    @Bind(R.id.radio_button_five_star)
+    RadioButton rbFiveStart;
+
+    private List<CheckBox> mCheckBoxListFilter;
+    private List<RadioButton> mRadioButtonListOrder;
+    private Filter mFilter;
+
     @Override
     public int getLayout() {
         return R.layout.activity_search_hotel;
@@ -82,8 +182,53 @@ public class SearchHotelActivity extends BaseActivity {
     public void onCreateView(Bundle savedInstanceState) {
         setToolbar(mToolbar);
         setTitle(getResources().getString(R.string.hotels_available));
+        setupInit();
+    }
+
+    private void setupInit() {
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mCheckBoxListFilter = new ArrayList<>();
+                mRadioButtonListOrder = new ArrayList<>();
+                mFilter = new Filter();
+
+                mCheckBoxListFilter.add(oneStar);
+                mCheckBoxListFilter.add(twoStar);
+                mCheckBoxListFilter.add(theeeStar);
+                mCheckBoxListFilter.add(fourStar);
+                mCheckBoxListFilter.add(fiveStar);
+
+                mCheckBoxListFilter.add(ariConditioning);
+                mCheckBoxListFilter.add(airportShufle);
+                mCheckBoxListFilter.add(indoorPool);
+                mCheckBoxListFilter.add(pets);
+                mCheckBoxListFilter.add(paFitness);
+                mCheckBoxListFilter.add(wiFI);
+
+                mCheckBoxListFilter.add(onlyLodging);
+                mCheckBoxListFilter.add(breakFast);
+                mCheckBoxListFilter.add(halfPension);
+                mCheckBoxListFilter.add(fullBoard);
+                mCheckBoxListFilter.add(allInclusive);
+
+                mRadioButtonListOrder.add(lowestPrice);
+                mRadioButtonListOrder.add(higherPrice);
+                mRadioButtonListOrder.add(rbOneStart);
+                mRadioButtonListOrder.add(rbTwoStart);
+                mRadioButtonListOrder.add(rbThreeStart);
+                mRadioButtonListOrder.add(rbFourtart);
+                mRadioButtonListOrder.add(rbFiveStart);
+
+            }
+        });
+
+        setChangeCheckBoxListener();
+        setRadioButtonChangeListener();
         setupPanel();
         setupExpandable();
+        setRangePrice();
     }
 
     @Override
@@ -107,6 +252,137 @@ public class SearchHotelActivity extends BaseActivity {
     public void onBackPressed() {
         StatesPanel.closeSlidingPanelFilterOrOder(mPanel);
         super.onBackPressed();
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        switch (buttonView.getId()) {
+
+//            Estrellas
+            case R.id.checkbox_one_star:
+                if (isChecked) {
+                    mFilter.setOneStar(Boolean.TRUE);
+                    Log.d(TAG, "mFilter.setOneStar(Boolean.TRUE);");
+                } else {
+                    mFilter.setOneStar(Boolean.FALSE);
+                    Log.d(TAG, "mFilter.setOneStar(Boolean.FALSE);");
+                }
+                break;
+            case R.id.checkbox_two_star:
+                if (isChecked) {
+                    mFilter.setTwoStar(Boolean.TRUE);
+                } else {
+                    mFilter.setTwoStar(Boolean.FALSE);
+                }
+                break;
+            case R.id.checkbox_three_star:
+                if (isChecked) {
+                    mFilter.setTheeeStar(Boolean.TRUE);
+                } else {
+                    mFilter.setTheeeStar(Boolean.FALSE);
+                }
+                break;
+            case R.id.checkbox_four_star:
+                if (isChecked) {
+                    mFilter.setFourStar(Boolean.TRUE);
+                } else {
+                    mFilter.setFourStar(Boolean.FALSE);
+                }
+                break;
+            case R.id.checkbox_five_star:
+                if (isChecked) {
+                    mFilter.setFiveStar(Boolean.TRUE);
+                } else {
+                    mFilter.setFiveStar(Boolean.FALSE);
+                }
+                break;
+
+//            Servicios
+            case R.id.checkbox_air_conditioning:
+                if (isChecked) {
+                    mFilter.setAriConditioning(Boolean.TRUE);
+                } else {
+                    mFilter.setAriConditioning(Boolean.FALSE);
+                }
+                break;
+            case R.id.checkbox_airport_shufle:
+                if (isChecked) {
+                    mFilter.setAirportShufle(Boolean.TRUE);
+                } else {
+                    mFilter.setAirportShufle(Boolean.FALSE);
+                }
+                break;
+            case R.id.checkbox_indoor_pool:
+                if (isChecked) {
+                    mFilter.setIndoorPool(Boolean.TRUE);
+                } else {
+                    mFilter.setIndoorPool(Boolean.FALSE);
+                }
+                break;
+            case R.id.checkbox_pets_welcome:
+                if (isChecked) {
+                    mFilter.setPets(Boolean.TRUE);
+                } else {
+                    mFilter.setPets(Boolean.FALSE);
+                }
+                break;
+            case R.id.checkbox_spa_fitness:
+                if (isChecked) {
+                    mFilter.setPAFitness(Boolean.TRUE);
+                } else {
+                    mFilter.setPAFitness(Boolean.FALSE);
+                }
+                break;
+            case R.id.checkbox_wi_fi:
+                if (isChecked) {
+                    mFilter.setWiFI(Boolean.TRUE);
+                } else {
+                    mFilter.setWiFI(Boolean.FALSE);
+                }
+                break;
+
+//            Regimen
+            case R.id.checkbox_only_lodging:
+                if (isChecked) {
+                } else {
+
+                }
+            case R.id.checkbox_breakfast:
+                if (isChecked) {
+                } else {
+
+                }
+            case R.id.checkbox_half_pension:
+                if (isChecked) {
+                } else {
+
+                }
+            case R.id.checkbox_full_board:
+                if (isChecked) {
+                } else {
+
+                }
+            case R.id.checkbox_all_inclusive:
+                if (isChecked) {
+                } else {
+
+                }
+        }
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+
+    }
+
+    @Override
+    public void setPresenter(@NonNull TopDraggableContract.Presenter presenter) {
+
+    }
+
+    @Override
+    public void setLoadRecycler(@NonNull ArrayList<RecyclerObject> mDataSet) {
+
     }
 
     @OnClick(R.id.container_start)
@@ -144,6 +420,18 @@ public class SearchHotelActivity extends BaseActivity {
         expandableLayoutCategoryOrder.toggle();
     }
 
+    @OnClick(R.id.cancel)
+    public void onClickCancelFilterOrOrder() {
+        StatesPanel.closeSlidingPanelFilterOrOder(mPanel);
+        clearCheckBox();
+        expandableLayoutStart.collapse();
+    }
+
+    @OnClick(R.id.apply)
+    public void onClickApplyFilterOrOrder() {
+
+    }
+
     /**
      * Configuración del @{@link SlidingUpPanelLayout}
      */
@@ -167,9 +455,45 @@ public class SearchHotelActivity extends BaseActivity {
         ExpandableOpenClose.setExpandableListener(expandableLayoutService, imageExpandService);
         ExpandableOpenClose.setExpandableListener(expandableLayoutRegime, imageExpandRegime);
         ExpandableOpenClose.setExpandableListener(expandableLayoutHotelShain, imageExpandHotelShain);
-
         ExpandableOpenClose.setExpandableListener(expandableLayoutPriceOrder, imageExpandPriceOrder);
         ExpandableOpenClose.setExpandableListener(expandableLayoutCategoryOrder, imageExpandCategoryOrder);
+    }
+
+    /**
+     * Obtener el rango del filtro de los precios
+     **/
+    private void setRangePrice() {
+        rangeSeekbarPrice.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
+            @Override
+            public void valueChanged(Number minValue, Number maxValue) {
+                priceMax.setText(String.format("%s%s", getResources().getString(R.string.to), String.valueOf(maxValue)));
+                priceMin.setText(String.format("%s%s", getResources().getString(R.string.from), String.valueOf(minValue)));
+            }
+        });
+        rangeSeekbarPrice.setOnRangeSeekbarFinalValueListener(new OnRangeSeekbarFinalValueListener() {
+            @Override
+            public void finalValue(Number minValue, Number maxValue) {
+                Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
+            }
+        });
+    }
+
+    private void setChangeCheckBoxListener() {
+        for (CheckBox cb : mCheckBoxListFilter) {
+            cb.setOnCheckedChangeListener(this);
+        }
+    }
+
+    private void setRadioButtonChangeListener() {
+        for (RadioButton rb : mRadioButtonListOrder) {
+            rb.setOnCheckedChangeListener(this);
+        }
+    }
+
+    public void clearCheckBox() {
+        for (CheckBox cb : mCheckBoxListFilter) {
+            cb.setChecked(false);
+        }
     }
 
 

@@ -1,5 +1,6 @@
 package com.test.trejo.jesus.librariesflyers.utils;
 
+import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
 import com.github.aakira.expandablelayout.ExpandableLayoutListenerAdapter;
@@ -13,7 +14,7 @@ import static com.test.trejo.jesus.librariesflyers.utils.ExpandableAnimation.cre
 
 public class ExpandableOpenClose {
 
-    public static void setExpandableListener(ExpandableRelativeLayout expandableRelativeLayout, final ImageView imageView) {
+    public static void setExpandableListener(@NonNull ExpandableRelativeLayout expandableRelativeLayout, @NonNull final ImageView imageView) {
         expandableRelativeLayout.setListener(new ExpandableLayoutListenerAdapter() {
             @Override
             public void onPreOpen() {

@@ -290,7 +290,7 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
 //        holder.getRangeSeekbarPrice().setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
 //            @Override
 //            public void valueChanged(Number minValue, Number maxValue) {
-//                holder.getPriceMax().setText(String.format("%s%s", mContext.getResources().getString(R.string.to), String.valueOf(maxValue)));
+//                te.setText(String.format("%s%s", mContext.getResources().getString(R.string.to), String.valueOf(maxValue)));
 //                holder.getPriceMin().setText(String.format("%s%s", mContext.getResources().getString(R.string.from), String.valueOf(minValue)));
 //            }
 //        });

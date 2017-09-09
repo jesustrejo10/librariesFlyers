@@ -1,25 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/filter_regime"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/filter_price"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#EFEFEF"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
     android:orientation="vertical"
     android:visibility="visible">
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E1E1E1" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:orientation="vertical">
+        android:background="@color/gray_layout"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="5dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/minimo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="left"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/maximo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="right"
+                android:textColor="@color/black"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+        <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+            android:id="@+id/range_seekbar_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bar_color="@android:color/darker_gray"
+            app:bar_highlight_color="@color/light_blue"
+            app:left_thumb_color="@color/white"
+            app:left_thumb_color_pressed="@color/gray_background"
+            app:max_value="10000"
+            app:min_value="0"
+            app:right_thumb_color="@color/white"
+            app:right_thumb_color_pressed="@color/gray_background" />
 
     </LinearLayout>
-
 
 </LinearLayout>

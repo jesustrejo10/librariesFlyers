@@ -206,9 +206,7 @@
                 app:ael_interpolator="accelerate"
                 app:ael_orientation="vertical">
 
-                <include
-                    android:id="@+id/expandableLayoutPrice"
-                    layout="@layout/content_service_filter" />
+                <include layout="@layout/content_price_filter" />
 
             </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
@@ -342,7 +340,7 @@
                 app:ael_interpolator="accelerate"
                 app:ael_orientation="vertical">
 
-                <include layout="@layout/content_service_filter" />
+                <include layout="@layout/content_regime_filter" />
 
             </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 
@@ -549,7 +547,7 @@
                 app:ael_interpolator="accelerate"
                 app:ael_orientation="vertical">
 
-                <include layout="@layout/content_category_order"/>
+                <include layout="@layout/content_category_order" />
 
             </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
 

@@ -48,11 +48,11 @@ public class OuterFilterViewHolder extends RecyclerView.ViewHolder {
     //################################################
 
     //################################################ Filtros de Precios
-//    @Bind(R.id.filter_price)
-//    LinearLayout ContainerFilterPrice;
-//
-//    @Bind(R.id.range_seekbar_price)
-//    CrystalRangeSeekbar RangeSeekbarPrice;
+    @Bind(R.id.filter_price)
+    LinearLayout ContainerFilterPrice;
+
+    @Bind(R.id.range_seekbar_price)
+    CrystalRangeSeekbar RangeSeekbarPrice;
 
     @Bind(R.id.minimo)
     TextView PriceMin;
