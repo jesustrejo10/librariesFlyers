@@ -53,4 +53,8 @@
     <string name="full_board">Full board</string>
     <string name="all_inclusive">All inclusive</string>
 
+    <!--Order Price -->
+    <string name="higher_price">Higher Price</string>
+    <string name="lowest_price">Lowest Price</string>
+
 </resources>

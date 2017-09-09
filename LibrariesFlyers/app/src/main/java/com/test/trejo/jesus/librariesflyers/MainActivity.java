@@ -17,6 +17,7 @@ import com.test.trejo.jesus.librariesflyers.LonelyEffect.LonelyEffectActivity;
 import com.test.trejo.jesus.librariesflyers.ToolbarEffect.ToolbarEffectActivity;
 import com.test.trejo.jesus.librariesflyers.TabDraggable.TabActivityActionBar;
 import com.test.trejo.jesus.librariesflyers.TopDraggable.TopDraggableActivity;
+import com.test.trejo.jesus.librariesflyers.TopDraggable.search.SearchHotelActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(getBaseContext(), TopDraggableActivity.class);
+        Intent intent = new Intent(getBaseContext(), SearchHotelActivity.class);
+
         startActivity(intent);
 
 //        lonelyButton = (Button) findViewById(R.id.button2);

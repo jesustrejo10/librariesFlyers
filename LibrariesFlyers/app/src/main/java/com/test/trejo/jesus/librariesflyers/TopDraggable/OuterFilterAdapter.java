@@ -63,15 +63,17 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
         holder.getContainerFullLayout().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, Integer.toString(object.getId()));
+
                 switch (object.getId()) {
                     case 1:
                         statusMainContainerStar(holder);
                         holder.getContainerFilterStar().setVisibility(View.VISIBLE);
                         break;
                     case 2:
-                        statusMainContainerPrice(holder);
-                        holder.getContainerFilterPrice().setVisibility(View.VISIBLE);
-                        setRangePrice(holder);
+//                        statusMainContainerPrice(holder);
+//                        holder.getContainerFilterPrice().setVisibility(View.VISIBLE);
+//                        setRangePrice(holder);
                         break;
                     case 3:
                         statusMainContainerService(holder);
@@ -284,20 +286,20 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
      *
      * @param holder @{@link OuterFilterViewHolder}
      */
-    private void setRangePrice(final OuterFilterViewHolder holder) {
-        holder.getRangeSeekbarPrice().setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
-            @Override
-            public void valueChanged(Number minValue, Number maxValue) {
-                holder.getPriceMax().setText(String.format("%s%s", mContext.getResources().getString(R.string.to), String.valueOf(maxValue)));
-                holder.getPriceMin().setText(String.format("%s%s", mContext.getResources().getString(R.string.from), String.valueOf(minValue)));
-            }
-        });
-        holder.getRangeSeekbarPrice().setOnRangeSeekbarFinalValueListener(new OnRangeSeekbarFinalValueListener() {
-            @Override
-            public void finalValue(Number minValue, Number maxValue) {
-                Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
-            }
-        });
-    }
+//    private void setRangePrice(final OuterFilterViewHolder holder) {
+//        holder.getRangeSeekbarPrice().setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
+//            @Override
+//            public void valueChanged(Number minValue, Number maxValue) {
+//                holder.getPriceMax().setText(String.format("%s%s", mContext.getResources().getString(R.string.to), String.valueOf(maxValue)));
+//                holder.getPriceMin().setText(String.format("%s%s", mContext.getResources().getString(R.string.from), String.valueOf(minValue)));
+//            }
+//        });
+//        holder.getRangeSeekbarPrice().setOnRangeSeekbarFinalValueListener(new OnRangeSeekbarFinalValueListener() {
+//            @Override
+//            public void finalValue(Number minValue, Number maxValue) {
+//                Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
+//            }
+//        });
+//    }
 
 }
