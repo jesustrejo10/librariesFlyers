@@ -7,94 +7,11 @@
     android:orientation="vertical"
     android:visibility="visible">
 
-    <worker8.com.github.radiogroupplus.RadioGroupPlus
-        android:id="@+id/radio_group_plus_category"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- 1 start-->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.8"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:paddingBottom="5dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="5dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.8">
-
-                    <TextView
-                        android:id="@+id/detail_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/one_star"
-                        android:textColor="#030303" />
-
-                    <android.support.v4.widget.Space
-                        android:layout_width="6.6dp"
-                        android:layout_height="match_parent" />
-
-                    <com.test.trejo.jesus.librariesflyers.widget.AppCompatRatingBarCustom
-                        android:id="@+id/ratingBar"
-                        style="@style/Widget.AppCompat.RatingBar.Small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:clickable="true"
-                        android:gravity="center"
-                        android:isIndicator="true"
-                        android:numStars="1"
-                        android:paddingTop="1dp"
-                        android:rating="1"
-                        android:stepSize="0.1" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.2"
-                    android:gravity="right"
-                    android:paddingRight="5dp">
-
-                    <RadioButton
-                        android:id="@+id/radio_button_one_star"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/checkBoxStyle" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E1E1E1" />
-
-
-        </LinearLayout><!-- 1 start-->
-
-        <!-- 2 start-->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -125,25 +42,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/two_stars"
+                        android:text="5 to 1"
                         android:textColor="#030303" />
-
-                    <android.support.v4.widget.Space
-                        android:layout_width="6.6dp"
-                        android:layout_height="match_parent" />
-
-                    <com.test.trejo.jesus.librariesflyers.widget.AppCompatRatingBarCustom
-                        style="@style/Widget.AppCompat.RatingBar.Small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:clickable="true"
-                        android:gravity="center"
-                        android:isIndicator="true"
-                        android:numStars="2"
-                        android:paddingTop="1dp"
-                        android:rating="2"
-                        android:stepSize="0.1" />
 
                 </LinearLayout>
 
@@ -155,8 +55,7 @@
                     android:gravity="right"
                     android:paddingRight="5dp">
 
-                    <RadioButton
-                        android:id="@+id/radio_button_two_star"
+                    <CheckBox
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:theme="@style/checkBoxStyle" />
@@ -165,251 +64,473 @@
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E1E1E1" />
-
-
-        </LinearLayout><!-- 2 start-->
-
-        <!-- 3 start-->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.8"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:paddingBottom="5dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="5dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.8">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/three_stars"
-                        android:textColor="#030303" />
-
-                    <android.support.v4.widget.Space
-                        android:layout_width="6.6dp"
-                        android:layout_height="match_parent" />
-
-                    <com.test.trejo.jesus.librariesflyers.widget.AppCompatRatingBarCustom
-                        style="@style/Widget.AppCompat.RatingBar.Small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:clickable="true"
-                        android:gravity="center"
-                        android:isIndicator="true"
-                        android:numStars="3"
-                        android:paddingTop="1dp"
-                        android:rating="3"
-                        android:stepSize="0.1" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.2"
-                    android:gravity="right"
-                    android:paddingRight="5dp">
-
-                    <RadioButton
-                        android:id="@+id/radio_button_three_star"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/checkBoxStyle" />
-
-                </LinearLayout>
-
-            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#E1E1E1" />
 
-
-        </LinearLayout><!-- 3 start-->
-
-        <!-- 4 start-->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:orientation="vertical">
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.8"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:paddingBottom="5dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="5dp">
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.8">
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.8"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="5dp">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/four_stars"
-                        android:textColor="#030303" />
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.8">
 
-                    <android.support.v4.widget.Space
-                        android:layout_width="6.6dp"
-                        android:layout_height="match_parent" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1 to 5"
+                            android:textColor="#030303" />
 
-                    <com.test.trejo.jesus.librariesflyers.widget.AppCompatRatingBarCustom
-                        style="@style/Widget.AppCompat.RatingBar.Small"
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:clickable="true"
-                        android:gravity="center"
-                        android:isIndicator="true"
-                        android:numStars="4"
-                        android:paddingTop="1dp"
-                        android:rating="4"
-                        android:stepSize="0.1" />
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.2"
+                        android:gravity="right"
+                        android:paddingRight="5dp">
 
-                </LinearLayout>
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/checkBoxStyle" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.2"
-                    android:gravity="right"
-                    android:paddingRight="5dp">
-
-                    <RadioButton
-                        android:id="@+id/radio_button_four_star"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/checkBoxStyle" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <View
+            <worker8.com.github.radiogroupplus.RadioGroupPlus
+                android:id="@+id/radio_group_plus_category"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E1E1E1" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-
-        </LinearLayout><!-- 4 start-->
-
-        <!-- 5 start-->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.8"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:paddingBottom="5dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="5dp">
+                <!-- 1 start-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E1E1E1" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.8">
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/five_stars"
-                        android:textColor="#030303" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.8"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp">
 
-                    <android.support.v4.widget.Space
-                        android:layout_width="6.6dp"
-                        android:layout_height="match_parent" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.8">
 
-                    <com.test.trejo.jesus.librariesflyers.widget.AppCompatRatingBarCustom
-                        style="@style/Widget.AppCompat.RatingBar.Small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:clickable="true"
-                        android:gravity="center"
-                        android:isIndicator="true"
-                        android:numStars="5"
-                        android:paddingTop="1dp"
-                        android:rating="5"
-                        android:stepSize="0.1" />
+                            <TextView
+                                android:id="@+id/detail_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/one_star"
+                                android:textColor="#030303" />
 
-                </LinearLayout>
+                            <android.support.v4.widget.Space
+                                android:layout_width="6.6dp"
+                                android:layout_height="match_parent" />
+
+                            <com.test.trejo.jesus.librariesflyers.widget.AppCompatRatingBarCustom
+                                android:id="@+id/ratingBar"
+                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:isIndicator="true"
+                                android:numStars="1"
+                                android:paddingTop="1dp"
+                                android:rating="1"
+                                android:stepSize="0.1" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.2"
+                            android:gravity="right"
+                            android:paddingRight="5dp">
+
+                            <RadioButton
+                                android:id="@+id/radio_button_one_star"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:theme="@style/checkBoxStyle" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E1E1E1" />
+
+
+                </LinearLayout><!-- 1 start-->
+
+                <!-- 2 start-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E1E1E1" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.2"
-                    android:gravity="right"
-                    android:paddingRight="5dp">
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/radio_button_five_star"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/checkBoxStyle" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.8"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp">
 
-                </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.8">
 
-            </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/two_stars"
+                                android:textColor="#030303" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E1E1E1" />
+                            <android.support.v4.widget.Space
+                                android:layout_width="6.6dp"
+                                android:layout_height="match_parent" />
+
+                            <com.test.trejo.jesus.librariesflyers.widget.AppCompatRatingBarCustom
+                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:isIndicator="true"
+                                android:numStars="2"
+                                android:paddingTop="1dp"
+                                android:rating="2"
+                                android:stepSize="0.1" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.2"
+                            android:gravity="right"
+                            android:paddingRight="5dp">
+
+                            <RadioButton
+                                android:id="@+id/radio_button_two_star"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:theme="@style/checkBoxStyle" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E1E1E1" />
 
 
-        </LinearLayout><!-- 5 start-->
+                </LinearLayout><!-- 2 start-->
 
-    </worker8.com.github.radiogroupplus.RadioGroupPlus>
+                <!-- 3 start-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E1E1E1" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.8"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.8">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/three_stars"
+                                android:textColor="#030303" />
+
+                            <android.support.v4.widget.Space
+                                android:layout_width="6.6dp"
+                                android:layout_height="match_parent" />
+
+                            <com.test.trejo.jesus.librariesflyers.widget.AppCompatRatingBarCustom
+                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:isIndicator="true"
+                                android:numStars="3"
+                                android:paddingTop="1dp"
+                                android:rating="3"
+                                android:stepSize="0.1" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.2"
+                            android:gravity="right"
+                            android:paddingRight="5dp">
+
+                            <RadioButton
+                                android:id="@+id/radio_button_three_star"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:theme="@style/checkBoxStyle" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E1E1E1" />
+
+
+                </LinearLayout><!-- 3 start-->
+
+                <!-- 4 start-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E1E1E1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.8"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.8">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/four_stars"
+                                android:textColor="#030303" />
+
+                            <android.support.v4.widget.Space
+                                android:layout_width="6.6dp"
+                                android:layout_height="match_parent" />
+
+                            <com.test.trejo.jesus.librariesflyers.widget.AppCompatRatingBarCustom
+                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:isIndicator="true"
+                                android:numStars="4"
+                                android:paddingTop="1dp"
+                                android:rating="4"
+                                android:stepSize="0.1" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.2"
+                            android:gravity="right"
+                            android:paddingRight="5dp">
+
+                            <RadioButton
+                                android:id="@+id/radio_button_four_star"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:theme="@style/checkBoxStyle" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E1E1E1" />
+
+
+                </LinearLayout><!-- 4 start-->
+
+                <!-- 5 start-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E1E1E1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.8"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.8">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/five_stars"
+                                android:textColor="#030303" />
+
+                            <android.support.v4.widget.Space
+                                android:layout_width="6.6dp"
+                                android:layout_height="match_parent" />
+
+                            <com.test.trejo.jesus.librariesflyers.widget.AppCompatRatingBarCustom
+                                style="@style/Widget.AppCompat.RatingBar.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:isIndicator="true"
+                                android:numStars="5"
+                                android:paddingTop="1dp"
+                                android:rating="5"
+                                android:stepSize="0.1" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.2"
+                            android:gravity="right"
+                            android:paddingRight="5dp">
+
+                            <RadioButton
+                                android:id="@+id/radio_button_five_star"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:theme="@style/checkBoxStyle" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E1E1E1" />
+
+
+                </LinearLayout><!-- 5 start-->
+
+            </worker8.com.github.radiogroupplus.RadioGroupPlus>
+
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

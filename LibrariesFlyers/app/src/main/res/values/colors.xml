@@ -15,4 +15,8 @@
     <color name="toolbar_color">#2b6ec1</color>
     <color name="yellow">#ffff00</color>
     <color name="dark_shape_transparent">#50000000</color>
+
+    <color name="gray_line_2">#4D979797</color>
+    <color name="star">#FDC60A</color>
+
 </resources>

@@ -32,9 +32,9 @@ public class AppCompatRatingBarCustom extends android.support.v7.widget.AppCompa
 
     private void init(Context context) {
         LayerDrawable stars = (LayerDrawable) this.getProgressDrawable();
-        DrawableCompat.setTint(stars.getDrawable(2), ContextCompat.getColor(context, R.color.yellow));
-        stars.getDrawable(0).setColorFilter(ContextCompat.getColor(context, R.color.yellow), PorterDuff.Mode.SRC_ATOP);
-        stars.getDrawable(2).setColorFilter(ContextCompat.getColor(context, R.color.yellow), PorterDuff.Mode.SRC_ATOP);
-        stars.getDrawable(1).setColorFilter(ContextCompat.getColor(context, R.color.yellow), PorterDuff.Mode.SRC_ATOP);
+        DrawableCompat.setTint(stars.getDrawable(2), ContextCompat.getColor(context, R.color.star));
+        stars.getDrawable(0).setColorFilter(ContextCompat.getColor(context, R.color.star), PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(2).setColorFilter(ContextCompat.getColor(context, R.color.star), PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(1).setColorFilter(ContextCompat.getColor(context, R.color.star), PorterDuff.Mode.SRC_ATOP);
     }
 }

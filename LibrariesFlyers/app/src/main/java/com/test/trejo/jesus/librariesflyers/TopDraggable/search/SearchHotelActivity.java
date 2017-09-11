@@ -1,6 +1,7 @@
 package com.test.trejo.jesus.librariesflyers.TopDraggable.search;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
@@ -27,6 +28,7 @@ import com.test.trejo.jesus.librariesflyers.TopDraggable.model.Expandables;
 import com.test.trejo.jesus.librariesflyers.TopDraggable.model.Filter;
 import com.test.trejo.jesus.librariesflyers.TopDraggable.model.Sort;
 import com.test.trejo.jesus.librariesflyers.TopDraggable.presenter.SearchHotelPresenter;
+import com.test.trejo.jesus.librariesflyers.utils.Colors;
 import com.test.trejo.jesus.librariesflyers.utils.ExpandableOpenClose;
 import com.test.trejo.jesus.librariesflyers.utils.FilterUtility;
 import com.test.trejo.jesus.librariesflyers.utils.SortUtility;
@@ -43,15 +45,6 @@ import worker8.com.github.radiogroupplus.RadioGroupPlus;
 public class SearchHotelActivity extends BaseActivity implements CompoundButton.OnCheckedChangeListener, RadioGroupPlus.OnCheckedChangeListener, SearchHotelContract.View {
 
     public final static String TAG = SearchHotelActivity.class.getSimpleName();
-
-    @Bind(R.id.toolbar)
-    Toolbar mToolbar;
-
-    @Bind(R.id.sliding_layout)
-    SlidingUpPanelLayout mPanel;
-
-    @Bind(R.id.scroll_view)
-    ScrollView mScrollView;
 
     @Bind(R.id.expandableLayoutStart)
     ExpandableRelativeLayout expandableLayoutStart;
@@ -181,6 +174,15 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
     @Bind(R.id.radio_group_plus_category)
     RadioGroupPlus radioGroupPlusCategory;
 
+    @Bind(R.id.toolbar)
+    Toolbar mToolbar;
+
+    @Bind(R.id.sliding_layout)
+    SlidingUpPanelLayout mPanel;
+
+    @Bind(R.id.scroll_view)
+    ScrollView mScrollView;
+
     private List<CheckBox> mCheckBoxListFilter;
     private List<RadioButton> mRadioButtonListSort;
     private List<Expandables> mExpandablesList;
@@ -258,6 +260,12 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
                 mRadioButtonListSort.add(rbFourStart);
                 mRadioButtonListSort.add(rbFiveStart);
 
+                Colors.applyColorFilter(imageExpandStart);
+                Colors.applyColorFilter(imageExpandPrice);
+                Colors.applyColorFilter(imageExpandService);
+                Colors.applyColorFilter(imageExpandRegime);
+                Colors.applyColorFilter(imageExpandHotelShain);
+                Colors.applyColorFilter(imageExpandPriceOrder);
             }
         });
 
@@ -526,8 +534,8 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
 
     @OnClick(R.id.container_distance_order)
     public void onClickContainerDistanceOrder() {
-        clearCollapseAndResetView();
         startActivity(new Intent(SearchHotelActivity.this, DistanceActivity.class));
+//        clearCollapseAndResetView();
     }
 
     @OnClick(R.id.cancel)
