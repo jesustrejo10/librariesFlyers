@@ -7,15 +7,15 @@
     android:orientation="vertical"
     android:visibility="visible">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line"
+        android:background="@color/line" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
 
         <LinearLayout
             android:layout_width="match_parent"

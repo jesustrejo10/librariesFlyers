@@ -10,8 +10,8 @@
     <!-- Service @string air_conditioning-->
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E1E1E1" />
+        android:layout_height="@dimen/line"
+        android:background="@color/line" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -62,19 +62,13 @@
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
-
-
     </LinearLayout><!-- Service @string air_conditioning-->
 
     <!-- Service @string airport_shufle-->
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E1E1E1" />
+        android:layout_height="@dimen/line"
+        android:background="@color/line" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -125,19 +119,57 @@
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.8">
+
+                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
+                    android:id="@+id/detail_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/airport_shufle"
+                    android:textColor="#030303" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.2"
+                android:gravity="right"
+                android:paddingRight="5dp">
+
+                <CheckBox
+                    android:id="@+id/checkbox_airport_shufle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/checkBoxStyle" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout><!-- Service @string airport_shufle-->
 
     <!-- Service @string indoor_pool-->
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E1E1E1" />
+        android:layout_height="@dimen/line"
+        android:background="@color/line" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -188,19 +220,13 @@
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
-
-
     </LinearLayout><!-- Service @string indoor_pool-->
 
     <!-- Service @string pets_welcome-->
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E1E1E1" />
+        android:layout_height="@dimen/line"
+        android:background="@color/line" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -251,19 +277,13 @@
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
-
-
     </LinearLayout><!-- Service @spa_fitness-->
 
     <!-- Service @string spa_fitness-->
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E1E1E1" />
+        android:layout_height="@dimen/line"
+        android:background="@color/line" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -314,19 +334,13 @@
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
-
-
     </LinearLayout><!-- Service @string spa_fitness-->
 
     <!-- Service @string wi_fi-->
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E1E1E1" />
+        android:layout_height="@dimen/line"
+        android:background="@color/line" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -377,13 +391,6 @@
 
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
-
-
     </LinearLayout><!-- Service @string wi_fi-->
-
 
 </LinearLayout>

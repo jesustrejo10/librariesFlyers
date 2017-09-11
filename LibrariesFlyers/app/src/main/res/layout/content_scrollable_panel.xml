@@ -147,8 +147,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
+            android:layout_height="@dimen/line"
+            android:background="@color/line" />
 
         <!-- Container Price -->
         <LinearLayout
@@ -214,8 +214,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
+            android:layout_height="@dimen/line"
+            android:background="@color/line" />
 
         <!-- Container Service -->
         <LinearLayout
@@ -281,8 +281,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
+            android:layout_height="@dimen/line"
+            android:background="@color/line" />
 
         <!-- Container Regimen -->
         <LinearLayout
@@ -348,8 +348,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
+            android:layout_height="@dimen/line"
+            android:background="@color/line" />
 
         <!-- Container Catalogo de Hoteles -->
         <LinearLayout
@@ -488,8 +488,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
+            android:layout_height="@dimen/line"
+            android:background="@color/line" />
 
         <!-- Container Ordenar Categoría -->
         <LinearLayout
@@ -555,8 +555,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E1E1E1" />
+            android:layout_height="@dimen/line"
+            android:background="@color/line" />
 
         <!-- Container Ordenar Distancia -->
         <LinearLayout
