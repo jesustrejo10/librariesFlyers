@@ -1,4 +1,4 @@
-package com.test.trejo.jesus.librariesflyers.TopDraggable;
+package com.test.trejo.jesus.librariesflyers.TopDraggable.model;
 
 /**
  * Created by roger on 07/09/17.

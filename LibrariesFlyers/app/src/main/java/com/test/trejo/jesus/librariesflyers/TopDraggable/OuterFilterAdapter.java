@@ -12,7 +12,7 @@ import android.widget.CompoundButton;
 
 import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.Models.RecyclerObject;
 import com.test.trejo.jesus.librariesflyers.R;
-import com.test.trejo.jesus.librariesflyers.utils.FilterUtility;
+import com.test.trejo.jesus.librariesflyers.TopDraggable.model.Filter;
 
 import java.util.ArrayList;
 import java.util.List;
