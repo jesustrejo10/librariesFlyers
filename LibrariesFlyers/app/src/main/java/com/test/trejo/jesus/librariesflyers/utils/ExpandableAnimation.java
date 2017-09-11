@@ -11,6 +11,14 @@ import com.github.aakira.expandablelayout.Utils;
 
 public class ExpandableAnimation {
 
+    /**
+     * Asignar animación a las imagenes de los expandable
+     *
+     * @param target @{@link View} Vista asignare animación
+     * @param from   Desde que grado comienza la animación
+     * @param to     Hasta donde termina la animación
+     * @return Objeto con animación
+     */
     public static ObjectAnimator createRotateAnimator(final View target, final float from, final float to) {
         ObjectAnimator animator = ObjectAnimator.ofFloat(target, "rotation", from, to);
         animator.setDuration(300);

@@ -1,6 +1,5 @@
 package com.test.trejo.jesus.librariesflyers.TopDraggable;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -19,15 +18,15 @@ import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.test.trejo.jesus.librariesflyers.BaseActivity;
 import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.Models.RecyclerObject;
 import com.test.trejo.jesus.librariesflyers.R;
-import com.test.trejo.jesus.librariesflyers.TopDraggable.presenter.TopDraggablePresenter;
+import com.test.trejo.jesus.librariesflyers.TopDraggable.presenter.SearchHotelPresenter;
+import com.test.trejo.jesus.librariesflyers.TopDraggable.search.SearchHotelContract;
 
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import butterknife.OnLongClick;
 
-public class TopDraggableActivity extends BaseActivity implements TopDraggableContract.View {
+public class TopDraggableActivity extends BaseActivity implements SearchHotelContract.View {
 
     public final static String TAG = TopDraggableActivity.class.getSimpleName();
 
@@ -54,12 +53,12 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
     @Bind(R.id.scroll_view)
     NestedScrollView mScrollView;
 
-    private OuterFilterAdapter mAdapter;
+    public OuterFilterAdapter mAdapter;
 
-    private TopDraggableContract.Presenter mPresenter;
+    public SearchHotelContract.Presenter mPresenter;
 
-    private boolean mStatusPrices = Boolean.FALSE;
-    private boolean mStatusCategory = Boolean.FALSE;
+    public boolean mStatusPrices = Boolean.FALSE;
+    public boolean mStatusCategory = Boolean.FALSE;
 
     @Override
     public int getLayout() {
@@ -71,7 +70,7 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         setToolbar(mToolbar);
         setTitle(getResources().getString(R.string.hotels_available));
 
-        mPresenter = new TopDraggablePresenter(this);
+        mPresenter = new SearchHotelPresenter(this);
         setupPanel();
 
     }
@@ -112,11 +111,10 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
     }
 
     @Override
-    public void setPresenter(@NonNull TopDraggableContract.Presenter presenter) {
+    public void setPresenter(@NonNull SearchHotelContract.Presenter presenter) {
         mPresenter = presenter;
     }
 
-    @Override
     public void setLoadRecycler(@NonNull ArrayList<RecyclerObject> mDataSet) {
         mAdapter = new OuterFilterAdapter(mDataSet, getApplicationContext());
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -174,10 +172,15 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         }
     }
 
+    @Override
+    public void setupInit() {
+
+    }
+
     /**
      * Configuración del @{@link SlidingUpPanelLayout}
      */
-    private void setupPanel() {
+    public void setupPanel() {
         mPanel.setDragView(mScrollView);
         mPanel.setTouchEnabled(false);
         mPanel.setFadeOnClickListener(new View.OnClickListener() {
@@ -188,17 +191,27 @@ public class TopDraggableActivity extends BaseActivity implements TopDraggableCo
         });
     }
 
+    @Override
+    public void setupExpandable() {
+
+    }
+
+    @Override
+    public void setRangePrice() {
+
+    }
+
     /**
      * Cerrar filtro
      */
-    private void setPanelState() {
+    public void setPanelState() {
         if (mPanel != null) mPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
     }
 
     /**
      * Cerrar el panel de filtro
      */
-    private void closeSlidingPanelFilterOrOder() {
+    public void closeSlidingPanelFilterOrOder() {
         if (mPanel != null && (mPanel.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED || mPanel.getPanelState() == SlidingUpPanelLayout.PanelState.ANCHORED)) {
             mPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
         }

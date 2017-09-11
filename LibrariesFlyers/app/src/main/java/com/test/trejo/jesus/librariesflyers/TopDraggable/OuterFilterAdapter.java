@@ -10,11 +10,9 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
-import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
-import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarFinalValueListener;
 import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.Models.RecyclerObject;
 import com.test.trejo.jesus.librariesflyers.R;
-import com.test.trejo.jesus.librariesflyers.utils.FilterCheckBox;
+import com.test.trejo.jesus.librariesflyers.utils.FilterUtility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +56,7 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
         final RecyclerObject object = mRecyclerObjects.get(position);
         holder.getDetailName().setText(object.getDescription());
 
-        mCheckBoxListFilter = FilterCheckBox.addCheckboxFilterToArray(holder, this);
+//        mCheckBoxListFilter = FilterUtility.addCheckboxFilterToArray(holder, this);
 
         holder.getContainerFullLayout().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +102,7 @@ public class OuterFilterAdapter extends RecyclerView.Adapter<OuterFilterViewHold
         mHandler.post(new Runnable() {
             @Override
             public void run() {
-                FilterCheckBox.clearCheckBox(mCheckBoxListFilter);
+//                FilterUtility.clearCheckBox(mCheckBoxListFilter);
                 notifyDataSetChanged();
             }
         });

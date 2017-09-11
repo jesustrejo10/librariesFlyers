@@ -12,7 +12,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -22,11 +21,13 @@ import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.test.trejo.jesus.librariesflyers.BaseActivity;
-import com.test.trejo.jesus.librariesflyers.HorizontalRecycler.Models.RecyclerObject;
 import com.test.trejo.jesus.librariesflyers.R;
 import com.test.trejo.jesus.librariesflyers.TopDraggable.Filter;
-import com.test.trejo.jesus.librariesflyers.TopDraggable.TopDraggableContract;
+import com.test.trejo.jesus.librariesflyers.TopDraggable.model.Expandables;
+import com.test.trejo.jesus.librariesflyers.TopDraggable.presenter.SearchHotelPresenter;
 import com.test.trejo.jesus.librariesflyers.utils.ExpandableOpenClose;
+import com.test.trejo.jesus.librariesflyers.utils.FilterUtility;
+import com.test.trejo.jesus.librariesflyers.utils.SortUtility;
 import com.test.trejo.jesus.librariesflyers.utils.StatesPanel;
 
 import java.util.ArrayList;
@@ -34,9 +35,10 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import worker8.com.github.radiogroupplus.RadioGroupPlus;
 
 
-public class SearchHotelActivity extends BaseActivity implements CompoundButton.OnCheckedChangeListener, RadioGroup.OnCheckedChangeListener, TopDraggableContract.View {
+public class SearchHotelActivity extends BaseActivity implements CompoundButton.OnCheckedChangeListener, RadioGroupPlus.OnCheckedChangeListener, SearchHotelContract.View {
 
     public final static String TAG = SearchHotelActivity.class.getSimpleName();
 
@@ -148,10 +150,10 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
     @Bind(R.id.checkbox_all_inclusive)
     CheckBox allInclusive;
 
-    @Bind(R.id.checkbox_all_inclusive)
+    @Bind(R.id.radio_button_lowest_price)
     RadioButton lowestPrice;
 
-    @Bind(R.id.checkbox_all_inclusive)
+    @Bind(R.id.radio_button_higher_price)
     RadioButton higherPrice;
 
     @Bind(R.id.radio_button_one_star)
@@ -164,14 +166,23 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
     RadioButton rbThreeStart;
 
     @Bind(R.id.radio_button_four_star)
-    RadioButton rbFourtart;
+    RadioButton rbFourStart;
 
     @Bind(R.id.radio_button_five_star)
     RadioButton rbFiveStart;
 
+    @Bind(R.id.radio_group_plus_price)
+    RadioGroupPlus radioGroupPlusPrice;
+
+    @Bind(R.id.radio_group_plus_category)
+    RadioGroupPlus radioGroupPlusCategory;
+
     private List<CheckBox> mCheckBoxListFilter;
-    private List<RadioButton> mRadioButtonListOrder;
+    private List<RadioButton> mRadioButtonListSort;
+    private List<Expandables> mExpandablesList;
     private Filter mFilter;
+
+    private SearchHotelContract.Presenter mPresenter;
 
     @Override
     public int getLayout() {
@@ -182,17 +193,37 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
     public void onCreateView(Bundle savedInstanceState) {
         setToolbar(mToolbar);
         setTitle(getResources().getString(R.string.hotels_available));
-        setupInit();
+        mPresenter = new SearchHotelPresenter(this);
     }
 
-    private void setupInit() {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.start();
+    }
 
+    @Override
+    public void setPresenter(@NonNull SearchHotelContract.Presenter presenter) {
+        mPresenter = presenter;
+    }
+
+    @Override
+    public void setupInit() {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 mCheckBoxListFilter = new ArrayList<>();
-                mRadioButtonListOrder = new ArrayList<>();
+                mRadioButtonListSort = new ArrayList<>();
+                mExpandablesList = new ArrayList<>();
                 mFilter = new Filter();
+
+                mExpandablesList.add(new Expandables(expandableLayoutStart, imageExpandStart));
+                mExpandablesList.add(new Expandables(expandableLayoutPrice, imageExpandPrice));
+                mExpandablesList.add(new Expandables(expandableLayoutService, imageExpandService));
+                mExpandablesList.add(new Expandables(expandableLayoutRegime, imageExpandRegime));
+                mExpandablesList.add(new Expandables(expandableLayoutHotelShain, imageExpandHotelShain));
+                mExpandablesList.add(new Expandables(expandableLayoutPriceOrder, imageExpandPriceOrder));
+                mExpandablesList.add(new Expandables(expandableLayoutCategoryOrder, imageExpandCategoryOrder));
 
                 mCheckBoxListFilter.add(oneStar);
                 mCheckBoxListFilter.add(twoStar);
@@ -213,22 +244,54 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
                 mCheckBoxListFilter.add(fullBoard);
                 mCheckBoxListFilter.add(allInclusive);
 
-                mRadioButtonListOrder.add(lowestPrice);
-                mRadioButtonListOrder.add(higherPrice);
-                mRadioButtonListOrder.add(rbOneStart);
-                mRadioButtonListOrder.add(rbTwoStart);
-                mRadioButtonListOrder.add(rbThreeStart);
-                mRadioButtonListOrder.add(rbFourtart);
-                mRadioButtonListOrder.add(rbFiveStart);
+                mRadioButtonListSort.add(lowestPrice);
+                mRadioButtonListSort.add(higherPrice);
+                mRadioButtonListSort.add(rbOneStart);
+                mRadioButtonListSort.add(rbTwoStart);
+                mRadioButtonListSort.add(rbThreeStart);
+                mRadioButtonListSort.add(rbFourStart);
+                mRadioButtonListSort.add(rbFiveStart);
 
             }
         });
 
-        setChangeCheckBoxListener();
-        setRadioButtonChangeListener();
-        setupPanel();
-        setupExpandable();
-        setRangePrice();
+        FilterUtility.setChangeListener(mCheckBoxListFilter, this);
+        SortUtility.setSortRadioGroupListener(radioGroupPlusPrice, this);
+        SortUtility.setSortRadioGroupListener(radioGroupPlusCategory, this);
+    }
+
+    @Override
+    public void setupPanel() {
+        mPanel.setDragView(mScrollView);
+        mPanel.setTouchEnabled(false);
+        mPanel.setFadeOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StatesPanel.setPanelState(mPanel);
+            }
+        });
+    }
+
+    @Override
+    public void setupExpandable() {
+        ExpandableOpenClose.setExpandable(mExpandablesList);
+    }
+
+    @Override
+    public void setRangePrice() {
+        rangeSeekbarPrice.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
+            @Override
+            public void valueChanged(Number minValue, Number maxValue) {
+                priceMax.setText(String.format("%s%s", getResources().getString(R.string.to), String.valueOf(maxValue)));
+                priceMin.setText(String.format("%s%s", getResources().getString(R.string.from), String.valueOf(minValue)));
+            }
+        });
+        rangeSeekbarPrice.setOnRangeSeekbarFinalValueListener(new OnRangeSeekbarFinalValueListener() {
+            @Override
+            public void finalValue(Number minValue, Number maxValue) {
+                Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
+            }
+        });
     }
 
     @Override
@@ -252,6 +315,33 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
     public void onBackPressed() {
         StatesPanel.closeSlidingPanelFilterOrOder(mPanel);
         super.onBackPressed();
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroupPlus radioGroupPlus, @IdRes int i) {
+        switch (i) {
+            case R.id.radio_button_lowest_price:
+                Log.d(TAG, "case R.id.radio_button_lowest_price:");
+                break;
+            case R.id.radio_button_higher_price:
+                Log.d(TAG, "case R.id.radio_button_higher_price:");
+                break;
+            case R.id.radio_button_one_star:
+                Log.d(TAG, "case R.id.radio_button_one_star:");
+                break;
+            case R.id.radio_button_two_star:
+                Log.d(TAG, "case R.id.radio_button_two_star:");
+                break;
+            case R.id.radio_button_three_star:
+                Log.d(TAG, "case R.id.radio_button_three_star:");
+                break;
+            case R.id.radio_button_four_star:
+                Log.d(TAG, "case R.id.radio_button_four_star:");
+                break;
+            case R.id.radio_button_five_star:
+                Log.d(TAG, "case R.id.radio_button_five_star:");
+                break;
+        }
     }
 
     @Override
@@ -370,21 +460,6 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
         }
     }
 
-    @Override
-    public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-
-    }
-
-    @Override
-    public void setPresenter(@NonNull TopDraggableContract.Presenter presenter) {
-
-    }
-
-    @Override
-    public void setLoadRecycler(@NonNull ArrayList<RecyclerObject> mDataSet) {
-
-    }
-
     @OnClick(R.id.container_start)
     public void onClickContainerStart() {
         expandableLayoutStart.toggle();
@@ -423,78 +498,15 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
     @OnClick(R.id.cancel)
     public void onClickCancelFilterOrOrder() {
         StatesPanel.closeSlidingPanelFilterOrOder(mPanel);
-        clearCheckBox();
-        expandableLayoutStart.collapse();
+        FilterUtility.setClearCheckBox(mCheckBoxListFilter);
+        SortUtility.setClearRadioGroup(radioGroupPlusCategory);
+        SortUtility.setClearRadioGroup(radioGroupPlusPrice);
+        ExpandableOpenClose.collapseExpandable(mExpandablesList);
     }
 
     @OnClick(R.id.apply)
     public void onClickApplyFilterOrOrder() {
 
     }
-
-    /**
-     * Configuración del @{@link SlidingUpPanelLayout}
-     */
-    private void setupPanel() {
-        mPanel.setDragView(mScrollView);
-        mPanel.setTouchEnabled(false);
-        mPanel.setFadeOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StatesPanel.setPanelState(mPanel);
-            }
-        });
-    }
-
-    /**
-     * Configurar los @{@link com.github.aakira.expandablelayout.ExpandableLayoutListener}
-     */
-    private void setupExpandable() {
-        ExpandableOpenClose.setExpandableListener(expandableLayoutStart, imageExpandStart);
-        ExpandableOpenClose.setExpandableListener(expandableLayoutPrice, imageExpandPrice);
-        ExpandableOpenClose.setExpandableListener(expandableLayoutService, imageExpandService);
-        ExpandableOpenClose.setExpandableListener(expandableLayoutRegime, imageExpandRegime);
-        ExpandableOpenClose.setExpandableListener(expandableLayoutHotelShain, imageExpandHotelShain);
-        ExpandableOpenClose.setExpandableListener(expandableLayoutPriceOrder, imageExpandPriceOrder);
-        ExpandableOpenClose.setExpandableListener(expandableLayoutCategoryOrder, imageExpandCategoryOrder);
-    }
-
-    /**
-     * Obtener el rango del filtro de los precios
-     **/
-    private void setRangePrice() {
-        rangeSeekbarPrice.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
-            @Override
-            public void valueChanged(Number minValue, Number maxValue) {
-                priceMax.setText(String.format("%s%s", getResources().getString(R.string.to), String.valueOf(maxValue)));
-                priceMin.setText(String.format("%s%s", getResources().getString(R.string.from), String.valueOf(minValue)));
-            }
-        });
-        rangeSeekbarPrice.setOnRangeSeekbarFinalValueListener(new OnRangeSeekbarFinalValueListener() {
-            @Override
-            public void finalValue(Number minValue, Number maxValue) {
-                Log.d("CRS=>", String.valueOf(minValue) + " : " + String.valueOf(maxValue));
-            }
-        });
-    }
-
-    private void setChangeCheckBoxListener() {
-        for (CheckBox cb : mCheckBoxListFilter) {
-            cb.setOnCheckedChangeListener(this);
-        }
-    }
-
-    private void setRadioButtonChangeListener() {
-        for (RadioButton rb : mRadioButtonListOrder) {
-            rb.setOnCheckedChangeListener(this);
-        }
-    }
-
-    public void clearCheckBox() {
-        for (CheckBox cb : mCheckBoxListFilter) {
-            cb.setChecked(false);
-        }
-    }
-
 
 }

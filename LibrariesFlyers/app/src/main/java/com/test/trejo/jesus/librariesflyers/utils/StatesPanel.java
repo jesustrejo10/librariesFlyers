@@ -13,7 +13,9 @@ public class StatesPanel {
     private final static int TIME_PANEL = 100;
 
     /**
-     * Cerrar filtro
+     * Asignar Expandable
+     *
+     * @param mPanel @{@link SlidingUpPanelLayout}
      */
     public static void setPanelExpande(final SlidingUpPanelLayout mPanel) {
         final Handler handler = new Handler();
@@ -26,7 +28,9 @@ public class StatesPanel {
     }
 
     /**
-     * Cerrar filtro
+     * Cerrar el panel de filtro
+     *
+     * @param mPanel @{@link SlidingUpPanelLayout}
      */
     public static void setPanelState(SlidingUpPanelLayout mPanel) {
         if (mPanel != null) mPanel.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
@@ -34,6 +38,8 @@ public class StatesPanel {
 
     /**
      * Cerrar el panel de filtro
+     *
+     * @param mPanel @{@link SlidingUpPanelLayout}
      */
     public static void closeSlidingPanelFilterOrOder(SlidingUpPanelLayout mPanel) {
         if (mPanel != null && (mPanel.getPanelState() == SlidingUpPanelLayout.PanelState.EXPANDED || mPanel.getPanelState() == SlidingUpPanelLayout.PanelState.ANCHORED)) {

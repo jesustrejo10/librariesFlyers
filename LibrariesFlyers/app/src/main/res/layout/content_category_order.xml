@@ -8,7 +8,7 @@
     android:visibility="visible">
 
     <worker8.com.github.radiogroupplus.RadioGroupPlus
-        android:id="@+id/radio_group_plus"
+        android:id="@+id/radio_group_plus_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
