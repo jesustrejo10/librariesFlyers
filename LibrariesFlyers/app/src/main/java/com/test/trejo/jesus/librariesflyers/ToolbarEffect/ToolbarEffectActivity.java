@@ -61,7 +61,7 @@ public class ToolbarEffectActivity extends AppCompatActivity implements OnMapRea
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toolbar_alternative);
 
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         final ActionBar supportActionBar = getSupportActionBar();
@@ -70,15 +70,15 @@ public class ToolbarEffectActivity extends AppCompatActivity implements OnMapRea
             supportActionBar.setDisplayShowTitleEnabled(false);
         }
 
-        toolbarContent = findViewById(R.id.toolbar_layout);
-        toolbarTitle = findViewById(R.id.toolbar_title);
-        appBarLayout = findViewById(R.id.app_bar_layout);
-        mapFullLayout = findViewById(R.id.maps_full_layout);
-        closeMapButton = findViewById(R.id.close_map_button);
-        coordinator = findViewById(R.id.coordinator);
-        mapPreview = findViewById(R.id.map_image);
-        mapPreviewFull = findViewById(R.id.map_preview_full);
-        carouselView = findViewById(R.id.carouselView);
+        toolbarContent = (LinearLayout) findViewById(R.id.toolbar_layout);
+        toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
+        appBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
+        mapFullLayout = (FrameLayout) findViewById(R.id.maps_full_layout);
+        closeMapButton = (Button) findViewById(R.id.close_map_button);
+        coordinator = (CoordinatorLayout) findViewById(R.id.coordinator);
+        mapPreview = (ImageView) findViewById(R.id.map_image);
+        mapPreviewFull = (GestureImageView) findViewById(R.id.map_preview_full);
+        carouselView = (CarouselView) findViewById(R.id.carouselView);
 
         final MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
 
@@ -195,12 +195,14 @@ public class ToolbarEffectActivity extends AppCompatActivity implements OnMapRea
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange()) {
-                    // Collapsed
+                final boolean isCollapsed = Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange();
+                final boolean isExpanded = (verticalOffset == 0);
+
+                if (isCollapsed) {
                     toolbarTitle.setVisibility(View.GONE);
                     toolbarContent.setVisibility(View.VISIBLE);
                     toolbar.setBackgroundColor(getResources().getColor(R.color.black));
-                } else if (verticalOffset == 0) {
+                } else if (isExpanded) {
                     toolbarTitle.setVisibility(View.VISIBLE);
                     toolbarContent.setVisibility(View.GONE);
                 } else {
@@ -233,7 +235,6 @@ public class ToolbarEffectActivity extends AppCompatActivity implements OnMapRea
         googleMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
             @Override
             public void onMapLoaded() {
-                // Make a snapshot when map's done loading
                 googleMap.snapshot(new GoogleMap.SnapshotReadyCallback() {
                     @Override
                     public void onSnapshotReady(Bitmap bitmap) {
