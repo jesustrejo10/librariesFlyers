@@ -560,7 +560,7 @@
 
         <!-- Container Ordenar Distancia -->
         <LinearLayout
-            android:id="@+id/container_start_order"
+            android:id="@+id/container_distance_order"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"

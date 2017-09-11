@@ -35,7 +35,8 @@
             android:name=".TabDraggable.TabActivityActionBar"
             android:label="@string/title_activity_tab_action_bar"
             android:theme="@style/AppTheme" />
-        <activity android:name=".TopDraggable.search.SearchHotelActivity"></activity>
+        <activity android:name=".TopDraggable.search.SearchHotelActivity" />
+        <activity android:name=".TopDraggable.search.DistanceActivity"></activity>
     </application>
 
 </manifest>

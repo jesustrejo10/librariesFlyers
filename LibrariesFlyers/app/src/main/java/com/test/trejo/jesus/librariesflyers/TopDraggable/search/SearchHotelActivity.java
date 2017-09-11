@@ -1,5 +1,6 @@
 package com.test.trejo.jesus.librariesflyers.TopDraggable.search;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
@@ -523,6 +524,12 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
         expandableLayoutCategoryOrder.toggle();
     }
 
+    @OnClick(R.id.container_distance_order)
+    public void onClickContainerDistanceOrder() {
+        clearCollapseAndResetView();
+        startActivity(new Intent(SearchHotelActivity.this, DistanceActivity.class));
+    }
+
     @OnClick(R.id.cancel)
     public void onClickCancelFilterOrOrder() {
         clearCollapseAndResetView();
@@ -530,10 +537,13 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
 
     @OnClick(R.id.apply)
     public void onClickApplyFilterOrOrder() {
-        clearCollapseAndResetView();
         mPresenter.sendFilterAndSort(mFilter, mSort);
+        clearCollapseAndResetView();
     }
 
+    /**
+     * Cerrar to-do, formatear los @{@link CheckBox} @{@link RadioButton}
+     */
     private void clearCollapseAndResetView() {
         StatesPanel.closeSlidingPanelFilterOrOder(mPanel);
         FilterUtility.setClearCheckBox(mCheckBoxListFilter);

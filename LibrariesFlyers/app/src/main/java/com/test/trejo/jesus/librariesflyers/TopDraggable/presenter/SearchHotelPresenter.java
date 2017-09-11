@@ -16,7 +16,7 @@ import static com.test.trejo.jesus.librariesflyers.utils.Preconditions.checkNotN
 
 public class SearchHotelPresenter implements SearchHotelContract.Presenter {
 
-    public final static String TAG = SearchHotelPresenter.class.getSimpleName();
+    private final static String TAG = SearchHotelPresenter.class.getSimpleName();
 
     private final SearchHotelContract.View mView;
 
@@ -41,7 +41,7 @@ public class SearchHotelPresenter implements SearchHotelContract.Presenter {
     public void sendFilterAndSort(@NonNull Filter mFilter, @NonNull Sort mSort) {
         checkNotNull(mFilter, "Filtro no puede ser nulo");
         checkNotNull(mSort, "Ordenar no puede ser nulo");
-
+        Log.d(TAG, mFilter.getPriceMax());
 
     }
 }
