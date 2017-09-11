@@ -35,7 +35,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.8">
 
-                <TextView
+                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/only_lodging"
@@ -97,7 +97,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.8">
 
-                <TextView
+                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/breakfast"
@@ -159,7 +159,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.8">
 
-                <TextView
+                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/half_pension"
@@ -221,7 +221,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.8">
 
-                <TextView
+                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/full_board"
@@ -283,7 +283,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.8">
 
-                <TextView
+                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/all_inclusive"

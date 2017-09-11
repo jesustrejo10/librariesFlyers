@@ -35,7 +35,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.8">
 
-                <TextView
+                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
                     android:id="@+id/detail_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.8">
 
-                <TextView
+                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/two_stars"
@@ -195,7 +195,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.8">
 
-                <TextView
+                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/three_stars"
@@ -274,7 +274,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.8">
 
-                <TextView
+                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/four_stars"
@@ -353,7 +353,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.8">
 
-                <TextView
+                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/five_stars"
