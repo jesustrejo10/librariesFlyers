@@ -36,7 +36,6 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import worker8.com.github.radiogroupplus.RadioGroupPlus;
 
 
 public class SearchHotelActivity extends BaseActivity implements CompoundButton.OnCheckedChangeListener, SearchHotelContract.View {
@@ -142,7 +141,6 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
     @Bind(R.id.checkbox_all_inclusive)
     CheckBox allInclusive;
 
-
     //################################################ Ordenar
     @Bind(R.id.one_to_five)
     CheckBox cbOneToFive;
@@ -151,10 +149,10 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
     CheckBox cbFiveToOne;
 
     @Bind(R.id.lowest_price)
-    CheckBox lowestPrice;
+    CheckBox cbLowestPrice;
 
     @Bind(R.id.higher_price)
-    CheckBox higherPrice;
+    CheckBox cbHigherPrice;
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
@@ -235,8 +233,8 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
                 mCheckBoxListFilter.add(cbOneToFive);
                 mCheckBoxListFilter.add(cbFiveToOne);
 
-                mCheckBoxListFilter.add(lowestPrice);
-                mCheckBoxListFilter.add(higherPrice);
+                mCheckBoxListFilter.add(cbLowestPrice);
+                mCheckBoxListFilter.add(cbHigherPrice);
 
                 Colors.applyColorFilter(imageExpandStart);
                 Colors.applyColorFilter(imageExpandPrice);
@@ -442,10 +440,24 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
             case R.id.five_to_one:
                 if (isChecked) {
                     mSort.setFiveToOneStar(Boolean.TRUE);
-                    cbOneToFive.setEnabled(false);
+                    cbOneToFive.setEnabled(Boolean.FALSE);
                 } else {
                     mSort.setFiveToOneStar(Boolean.FALSE);
-                    cbOneToFive.setEnabled(true);
+                    cbOneToFive.setEnabled(Boolean.TRUE);
+                }
+                break;
+            case R.id.higher_price:
+                if (isChecked) {
+                    cbLowestPrice.setEnabled(Boolean.FALSE);
+                } else {
+                    cbLowestPrice.setEnabled(Boolean.TRUE);
+                }
+                break;
+            case R.id.lowest_price:
+                if (isChecked) {
+                    cbHigherPrice.setEnabled(Boolean.FALSE);
+                } else {
+                    cbHigherPrice.setEnabled(Boolean.TRUE);
                 }
                 break;
         }
