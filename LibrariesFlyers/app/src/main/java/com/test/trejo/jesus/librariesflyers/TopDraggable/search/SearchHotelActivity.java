@@ -448,15 +448,19 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
                 break;
             case R.id.higher_price:
                 if (isChecked) {
+                    mSort.setHigherPrice(Boolean.TRUE);
                     cbLowestPrice.setEnabled(Boolean.FALSE);
                 } else {
+                    mSort.setHigherPrice(Boolean.FALSE);
                     cbLowestPrice.setEnabled(Boolean.TRUE);
                 }
                 break;
             case R.id.lowest_price:
                 if (isChecked) {
+                    mSort.setLowestPrice(Boolean.TRUE);
                     cbHigherPrice.setEnabled(Boolean.FALSE);
                 } else {
+                    mSort.setLowestPrice(Boolean.FALSE);
                     cbHigherPrice.setEnabled(Boolean.TRUE);
                 }
                 break;

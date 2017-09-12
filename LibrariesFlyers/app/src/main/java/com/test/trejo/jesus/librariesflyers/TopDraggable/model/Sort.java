@@ -7,9 +7,7 @@ package com.test.trejo.jesus.librariesflyers.TopDraggable.model;
 public class Sort {
 
     private boolean lowestPrice;
-
     private boolean higherPrice;
-
     private boolean oneToFiveStar;
     private boolean FiveToOneStar;
 
