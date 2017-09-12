@@ -10,15 +10,8 @@ public class Sort {
 
     private boolean higherPrice;
 
-    private boolean rbOneStart;
-
-    private boolean rbTwoStart;
-
-    private boolean rbThreeStart;
-
-    private boolean rbFourStart;
-
-    private boolean rbFiveStart;
+    private boolean oneToFiveStar;
+    private boolean FiveToOneStar;
 
     public boolean isLowestPrice() {
         return lowestPrice;
@@ -36,43 +29,19 @@ public class Sort {
         this.higherPrice = higherPrice;
     }
 
-    public boolean isRbOneStart() {
-        return rbOneStart;
+    public boolean isOneToFiveStar() {
+        return oneToFiveStar;
     }
 
-    public void setRbOneStart(boolean rbOneStart) {
-        this.rbOneStart = rbOneStart;
+    public boolean isFiveToOneStar() {
+        return FiveToOneStar;
     }
 
-    public boolean isRbTwoStart() {
-        return rbTwoStart;
+    public void setOneToFiveStar(boolean oneToFiveStar) {
+        this.oneToFiveStar = oneToFiveStar;
     }
 
-    public void setRbTwoStart(boolean rbTwoStart) {
-        this.rbTwoStart = rbTwoStart;
-    }
-
-    public boolean isRbThreeStart() {
-        return rbThreeStart;
-    }
-
-    public void setRbThreeStart(boolean rbThreeStart) {
-        this.rbThreeStart = rbThreeStart;
-    }
-
-    public boolean isRbFourStart() {
-        return rbFourStart;
-    }
-
-    public void setRbFourStart(boolean rbFourStart) {
-        this.rbFourStart = rbFourStart;
-    }
-
-    public boolean isRbFiveStart() {
-        return rbFiveStart;
-    }
-
-    public void setRbFiveStart(boolean rbFiveStart) {
-        this.rbFiveStart = rbFiveStart;
+    public void setFiveToOneStar(boolean fiveToOneStar) {
+        FiveToOneStar = fiveToOneStar;
     }
 }

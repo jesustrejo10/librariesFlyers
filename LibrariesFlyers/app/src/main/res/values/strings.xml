@@ -53,8 +53,12 @@
     <string name="full_board">Full board</string>
     <string name="all_inclusive">All inclusive</string>
 
-    <!--Sort Price -->
+    <!-- Sort Price -->
     <string name="higher_price">Higher Price</string>
     <string name="lowest_price">Lowest Price</string>
+
+    <!-- Sort Category -->
+    <string name="one_to_five">1 to 5</string>
+    <string name="five_to_one">5 to 1</string>
 
 </resources>

@@ -1,7 +1,6 @@
 package com.test.trejo.jesus.librariesflyers.TopDraggable.search;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
@@ -153,26 +152,14 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
     @Bind(R.id.radio_button_higher_price)
     RadioButton higherPrice;
 
-    @Bind(R.id.radio_button_one_star)
-    RadioButton rbOneStart;
+    @Bind(R.id.one_to_five)
+    CheckBox cbOneToFive;
 
-    @Bind(R.id.radio_button_two_star)
-    RadioButton rbTwoStart;
-
-    @Bind(R.id.radio_button_three_star)
-    RadioButton rbThreeStart;
-
-    @Bind(R.id.radio_button_four_star)
-    RadioButton rbFourStart;
-
-    @Bind(R.id.radio_button_five_star)
-    RadioButton rbFiveStart;
+    @Bind(R.id.five_to_one)
+    CheckBox cbFiveToOne;
 
     @Bind(R.id.radio_group_plus_price)
     RadioGroupPlus radioGroupPlusPrice;
-
-    @Bind(R.id.radio_group_plus_category)
-    RadioGroupPlus radioGroupPlusCategory;
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
@@ -252,13 +239,11 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
                 mCheckBoxListFilter.add(fullBoard);
                 mCheckBoxListFilter.add(allInclusive);
 
+                mCheckBoxListFilter.add(cbOneToFive);
+                mCheckBoxListFilter.add(cbFiveToOne);
+
                 mRadioButtonListSort.add(lowestPrice);
                 mRadioButtonListSort.add(higherPrice);
-                mRadioButtonListSort.add(rbOneStart);
-                mRadioButtonListSort.add(rbTwoStart);
-                mRadioButtonListSort.add(rbThreeStart);
-                mRadioButtonListSort.add(rbFourStart);
-                mRadioButtonListSort.add(rbFiveStart);
 
                 Colors.applyColorFilter(imageExpandStart);
                 Colors.applyColorFilter(imageExpandPrice);
@@ -271,7 +256,7 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
 
         FilterUtility.setChangeListener(mCheckBoxListFilter, this);
         SortUtility.setSortRadioGroupListener(radioGroupPlusPrice, this);
-        SortUtility.setSortRadioGroupListener(radioGroupPlusCategory, this);
+
     }
 
     @Override
@@ -344,36 +329,6 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
             mSort.setHigherPrice(Boolean.TRUE);
         } else {
             mSort.setHigherPrice(Boolean.FALSE);
-        }
-
-        if (i == R.id.radio_button_one_star) {// 1 estrella
-            mSort.setRbOneStart(Boolean.TRUE);
-        } else {
-            mSort.setRbOneStart(Boolean.FALSE);
-        }
-
-        if (i == R.id.radio_button_two_star) {// 2 estrella
-            mSort.setRbTwoStart(Boolean.TRUE);
-        } else {
-            mSort.setRbTwoStart(Boolean.FALSE);
-        }
-
-        if (i == R.id.radio_button_three_star) {// 3 estrella
-            mSort.setRbThreeStart(Boolean.TRUE);
-        } else {
-            mSort.setRbThreeStart(Boolean.FALSE);
-        }
-
-        if (i == R.id.radio_button_four_star) {// 4 estrella
-            mSort.setRbFourStart(Boolean.TRUE);
-        } else {
-            mSort.setRbFourStart(Boolean.FALSE);
-        }
-
-        if (i == R.id.radio_button_five_star) {// 5 estrella
-            mSort.setRbFiveStart(Boolean.TRUE);
-        } else {
-            mSort.setRbFiveStart(Boolean.FALSE);
         }
 
     }
@@ -470,30 +425,53 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
                 } else {
                     mFilter.setOnlyLodging(Boolean.FALSE);
                 }
+                break;
             case R.id.checkbox_breakfast:
                 if (isChecked) {
                     mFilter.setBreakFast(Boolean.TRUE);
                 } else {
                     mFilter.setBreakFast(Boolean.FALSE);
                 }
+                break;
             case R.id.checkbox_half_pension:
                 if (isChecked) {
                     mFilter.setHalfPension(Boolean.TRUE);
                 } else {
                     mFilter.setHalfPension(Boolean.FALSE);
                 }
+                break;
             case R.id.checkbox_full_board:
                 if (isChecked) {
                     mFilter.setFullBoard(Boolean.TRUE);
                 } else {
                     mFilter.setFullBoard(Boolean.FALSE);
                 }
+                break;
             case R.id.checkbox_all_inclusive:
                 if (isChecked) {
                     mFilter.setAllInclusive(Boolean.TRUE);
                 } else {
                     mFilter.setAllInclusive(Boolean.FALSE);
                 }
+                break;
+            case R.id.one_to_five:
+                if (isChecked) {
+                    mSort.setOneToFiveStar(Boolean.TRUE);
+                    cbFiveToOne.setEnabled(false);
+                } else {
+                    mSort.setOneToFiveStar(Boolean.FALSE);
+                    cbFiveToOne.setEnabled(true);
+                }
+                break;
+            case R.id.five_to_one:
+                if (isChecked) {
+                    mSort.setFiveToOneStar(Boolean.TRUE);
+                    cbOneToFive.setEnabled(false);
+                } else {
+                    mSort.setFiveToOneStar(Boolean.FALSE);
+                    cbOneToFive.setEnabled(true);
+                }
+                break;
         }
     }
 
@@ -555,7 +533,6 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
     private void clearCollapseAndResetView() {
         StatesPanel.closeSlidingPanelFilterOrOder(mPanel);
         FilterUtility.setClearCheckBox(mCheckBoxListFilter);
-        SortUtility.setClearRadioGroup(radioGroupPlusCategory);
         SortUtility.setClearRadioGroup(radioGroupPlusPrice);
         ExpandableOpenClose.collapseExpandable(mExpandablesList);
     }
