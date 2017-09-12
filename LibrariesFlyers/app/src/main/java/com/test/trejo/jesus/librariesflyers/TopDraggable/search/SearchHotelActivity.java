@@ -2,7 +2,6 @@ package com.test.trejo.jesus.librariesflyers.TopDraggable.search;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -30,7 +29,6 @@ import com.test.trejo.jesus.librariesflyers.TopDraggable.presenter.SearchHotelPr
 import com.test.trejo.jesus.librariesflyers.utils.Colors;
 import com.test.trejo.jesus.librariesflyers.utils.ExpandableOpenClose;
 import com.test.trejo.jesus.librariesflyers.utils.FilterUtility;
-import com.test.trejo.jesus.librariesflyers.utils.SortUtility;
 import com.test.trejo.jesus.librariesflyers.utils.StatesPanel;
 
 import java.util.ArrayList;
@@ -41,7 +39,7 @@ import butterknife.OnClick;
 import worker8.com.github.radiogroupplus.RadioGroupPlus;
 
 
-public class SearchHotelActivity extends BaseActivity implements CompoundButton.OnCheckedChangeListener, RadioGroupPlus.OnCheckedChangeListener, SearchHotelContract.View {
+public class SearchHotelActivity extends BaseActivity implements CompoundButton.OnCheckedChangeListener, SearchHotelContract.View {
 
     public final static String TAG = SearchHotelActivity.class.getSimpleName();
 
@@ -146,20 +144,17 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
 
 
     //################################################ Ordenar
-    @Bind(R.id.radio_button_lowest_price)
-    RadioButton lowestPrice;
-
-    @Bind(R.id.radio_button_higher_price)
-    RadioButton higherPrice;
-
     @Bind(R.id.one_to_five)
     CheckBox cbOneToFive;
 
     @Bind(R.id.five_to_one)
     CheckBox cbFiveToOne;
 
-    @Bind(R.id.radio_group_plus_price)
-    RadioGroupPlus radioGroupPlusPrice;
+    @Bind(R.id.lowest_price)
+    CheckBox lowestPrice;
+
+    @Bind(R.id.higher_price)
+    CheckBox higherPrice;
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
@@ -171,7 +166,6 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
     ScrollView mScrollView;
 
     private List<CheckBox> mCheckBoxListFilter;
-    private List<RadioButton> mRadioButtonListSort;
     private List<Expandables> mExpandablesList;
     private Filter mFilter;
     private Sort mSort;
@@ -207,7 +201,6 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
             @Override
             public void run() {
                 mCheckBoxListFilter = new ArrayList<>();
-                mRadioButtonListSort = new ArrayList<>();
                 mExpandablesList = new ArrayList<>();
                 mFilter = new Filter();
                 mSort = new Sort();
@@ -242,8 +235,8 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
                 mCheckBoxListFilter.add(cbOneToFive);
                 mCheckBoxListFilter.add(cbFiveToOne);
 
-                mRadioButtonListSort.add(lowestPrice);
-                mRadioButtonListSort.add(higherPrice);
+                mCheckBoxListFilter.add(lowestPrice);
+                mCheckBoxListFilter.add(higherPrice);
 
                 Colors.applyColorFilter(imageExpandStart);
                 Colors.applyColorFilter(imageExpandPrice);
@@ -255,8 +248,6 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
         });
 
         FilterUtility.setChangeListener(mCheckBoxListFilter, this);
-        SortUtility.setSortRadioGroupListener(radioGroupPlusPrice, this);
-
     }
 
     @Override
@@ -316,21 +307,6 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
     public void onBackPressed() {
         StatesPanel.closeSlidingPanelFilterOrOder(mPanel);
         super.onBackPressed();
-    }
-
-    @Override
-    public void onCheckedChanged(RadioGroupPlus radioGroupPlus, @IdRes int i) {
-        if (i == R.id.radio_button_lowest_price) {
-            mSort.setLowestPrice(Boolean.TRUE);
-        } else {
-            mSort.setLowestPrice(Boolean.FALSE);
-        }
-        if (i == R.id.radio_button_higher_price) {
-            mSort.setHigherPrice(Boolean.TRUE);
-        } else {
-            mSort.setHigherPrice(Boolean.FALSE);
-        }
-
     }
 
     @Override
@@ -533,7 +509,6 @@ public class SearchHotelActivity extends BaseActivity implements CompoundButton.
     private void clearCollapseAndResetView() {
         StatesPanel.closeSlidingPanelFilterOrOder(mPanel);
         FilterUtility.setClearCheckBox(mCheckBoxListFilter);
-        SortUtility.setClearRadioGroup(radioGroupPlusPrice);
         ExpandableOpenClose.collapseExpandable(mExpandablesList);
     }
 

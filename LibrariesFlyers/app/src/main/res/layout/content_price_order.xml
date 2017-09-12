@@ -51,6 +51,7 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
+                    android:id="@+id/higher_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/checkBoxStyle" />
@@ -105,6 +106,7 @@
                 android:paddingRight="5dp">
 
                 <CheckBox
+                    android:id="@+id/lowest_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:theme="@style/checkBoxStyle" />
@@ -114,119 +116,5 @@
         </LinearLayout>
 
     </LinearLayout><!-- Menor precio-->
-
-    <worker8.com.github.radiogroupplus.RadioGroupPlus
-        android:id="@+id/radio_group_plus_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.8"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:paddingBottom="5dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="5dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.8">
-
-                    <com.test.trejo.jesus.librariesflyers.widget.PanelTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/higher_price"
-                        android:textColor="#030303" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.2"
-                    android:gravity="right"
-                    android:paddingRight="5dp">
-
-                    <RadioButton
-                        android:id="@+id/radio_button_higher_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/checkBoxStyle" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout><!-- Mayor precio -->
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/line"
-            android:background="@color/line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.8"
-                android:baselineAligned="false"
-                android:orientation="horizontal"
-                android:paddingBottom="5dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="5dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.8">
-
-                    <com.test.trejo.jesus.librariesflyers.widget.PanelTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/lowest_price"
-                        android:textColor="#030303" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.2"
-                    android:gravity="right"
-                    android:paddingRight="5dp">
-
-                    <RadioButton
-                        android:id="@+id/radio_button_lowest_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:theme="@style/checkBoxStyle" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout><!-- Menor precio-->
-
-    </worker8.com.github.radiogroupplus.RadioGroupPlus>
 
 </LinearLayout>
