@@ -42,6 +42,5 @@ public class SearchHotelPresenter implements SearchHotelContract.Presenter {
         checkNotNull(mFilter, "Filtro no puede ser nulo");
         checkNotNull(mSort, "Ordenar no puede ser nulo");
         Log.d(TAG, mFilter.getPriceMax());
-
     }
 }
