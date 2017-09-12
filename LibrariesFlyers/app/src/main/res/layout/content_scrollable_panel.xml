@@ -33,7 +33,7 @@
                 android:orientation="vertical"
                 android:paddingLeft="15dp">
 
-                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
+                <com.test.trejo.jesus.librariesflyers.widget.PanelTextView
                     android:id="@+id/cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
                 android:orientation="vertical"
                 android:paddingRight="15dp">
 
-                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
+                <com.test.trejo.jesus.librariesflyers.widget.PanelTextView
                     android:id="@+id/apply"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
 
         </LinearLayout><!-- Btn Apply - Cancel -->
 
-        <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
+        <com.test.trejo.jesus.librariesflyers.widget.PanelTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/gray_background"
@@ -96,7 +96,7 @@
                 android:background="@color/white"
                 android:orientation="horizontal">
 
-                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
+                <com.test.trejo.jesus.librariesflyers.widget.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -163,7 +163,7 @@
                 android:background="@color/white"
                 android:orientation="horizontal">
 
-                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
+                <com.test.trejo.jesus.librariesflyers.widget.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -230,7 +230,7 @@
                 android:background="@color/white"
                 android:orientation="horizontal">
 
-                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
+                <com.test.trejo.jesus.librariesflyers.widget.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -297,7 +297,7 @@
                 android:background="@color/white"
                 android:orientation="horizontal">
 
-                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
+                <com.test.trejo.jesus.librariesflyers.widget.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -364,7 +364,7 @@
                 android:background="@color/white"
                 android:orientation="horizontal">
 
-                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
+                <com.test.trejo.jesus.librariesflyers.widget.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -411,7 +411,7 @@
 
         </LinearLayout>
 
-        <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
+        <com.test.trejo.jesus.librariesflyers.widget.PanelTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/gray_background"
@@ -437,7 +437,7 @@
                 android:background="@color/white"
                 android:orientation="horizontal">
 
-                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
+                <com.test.trejo.jesus.librariesflyers.widget.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -504,7 +504,7 @@
                 android:background="@color/white"
                 android:orientation="horizontal">
 
-                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
+                <com.test.trejo.jesus.librariesflyers.widget.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -572,7 +572,7 @@
                 android:background="@color/white"
                 android:orientation="horizontal">
 
-                <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
+                <com.test.trejo.jesus.librariesflyers.widget.PanelTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"

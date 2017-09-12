@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
+            <com.test.trejo.jesus.librariesflyers.widget.PanelTextView
                 android:id="@+id/minimo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                 android:textColor="@color/black"
                 android:textSize="10sp" />
 
-            <com.test.trejo.jesus.librariesflyers.utils.PanelTextView
+            <com.test.trejo.jesus.librariesflyers.widget.PanelTextView
                 android:id="@+id/maximo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -1,8 +1,10 @@
-package com.test.trejo.jesus.librariesflyers.utils;
+package com.test.trejo.jesus.librariesflyers.widget;
 
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+
+import com.test.trejo.jesus.librariesflyers.utils.TypeFace;
 
 /**
  * Created by roger on 11/09/17.
@@ -26,7 +28,7 @@ public class PanelTextView extends android.support.v7.widget.AppCompatTextView {
     }
 
     private void init(Context context) {
-        Typeface face = Typeface.createFromAsset(context.getAssets(), "font/SFTextMedium.ttf");
+        Typeface face = TypeFace.getTypeface(context, "Roboto-Medium");
         this.setTypeface(face);
     }
 }
