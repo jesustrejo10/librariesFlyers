@@ -1,6 +1,7 @@
 package com.test.trejo.jesus.librariesflyers.ToolbarEffect;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
@@ -86,7 +87,8 @@ public class ToolbarEffectActivity extends AppCompatActivity implements OnMapRea
 
         initViews();
 
-        configureToolbarBehavior();
+        appBarLayout.addOnOffsetChangedListener(new ToolbarOffsetListener(toolbar, toolbarContent, toolbarTitle));
+        //configureToolbarBehavior();
     }
 
     private void initViews() {
@@ -195,22 +197,50 @@ public class ToolbarEffectActivity extends AppCompatActivity implements OnMapRea
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                final float difference = (float) Math.abs(verticalOffset) / (float) appBarLayout.getTotalScrollRange();
                 final boolean isCollapsed = Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange();
                 final boolean isExpanded = (verticalOffset == 0);
 
+                final int toolbarColor = getResources().getColor(R.color.flyers_primary);
+
                 if (isCollapsed) {
+                    toolbarContent.setAlpha(1f);
                     toolbarTitle.setVisibility(View.GONE);
                     toolbarContent.setVisibility(View.VISIBLE);
                     toolbar.setBackgroundColor(getResources().getColor(R.color.black));
                 } else if (isExpanded) {
+                    toolbarTitle.setAlpha(1f);
                     toolbarTitle.setVisibility(View.VISIBLE);
                     toolbarContent.setVisibility(View.GONE);
+                    toolbar.setBackgroundColor(toolbarColor);
                 } else {
-                    toolbar.setBackgroundColor(getResources().getColor(R.color.flyers_primary));
+                    changeTransparencyOfTitles(difference);
+
+                    final float amount = 1 - difference;
+                    final int enlightenedColor = getEnlightenedColor(toolbarColor, amount);
+                    toolbar.setBackgroundColor(enlightenedColor);
                 }
+            }
+
+            private void changeTransparencyOfTitles(float difference) {
+                if (toolbarTitle.getVisibility() == View.GONE)
+                    toolbarTitle.setVisibility(View.VISIBLE);
+                if (toolbarContent.getVisibility() == View.GONE)
+                    toolbarContent.setVisibility(View.VISIBLE);
+
+                toolbarTitle.setAlpha(1 - difference);
+                toolbarContent.setAlpha(difference);
+            }
+
+            private int getEnlightenedColor(int color, float amount) {
+                float[] hsv = new float[3];
+                Color.colorToHSV(color, hsv);
+                hsv[2] = Math.min(1.0f, amount * hsv[2]);
+                return Color.HSVToColor(hsv);
             }
         });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
