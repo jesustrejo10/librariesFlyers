@@ -1,12 +1,10 @@
 package com.test.trejo.jesus.librariesflyers.ToolbarEffect;
 
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.GestureDetector;
@@ -19,6 +17,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.alexvasilkov.gestures.Settings;
@@ -46,15 +45,16 @@ public class ToolbarEffectActivity extends AppCompatActivity implements OnMapRea
 
     private ImageView mapPreview;
     private GestureImageView mapPreviewFull;
-    private Toolbar toolbar;
     private ViewsTransitionAnimator animator;
     private FrameLayout mapFullLayout;
     private Button closeMapButton;
+    private Button buyButton;
     private CoordinatorLayout coordinator;
-    private LinearLayout toolbarContent;
-    private TextView toolbarTitle;
-    private AppBarLayout appBarLayout;
     private CarouselView carouselView;
+    private TextView toolbarHotelName;
+    private RatingBar toolbarStars;
+    private TextView hotelName;
+    private RatingBar stars;
 
 
     @Override
@@ -62,36 +62,47 @@ public class ToolbarEffectActivity extends AppCompatActivity implements OnMapRea
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toolbar_alternative);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final LinearLayout toolbarContent = (LinearLayout) findViewById(R.id.toolbar_layout);
+        final TextView toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
+        final AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
+
+        appBarLayout.addOnOffsetChangedListener(new ToolbarOffsetListener(toolbar, toolbarContent, toolbarTitle));
         setSupportActionBar(toolbar);
 
-        final ActionBar supportActionBar = getSupportActionBar();
-        if (supportActionBar != null) {
-            supportActionBar.setDisplayHomeAsUpEnabled(true);
-            supportActionBar.setDisplayShowTitleEnabled(false);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
-        toolbarContent = (LinearLayout) findViewById(R.id.toolbar_layout);
-        toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
-        appBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
         mapFullLayout = (FrameLayout) findViewById(R.id.maps_full_layout);
+        buyButton = (Button) findViewById(R.id.buy_button);
         closeMapButton = (Button) findViewById(R.id.close_map_button);
         coordinator = (CoordinatorLayout) findViewById(R.id.coordinator);
         mapPreview = (ImageView) findViewById(R.id.map_image);
         mapPreviewFull = (GestureImageView) findViewById(R.id.map_preview_full);
         carouselView = (CarouselView) findViewById(R.id.carouselView);
-
-        final MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
-
-        mapFragment.getMapAsync(this);
+        toolbarHotelName = (TextView) findViewById(R.id.toolbar_hotel_name);
+        toolbarStars = (RatingBar) findViewById(R.id.toolbar_stars);
+        hotelName = (TextView) findViewById(R.id.hotel_name);
+        stars = (RatingBar) findViewById(R.id.stars);
 
         initViews();
 
-        appBarLayout.addOnOffsetChangedListener(new ToolbarOffsetListener(toolbar, toolbarContent, toolbarTitle));
-        //configureToolbarBehavior();
+        final MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
 
     private void initViews() {
+        final String hotelNameText = "Star Alliance Lounge Buenos Aires";
+        final float rating = 5.0f;
+
+        toolbarHotelName.setText(hotelNameText);
+        hotelName.setText(hotelNameText);
+
+        toolbarStars.setRating(rating);
+        stars.setRating(rating);
+
         carouselView.setPageCount(sampleImages.length);
         carouselView.setImageListener(new ImageListener() {
             @Override
@@ -110,10 +121,12 @@ public class ToolbarEffectActivity extends AppCompatActivity implements OnMapRea
                 .setFitMethod(Settings.Fit.VERTICAL)
                 .setAnimationsDuration(Settings.ANIMATIONS_DURATION);
 
-        final GesturesDetectorListener gesturesDetectorListener = getNewGesturesDetectorListener();
-        final ScaleGestureDetector scaleGestureDetector = new ScaleGestureDetector(this, gesturesDetectorListener);
-        final GestureDetector gestureDetector = new GestureDetector(this, gesturesDetectorListener);
-        gestureDetector.setOnDoubleTapListener(gesturesDetectorListener);
+        final GesturesDetectorListener listener = getNewGesturesDetectorListener();
+
+        final GestureDetector gestureDetector = new GestureDetector(this, listener);
+        gestureDetector.setOnDoubleTapListener(listener);
+
+        final ScaleGestureDetector scaleGestureDetector = new ScaleGestureDetector(this, listener);
 
         mapPreview.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -131,9 +144,10 @@ public class ToolbarEffectActivity extends AppCompatActivity implements OnMapRea
                 final boolean animationFinishedInInitialView = (position == 0f) && isLeaving;
                 final boolean animationFinishedInFinalView = (position == 1f) && !isLeaving;
 
-                if (animationFinishedInInitialView)
+                if (animationFinishedInInitialView) {
                     mapPreviewFull.setVisibility(View.GONE);
-                else if (animationFinishedInFinalView) {
+                    buyButton.setVisibility(View.VISIBLE);
+                } else if (animationFinishedInFinalView) {
                     mapFullLayout.setVisibility(View.VISIBLE);
                     coordinator.setVisibility(View.GONE);
                     mapPreviewFull.setVisibility(View.GONE);
@@ -143,6 +157,7 @@ public class ToolbarEffectActivity extends AppCompatActivity implements OnMapRea
                     mapPreviewFull.setVisibility(View.VISIBLE);
                 } else {
                     mapPreviewFull.setVisibility(View.VISIBLE);
+                    buyButton.setVisibility(View.GONE);
                 }
             }
         });
@@ -192,55 +207,6 @@ public class ToolbarEffectActivity extends AppCompatActivity implements OnMapRea
 
         animator.enterSingle(true);
     }
-
-    private void configureToolbarBehavior() {
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                final float difference = (float) Math.abs(verticalOffset) / (float) appBarLayout.getTotalScrollRange();
-                final boolean isCollapsed = Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange();
-                final boolean isExpanded = (verticalOffset == 0);
-
-                final int toolbarColor = getResources().getColor(R.color.flyers_primary);
-
-                if (isCollapsed) {
-                    toolbarContent.setAlpha(1f);
-                    toolbarTitle.setVisibility(View.GONE);
-                    toolbarContent.setVisibility(View.VISIBLE);
-                    toolbar.setBackgroundColor(getResources().getColor(R.color.black));
-                } else if (isExpanded) {
-                    toolbarTitle.setAlpha(1f);
-                    toolbarTitle.setVisibility(View.VISIBLE);
-                    toolbarContent.setVisibility(View.GONE);
-                    toolbar.setBackgroundColor(toolbarColor);
-                } else {
-                    changeTransparencyOfTitles(difference);
-
-                    final float amount = 1 - difference;
-                    final int enlightenedColor = getEnlightenedColor(toolbarColor, amount);
-                    toolbar.setBackgroundColor(enlightenedColor);
-                }
-            }
-
-            private void changeTransparencyOfTitles(float difference) {
-                if (toolbarTitle.getVisibility() == View.GONE)
-                    toolbarTitle.setVisibility(View.VISIBLE);
-                if (toolbarContent.getVisibility() == View.GONE)
-                    toolbarContent.setVisibility(View.VISIBLE);
-
-                toolbarTitle.setAlpha(1 - difference);
-                toolbarContent.setAlpha(difference);
-            }
-
-            private int getEnlightenedColor(int color, float amount) {
-                float[] hsv = new float[3];
-                Color.colorToHSV(color, hsv);
-                hsv[2] = Math.min(1.0f, amount * hsv[2]);
-                return Color.HSVToColor(hsv);
-            }
-        });
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

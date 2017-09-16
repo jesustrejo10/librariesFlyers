@@ -1,6 +1,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -34,9 +35,9 @@
     </FrameLayout>
 
     <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/coordinator">
+        android:layout_height="match_parent">
 
         <include layout="@layout/activity_collapsing_toolbar"/>
 
@@ -51,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/gray_layout"
                 android:orientation="vertical"
+                android:paddingBottom="40dp"
                 android:paddingTop="4pt">
 
                 <LinearLayout
@@ -98,7 +100,7 @@
                     android:paddingRight="16dp">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.3"
                         android:orientation="horizontal"
@@ -109,27 +111,114 @@
                             android:id="@+id/imageView"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            app:srcCompat="@mipmap/ic_options1"/>
+                            app:srcCompat="@mipmap/ic_options1"
+                            tools:ignore="ContentDescription"/>
 
                         <ImageView
                             android:id="@+id/imageView2"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            app:srcCompat="@mipmap/ic_options2"/>
+                            app:srcCompat="@mipmap/ic_options2"
+                            tools:ignore="ContentDescription"/>
 
                         <ImageView
                             android:id="@+id/imageView3"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            app:srcCompat="@mipmap/ic_options3"/>
+                            app:srcCompat="@mipmap/ic_options3"
+                            tools:ignore="ContentDescription"/>
 
                     </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
+                        android:layout_gravity="end|center_vertical"
                         android:text="Ver mas >"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/black"
+                    android:minHeight="55dp"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="2"
+                        android:ellipsize="marquee"
+                        android:gravity="center_vertical"
+                        android:maxLines="3"
+                        android:padding="4dp"
+                        android:text="Entries are not Permitted during daily peak hours"
+                        android:textColor="@android:color/white"
+                        android:textSize="10sp"/>
+
+                    <TextView
+                        android:id="@+id/selected_day_info"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#2b6ec1"
+                        android:ellipsize="marquee"
+                        android:gravity="center"
+                        android:maxLines="3"
+                        android:padding="4dp"
+                        android:text="Lunes\nXX"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/available_hours_info"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="3"
+                        android:background="#2b6ec1"
+                        android:ellipsize="marquee"
+                        android:gravity="center"
+                        android:minHeight="55dp"
+                        android:padding="4dp"
+                        android:text="OPEN\n10:00 a 13:30\n10:00 a 13:30"
+                        android:textColor="@android:color/white"
+                        android:textSize="11sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:maxLines="3"
+                        android:text="Ingrese el horario deseado para su VIP"
+                        android:textColor="#101010"/>
+
+                    <EditText
+                        android:id="@+id/selected_hour"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/googleg_standard_color_18"
+                        android:drawablePadding="8dp"
+                        android:drawableStart="@drawable/googleg_standard_color_18"
+                        android:textColor="#111111"
+                        android:textSize="16sp"
+                        android:hint="12:00"/>
 
                 </LinearLayout>
 
@@ -139,7 +228,6 @@
                     android:background="@color/gray_background"
                     android:orientation="vertical"
                     android:paddingTop="10dp">
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -157,7 +245,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="0.8"
+                            android:paddingEnd="5dp"
                             android:paddingLeft="15dp"
+                            android:paddingRight="5dp"
+                            android:paddingStart="15dp"
                             android:text=" X Cant de horas"/>
 
                         <LinearLayout
@@ -165,13 +256,16 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.2"
                             android:orientation="vertical"
-                            android:paddingRight="10dp">
+                            android:paddingEnd="10dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="10dp"
+                            android:paddingStart="5dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="right"
-                                android:gravity="right"
+                                android:layout_gravity="end"
+                                android:gravity="end"
                                 android:text="$130"
                                 android:textColor="@color/toolbar_color"
                                 android:textSize="14sp"
@@ -180,10 +274,11 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="right"
-                                android:gravity="right"
+                                android:layout_gravity="end"
+                                android:gravity="end"
                                 android:text="Precio por persona"
-                                android:textSize="10sp"/>
+                                android:textSize="10sp"
+                                tools:ignore="SmallSp"/>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -204,7 +299,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="0.8"
+                            android:paddingEnd="5dp"
                             android:paddingLeft="15dp"
+                            android:paddingRight="5dp"
+                            android:paddingStart="15dp"
                             android:text=" X Cant de horas 2"/>
 
                         <LinearLayout
@@ -212,13 +310,16 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.2"
                             android:orientation="vertical"
-                            android:paddingRight="10dp">
+                            android:paddingEnd="10dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="10dp"
+                            android:paddingStart="5dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="right"
-                                android:gravity="right"
+                                android:layout_gravity="end"
+                                android:gravity="end"
                                 android:text="$140"
                                 android:textColor="@color/toolbar_color"
                                 android:textSize="14sp"
@@ -227,10 +328,11 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="right"
-                                android:gravity="right"
+                                android:layout_gravity="end"
+                                android:gravity="end"
                                 android:text="Precio por persona"
-                                android:textSize="10sp"/>
+                                android:textSize="10sp"
+                                tools:ignore="SmallSp"/>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -243,7 +345,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:scaleType="centerCrop"
-                        android:src="@color/colorPrimary"/>
+                        android:src="@color/cardview_dark_background"
+                        tools:ignore="ContentDescription"/>
 
                 </LinearLayout>
 
@@ -344,21 +447,6 @@
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"/>
 
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@color/toolbar_color"
-                        android:gravity="center_horizontal|center_vertical"
-                        android:paddingBottom="5dp"
-                        android:paddingTop="5dp"
-                        android:text="COMPRAR"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        />
-
                 </LinearLayout>
 
             </LinearLayout>
@@ -366,6 +454,24 @@
         </android.support.v4.widget.NestedScrollView>
 
     </android.support.design.widget.CoordinatorLayout>
+
+    <Button
+        android:id="@+id/buy_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/toolbar_color"
+        android:gravity="center_horizontal|center_vertical"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="COMPRAR"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        />
 
     <com.alexvasilkov.gestures.views.GestureImageView
         android:id="@+id/map_preview_full"
